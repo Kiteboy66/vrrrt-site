@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Terms — Vrrrt</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    html, body { margin: 0; padding: 0; }
+    body { font-family: 'Geist', system-ui, sans-serif; background: #FAFAFA; color: #0A0A0B; -webkit-font-smoothing: antialiased; }
+    *, *::before, *::after { box-sizing: border-box; }
+    button, a { font-family: inherit; }
+    .vt-btn { white-space: nowrap; }
+    .vt-btn--primary:hover { background: #3CFA8B !important; box-shadow: 0 0 0 4px rgba(0,226,106,0.18), 0 0 24px rgba(0,226,106,0.45); }
+    .vt-btn--ghost:hover { background: #F4F4F5 !important; }
+    .vt-btn:active { transform: scale(0.97); }
+  </style>
+</head>
+<body>
+  <div id="root" data-screen-label="Terms"></div>
+  <script>
+    window.__DOC = {
+      id: 'terms',
+      kind: 'Terms of service',
+      title: 'Terms of service.',
+      lastUpdated: 'May 25, 2026',
+      intro: 'These terms govern your use of Vrrrt — the discovery engine, the dashboard, and the platform integrations. By installing Vrrrt or signing up for an account, you agree to them.',
+      sections: [
+        { h: '1. The agreement',
+          body: [
+            'These terms are a binding contract between you ("Customer") and Vrrrt, Inc. ("Vrrrt"). If you\'re agreeing on behalf of a company, you represent that you have authority to bind that entity.',
+            'We may update these terms. Material changes will be announced at least 30 days in advance via email and in-product banner.'
+          ]
+        },
+        { h: '2. The service',
+          body: [
+            'Vrrrt provides a product discovery engine that you embed in your store (Shopify, WordPress, WooCommerce, or via the Search extension). The service includes indexing, serving, analytics, and the merchant dashboard.',
+            'We aim for 99.9% monthly uptime. Status: status.vrrrt.com.'
+          ]
+        },
+        { h: '3. Your responsibilities',
+          body: [
+            'You will only index catalogs that you own or have permission to index. You will not use Vrrrt to surface content that infringes third-party IP.',
+            'You will keep your credentials secure. Vrrrt is not liable for unauthorized access caused by your failure to do so.'
+          ]
+        },
+        { h: '4. Plans, billing, and trials',
+          body: [
+            'Vrrrt offers flat monthly plans (Starter, Velocity, Vrrrt for All). All plans are billed in advance. Velocity offers a 14-day free trial. Cancel any time; refunds are pro-rated for annual plans.',
+            'Vrrrt does not charge based on shopper outcomes. Pricing is flat monthly regardless of conversion lift.'
+          ]
+        },
+        { h: '5. Acceptable use',
+          body: [
+            'No reselling Vrrrt to third parties without an agreement. No scraping, reverse-engineering, or rate-limit circumvention. No surfacing illegal, harmful, or restricted goods.'
+          ]
+        },
+        { h: '6. Termination',
+          body: [
+            'You may cancel any time from the dashboard. Vrrrt may suspend or terminate accounts for violations of these terms, with notice where reasonable.',
+            'On termination, your data is retained for 30 days, then deleted. Export endpoints remain available during that window.'
+          ]
+        },
+        { h: '7. Liability',
+          body: [
+            'Vrrrt is provided as-is. To the maximum extent permitted by law, our liability is capped at the fees you paid in the trailing 12 months.'
+          ]
+        },
+        { h: '8. Governing law',
+          body: [
+            'These terms are governed by the laws of the State of Delaware, USA. Disputes are resolved by binding arbitration except where consumer law mandates otherwise.'
+          ]
+        },
+      ],
+    };
+  </script>
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+  <script type="text/babel" src="shared.jsx"></script>
+  <script type="text/babel" src="legal.jsx"></script>
+</body>
+</html>

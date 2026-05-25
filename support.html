@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Support — Vrrrt</title>
+  <meta name="description" content="Get help with Vrrrt. Docs, status, contact." />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    html, body { margin: 0; padding: 0; }
+    html, body { background: #0A0A0B; }
+    body { font-family: 'Geist', system-ui, sans-serif; color: #0A0A0B; -webkit-font-smoothing: antialiased; }
+    *, *::before, *::after { box-sizing: border-box; }
+    button, a { font-family: inherit; }
+    .vt-btn { white-space: nowrap; }
+    .vt-btn--primary:hover { background: #3CFA8B !important; box-shadow: 0 0 0 4px rgba(0,226,106,0.18), 0 0 24px rgba(0,226,106,0.45); }
+    .vt-btn--ghost:hover { background: #F4F4F5 !important; }
+    .vt-btn--tertiary:hover { background: #FAFAFA !important; border-color: #D4D4D8 !important; }
+    .vt-btn:active { transform: scale(0.97); }
+  </style>
+</head>
+<body>
+  <div id="root" data-screen-label="Support"></div>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+  <script type="text/babel" src="shared.jsx"></script>
+
+  <script type="text/babel">
+    const { useState } = React;
+
+    const Hero = () => (
+      <section style={{ background: '#0A0A0B', color: '#fff', padding: '88px 32px 56px' }}>
+        <div style={{ maxWidth: 1240, margin: '0 auto' }}>
+          <Eyebrow color="#00E26A">— Support</Eyebrow>
+          <h1 style={{ fontFamily: 'Geist, system-ui, sans-serif', fontWeight: 700, fontSize: 64, letterSpacing: '-0.05em', lineHeight: 0.98, margin: 0, maxWidth: '20ch' }}>
+            We answer fast. <span style={{ color: '#A1A1AA' }}>Same speed as the product.</span>
+          </h1>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: 12, marginTop: 28, padding: '8px 14px', background: '#18181B', border: '1px solid #27272A', borderRadius: 999 }}>
+            <span style={{ width: 8, height: 8, borderRadius: '50%', background: '#00E26A', boxShadow: '0 0 10px rgba(0,226,106,0.7)' }} />
+            <span style={{ fontFamily: 'Geist Mono, monospace', fontSize: 12, color: '#fff' }}>All systems operational</span>
+            <span style={{ fontFamily: 'Geist Mono, monospace', fontSize: 11, color: '#71717A' }}>· avg response 24h</span>
+          </div>
+        </div>
+      </section>
+    );
+
+    const HelpCards = () => (
+      <section style={{ background: '#FAFAFA', padding: '64px 32px' }}>
+        <div style={{ maxWidth: 1240, margin: '0 auto' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 16 }}>
+            {[
+              { t: 'Docs', d: 'Install guides, theme integration, API reference.', cta: 'Open docs', href: '#' },
+              { t: 'Partner with us', d: 'Designer, agency, or theme developer? Let\'s build together. Vrrrt works on any Shopify theme.', cta: 'Join the partner program', href: 'https://3dnavigate.vrrrt.app/partners' },
+            ].map(c => (
+              <a key={c.t} href={c.href}
+                target={c.href.startsWith('http') ? '_blank' : undefined}
+                rel={c.href.startsWith('http') ? 'noopener noreferrer' : undefined}
+                style={{
+                textDecoration: 'none', color: 'inherit',
+                background: '#fff', borderRadius: 14, padding: '24px 28px',
+                boxShadow: '0 1px 2px rgba(0,0,0,0.04), 0 0 0 1px rgba(0,0,0,0.05)',
+                display: 'flex', flexDirection: 'column', gap: 12,
+                transition: 'all 180ms cubic-bezier(.2,.9,.2,1)',
+              }}
+              onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 12px 32px rgba(0,0,0,0.08), 0 0 0 1px rgba(0,0,0,0.05)'; }}
+              onMouseLeave={e => { e.currentTarget.style.transform = 'none'; e.currentTarget.style.boxShadow = '0 1px 2px rgba(0,0,0,0.04), 0 0 0 1px rgba(0,0,0,0.05)'; }}
+              >
+                <h3 style={{ fontFamily: 'Geist, system-ui, sans-serif', fontWeight: 600, fontSize: 22, color: '#0A0A0B', margin: 0, letterSpacing: '-0.02em' }}>{c.t}</h3>
+                <p style={{ fontFamily: 'Geist, system-ui, sans-serif', fontSize: 14, color: '#71717A', margin: 0, lineHeight: 1.5, flex: 1 }}>{c.d}</p>
+                <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontFamily: 'Geist, system-ui, sans-serif', fontSize: 14, fontWeight: 600, color: '#0A0A0B' }}>
+                  {c.cta} <Icon name="arrow-right" size={14} stroke={2.5} />
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+
+    const FAQ_DATA = [
+      { q: 'How fast does Vrrrt show up after install?',
+        a: 'Instantly. The cube loads in under 1 second. Drop the block, assign your collections, save. Your shoppers see it on the next page load.' },
+      { q: 'Will it slow my store down?',
+        a: 'No. Vrrrt is built for speed. It loads in under 1 second and won\'t touch your Lighthouse or Core Web Vitals scores.' },
+      { q: 'Does Vrrrt own my data?',
+        a: 'Vrrrt collects no shopper data. No tracking, no profiles, nothing stored. Your store, your customers, your data.' },
+      { q: 'Can I use Vrrrt on a non-Shopify store today?',
+        a: 'Not yet. Native WordPress and WooCommerce versions are coming. Join the waitlist.' },
+      { q: 'Is there a contract or commitment?',
+        a: 'No. Monthly, cancel any time. 14-day free trial on all paid plans, no card required.' },
+      { q: 'How is pricing structured?',
+        a: 'Flat monthly. Three tiers starting at $29. Your bill never changes based on traffic or conversions.' },
+    ];
+
+    const FAQ = () => {
+      const [open, setOpen] = useState(0);
+      return (
+        <section style={{ background: '#fff', padding: '96px 32px', borderTop: '1px solid #E4E4E7' }}>
+          <div style={{ maxWidth: 880, margin: '0 auto' }}>
+            <Eyebrow>— FAQ</Eyebrow>
+            <h2 style={{ fontFamily: 'Geist, system-ui, sans-serif', fontWeight: 700, fontSize: 40, lineHeight: 1.02, letterSpacing: '-0.04em', margin: 0, color: '#0A0A0B' }}>
+              The short answers.
+            </h2>
+            <div style={{ marginTop: 32, borderTop: '1px solid #E4E4E7' }}>
+              {FAQ_DATA.map((f, i) => (
+                <div key={i} style={{ borderBottom: '1px solid #E4E4E7' }}>
+                  <button onClick={() => setOpen(open === i ? -1 : i)} style={{
+                    width: '100%', textAlign: 'left', padding: '20px 0',
+                    background: 'transparent', border: 'none', cursor: 'pointer',
+                    display: 'flex', justifyContent: 'space-between', alignItems: 'center', gap: 16,
+                    fontFamily: 'Geist, system-ui, sans-serif', fontSize: 17, fontWeight: 500, color: '#0A0A0B',
+                  }}>
+                    {f.q}
+                    <Icon name="chevron-down" size={18} stroke={2} style={{
+                      transform: open === i ? 'rotate(180deg)' : 'rotate(0)',
+                      transition: 'transform 180ms cubic-bezier(.2,.9,.2,1)',
+                      color: '#71717A', flexShrink: 0,
+                    }}/>
+                  </button>
+                  <div style={{
+                    maxHeight: open === i ? 200 : 0, overflow: 'hidden',
+                    transition: 'max-height 320ms cubic-bezier(.2,.9,.2,1)',
+                  }}>
+                    <p style={{ fontFamily: 'Geist, system-ui, sans-serif', fontSize: 15, color: '#71717A', lineHeight: 1.6, margin: '0 0 20px', maxWidth: '70ch' }}>
+                      {f.a}
+                    </p>
+                  </div>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      );
+    };
+
+    const Contact = () => {
+      const [sent, setSent] = useState(false);
+      const [loading, setLoading] = useState(false);
+      const [error, setError] = useState(null);
+
+      const handleSubmit = async (e) => {
+        e.preventDefault();
+        setLoading(true);
+        setError(null);
+        const form = e.target;
+        const data = {
+          name: form.elements['name'].value,
+          email: form.elements['email'].value,
+          store: form.elements['store'].value,
+          message: form.elements['message'].value,
+        };
+        try {
+          const res = await fetch('/api/contact', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify(data),
+          });
+          if (!res.ok) {
+            const body = await res.json().catch(() => ({}));
+            throw new Error(body.error || 'Failed to send. Please try again.');
+          }
+          setSent(true);
+        } catch (err) {
+          setError(err.message || 'Something went wrong. Email us at support@vrrrt.com');
+        } finally {
+          setLoading(false);
+        }
+      };
+
+      const disabled = sent || loading;
+
+      return (
+        <section style={{ background: '#0A0A0B', color: '#fff', padding: '96px 32px' }}>
+          <div style={{ maxWidth: 880, margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 48 }}>
+            <div>
+              <Eyebrow color="#00E26A">— Talk to us</Eyebrow>
+              <h2 style={{ fontFamily: 'Geist, system-ui, sans-serif', fontWeight: 700, fontSize: 40, lineHeight: 1.02, letterSpacing: '-0.04em', margin: 0, color: '#fff' }}>
+                Real humans. <span style={{ color: '#A1A1AA' }}>No bots.</span>
+              </h2>
+              <p style={{ fontFamily: 'Geist, system-ui, sans-serif', fontSize: 15, color: '#A1A1AA', maxWidth: '40ch', marginTop: 18, lineHeight: 1.6 }}>
+                We read everything and reply within 24 hours.
+              </p>
+              <div style={{ marginTop: 28, display: 'flex', flexDirection: 'column', gap: 14 }}>
+                {[
+                  { l: 'support@vrrrt.com', s: '24h response' },
+                ].map(c => (
+                  <a key={c.l} href={`mailto:${c.l}`} style={{
+                    display: 'flex', alignItems: 'center', gap: 12,
+                    padding: '12px 16px', borderRadius: 10, background: '#18181B',
+                    border: '1px solid #27272A', textDecoration: 'none',
+                  }}>
+                    <Icon name="mail" size={16} stroke={1.5} color="#00E26A" />
+                    <div>
+                      <div style={{ fontFamily: 'Geist Mono, monospace', fontSize: 13, color: '#fff' }}>{c.l}</div>
+                      <div style={{ fontFamily: 'Geist, system-ui, sans-serif', fontSize: 12, color: '#71717A', marginTop: 2 }}>{c.s}</div>
+                    </div>
+                  </a>
+                ))}
+              </div>
+            </div>
+            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+              {[
+                { id: 'name', label: 'Name', type: 'text', placeholder: 'Jane Merchant', required: true },
+                { id: 'email', label: 'Email', type: 'email', placeholder: 'jane@store.com', required: true },
+                { id: 'store', label: 'Store URL', type: 'text', placeholder: 'cobalt-coffee.myshopify.com' },
+              ].map(f => (
+                <label key={f.id} style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+                  <span style={{ fontFamily: 'Geist, system-ui, sans-serif', fontSize: 12, fontWeight: 600, color: '#A1A1AA', letterSpacing: '0.04em', textTransform: 'uppercase' }}>{f.label}</span>
+                  <input name={f.id} type={f.type} placeholder={f.placeholder} required={f.required} disabled={disabled}
+                    style={{
+                      padding: '12px 14px', borderRadius: 10, background: '#18181B',
+                      border: '1px solid #27272A', color: '#fff', outline: 'none',
+                      fontFamily: 'Geist, system-ui, sans-serif', fontSize: 14,
+                      opacity: disabled ? 0.6 : 1,
+                    }}/>
+                </label>
+              ))}
+              <label style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
+                <span style={{ fontFamily: 'Geist, system-ui, sans-serif', fontSize: 12, fontWeight: 600, color: '#A1A1AA', letterSpacing: '0.04em', textTransform: 'uppercase' }}>Message</span>
+                <textarea name="message" rows="4" placeholder="What's going on?" required disabled={disabled}
+                  style={{
+                    padding: '12px 14px', borderRadius: 10, background: '#18181B',
+                    border: '1px solid #27272A', color: '#fff', outline: 'none',
+                    fontFamily: 'Geist, system-ui, sans-serif', fontSize: 14, resize: 'vertical',
+                    opacity: disabled ? 0.6 : 1,
+                  }}/>
+              </label>
+              {error && (
+                <div style={{
+                  padding: '10px 14px', borderRadius: 8,
+                  background: 'rgba(239,68,68,0.1)', border: '1px solid rgba(239,68,68,0.25)',
+                  fontFamily: 'Geist, system-ui, sans-serif', fontSize: 13, color: '#FCA5A5',
+                }}>{error}</div>
+              )}
+              <button type="submit" disabled={disabled} style={{
+                padding: '14px 22px', fontSize: 15, fontWeight: 600,
+                cursor: disabled ? 'default' : 'pointer',
+                background: sent ? '#27272A' : '#00E26A',
+                color: sent ? '#A1A1AA' : '#000',
+                border: 'none', borderRadius: 10,
+                fontFamily: 'Geist, system-ui, sans-serif', whiteSpace: 'nowrap', marginTop: 4,
+                transition: 'all 120ms cubic-bezier(.2,.9,.2,1)',
+                opacity: loading ? 0.7 : 1,
+              }}>
+                {sent ? '✓ Got it — we\'ll reply within 24h' : loading ? 'Sending…' : 'Send message →'}
+              </button>
+            </form>
+          </div>
+        </section>
+      );
+    };
+
+    const App = () => (
+      <>
+        <Header active="support" />
+        <Hero />
+        <HelpCards />
+        <FAQ />
+        <Contact />
+        <Footer />
+      </>
+    );
+    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+  </script>
+</body>
+</html>

@@ -1,1 +1,449 @@
-Vrrrt. Coming soon.
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vrrrt — Hear that? That's your store converting.</title>
+  <meta name="description" content="Half your shoppers leave in 30 seconds. They saw 8 products. Vrrrt shows them 540. One discovery engine. Every platform." />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    html, body { margin: 0; padding: 0; }
+    html, body { background: #0A0A0B; }
+    body { font-family: 'Geist', system-ui, sans-serif; color: #0A0A0B; -webkit-font-smoothing: antialiased; }
+    *, *::before, *::after { box-sizing: border-box; }
+    button, a { font-family: inherit; }
+    .vt-btn { white-space: nowrap; }
+    .vt-btn--primary:hover { background: #3CFA8B !important; box-shadow: 0 0 0 4px rgba(0,226,106,0.18), 0 0 24px rgba(0,226,106,0.45); }
+    .vt-btn--secondary:hover { background: #27272A !important; }
+    .vt-btn--tertiary:hover  { background: #FAFAFA !important; border-color: #D4D4D8 !important; }
+    .vt-btn--ghost:hover     { background: #F4F4F5 !important; }
+    .vt-btn--ghost-on-dark:hover { background: rgba(255,255,255,0.06) !important; border-color: rgba(255,255,255,0.3) !important; }
+    .vt-btn:active { transform: scale(0.97); }
+    @keyframes pulse { 0%,100% { opacity: 1 } 50% { opacity: 0.4 } }
+    @keyframes spin { to { transform: rotate(360deg) } }
+  </style>
+</head>
+<body>
+  <div id="root" data-screen-label="Homepage"></div>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <script type="text/babel" src="shared.jsx"></script>
+
+  <script type="text/babel">
+    const { useState, useEffect } = React;
+
+    // ============ HERO ============
+    const Hero = () => {
+      const [count, setCount] = useState(540);
+      useEffect(() => {
+        let raf, frame = 0;
+        const tick = () => { frame++; if (frame % 4 === 0) setCount(540 + Math.floor(Math.random() * 4)); raf = requestAnimationFrame(tick); };
+        raf = requestAnimationFrame(tick); return () => cancelAnimationFrame(raf);
+      }, []);
+      return (
+        <section style={{ background: '#0A0A0B', color: '#fff', padding: '120px 32px 96px', position: 'relative', overflow: 'hidden' }}>
+          <div style={{
+            position: 'absolute', inset: 0, opacity: 0.06,
+            backgroundImage: 'repeating-linear-gradient(90deg, transparent 0 80px, #fff 80px 81px)',
+            maskImage: 'linear-gradient(90deg, transparent, #000 30%, #000 70%, transparent)',
+          }} />
+          <div style={{ maxWidth: 1240, margin: '0 auto', position: 'relative' }}>
+            <Eyebrow color="#00E26A">— One discovery engine. Every platform.</Eyebrow>
+            <h1 style={{
+              fontFamily: 'Geist, system-ui, sans-serif',
+              fontWeight: 700, fontSize: 96, letterSpacing: '-0.05em',
+              lineHeight: 0.95, margin: 0, maxWidth: '18ch',
+            }}>
+              Hear that?<br/>
+              That's your store<br/>
+              <span style={{ color: '#00E26A' }}>converting.</span>
+            </h1>
+            <p style={{
+              fontFamily: 'Geist Mono, monospace', fontSize: 13, color: '#71717A',
+              marginTop: 20, marginBottom: 0, letterSpacing: 0,
+            }}>
+              Vrrrt. <span style={{ color: '#A1A1AA' }}>/v&#604;&#720;rt/</span> &mdash; the sound of 540 products moving past a shopper's eye in 3 minutes.
+            </p>
+            <p style={{
+              fontFamily: 'Geist, system-ui, sans-serif',
+              fontSize: 19, color: '#A1A1AA', maxWidth: '56ch', marginTop: 20, lineHeight: 1.5,
+            }}>
+              Half your shoppers leave in 30 seconds. They saw 8 products. Vrrrt shows them <span style={{ color: '#fff' }}>540</span>.
+            </p>
+            <div style={{ display: 'flex', gap: 12, marginTop: 36, alignItems: 'center' }}>
+              <Button variant="primary" size="lg" trailingIcon={<Icon name="arrow-right" size={16} stroke={2}/>}>
+                Install on Shopify
+              </Button>
+              <Button variant="ghost-on-dark" size="lg" leadingIcon={<Icon name="play" size={14} stroke={2}/>}>
+                Watch the demo
+              </Button>
+            </div>
+
+            <div style={{
+              marginTop: 80, display: 'flex', alignItems: 'stretch',
+              border: '1px solid #27272A', borderRadius: 14, overflow: 'hidden', background: '#000',
+            }}>
+              {[
+                { l: 'PRODUCTS SEEN', v: count },
+                { l: 'AVG SESSION', v: '3:00' },
+                { l: 'CONVERSION MULTIPLIER', v: '4–6×', accent: true },
+                { l: 'PEAK CONVERSION WINDOW', v: '3–5 min' },
+              ].map((m, i) => (
+                <div key={i} style={{
+                  flex: 1, padding: '24px 28px',
+                  borderRight: i < 3 ? '1px solid #18181B' : 'none',
+                  display: 'flex', flexDirection: 'column', gap: 10,
+                }}>
+                  <span style={{
+                    fontFamily: 'Geist, system-ui, sans-serif',
+                    fontSize: 11, fontWeight: 600, letterSpacing: '0.10em',
+                    textTransform: 'uppercase', color: '#71717A',
+                    whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis',
+                  }}>{m.l}</span>
+                  <span style={{
+                    fontFamily: 'Geist Mono, monospace', fontSize: 32, fontWeight: 500,
+                    lineHeight: 1, color: m.accent ? '#00E26A' : '#FFFFFF',
+                    fontVariantNumeric: 'tabular-nums', whiteSpace: 'nowrap',
+                    textShadow: m.accent ? '0 0 18px rgba(0,226,106,0.4)' : 'none',
+                  }}>{m.v}</span>
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+      );
+    };
+
+    // ============ PRODUCT GRID ============
+    const ProductGrid = () => (
+      <section style={{ background: '#FAFAFA', padding: '128px 32px' }}>
+        <div style={{ maxWidth: 1240, margin: '0 auto' }}>
+          <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: 48, flexWrap: 'wrap', gap: 16 }}>
+            <div>
+              <Eyebrow>— The products</Eyebrow>
+              <h2 style={{
+                fontFamily: 'Geist, system-ui, sans-serif',
+                fontWeight: 700, fontSize: 60, lineHeight: 1.02, letterSpacing: '-0.04em',
+                margin: 0, color: '#0A0A0B', maxWidth: '20ch',
+              }}>
+                Wherever they shop. <span style={{ color: '#71717A' }}>Vrrrt's there.</span>
+              </h2>
+            </div>
+            <p style={{
+              fontFamily: 'Geist, system-ui, sans-serif',
+              fontSize: 16, color: '#71717A', maxWidth: '40ch',
+              margin: 0, lineHeight: 1.5,
+            }}>
+              Shopify-first. Google Search next. WordPress and WooCommerce close behind. One engine, every surface a shopper meets.
+            </p>
+          </div>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 20 }}>
+            {PRODUCTS.map(p => {
+              const isLive = p.status === 'live';
+              return (
+                <a key={p.id} href={p.href} style={{
+                  textDecoration: 'none', color: 'inherit',
+                  background: isLive ? '#0A0A0B' : '#fff',
+                  color: isLive ? '#fff' : '#0A0A0B',
+                  borderRadius: 20, padding: '32px 36px',
+                  display: 'flex', flexDirection: 'column', gap: 18,
+                  boxShadow: isLive ? 'none' : '0 1px 2px rgba(0,0,0,0.04), 0 0 0 1px rgba(0,0,0,0.05)',
+                  transition: 'all 180ms cubic-bezier(.2,.9,.2,1)',
+                  minHeight: 240,
+                }}
+                onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = isLive ? '0 12px 32px rgba(0,0,0,0.25)' : '0 12px 32px rgba(0,0,0,0.10), 0 0 0 1px rgba(0,0,0,0.05)'; }}
+                onMouseLeave={e => { e.currentTarget.style.transform = 'none'; e.currentTarget.style.boxShadow = isLive ? 'none' : '0 1px 2px rgba(0,0,0,0.04), 0 0 0 1px rgba(0,0,0,0.05)'; }}
+                >
+                  <div style={{ display: 'flex', alignItems: 'flex-start', justifyContent: 'space-between' }}>
+                    <div style={{
+                      width: 48, height: 48, borderRadius: 12,
+                      background: isLive ? '#18181B' : '#F4F4F5',
+                      display: 'flex', alignItems: 'center', justifyContent: 'center',
+                    }}>
+                      <Icon name={p.icon} size={24} stroke={1.5} color={isLive ? '#00E26A' : '#0A0A0B'} />
+                    </div>
+                    <StatusPill status={p.status} />
+                  </div>
+                  <div>
+                    <h3 style={{
+                      fontFamily: 'Geist, system-ui, sans-serif',
+                      fontWeight: 600, fontSize: 28, letterSpacing: '-0.03em',
+                      margin: 0, color: isLive ? '#fff' : '#0A0A0B', lineHeight: 1.1,
+                    }}>{p.name}</h3>
+                    <p style={{
+                      fontFamily: 'Geist, system-ui, sans-serif',
+                      fontSize: 15, color: isLive ? '#A1A1AA' : '#71717A',
+                      margin: '10px 0 0', maxWidth: '36ch', lineHeight: 1.5,
+                    }}>{p.blurb}</p>
+                  </div>
+                  <div style={{ flex: 1 }} />
+                  <div style={{
+                    display: 'inline-flex', alignItems: 'center', gap: 6,
+                    fontFamily: 'Geist, system-ui, sans-serif', fontSize: 14, fontWeight: 600,
+                    color: isLive ? '#00E26A' : '#0A0A0B',
+                  }}>
+                    {isLive ? 'Explore' : 'Notify me'} <Icon name="arrow-right" size={14} stroke={2.5} />
+                  </div>
+                </a>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+    );
+
+    // ============ COMPARISON ============
+    const Comparison = () => (
+      <section style={{ background: '#fff', padding: '128px 32px', borderTop: '1px solid #E4E4E7' }}>
+        <div style={{ maxWidth: 1240, margin: '0 auto' }}>
+          <Eyebrow>— The gap</Eyebrow>
+          <h2 style={{
+            fontFamily: 'Geist, system-ui, sans-serif',
+            fontWeight: 700, fontSize: 60, lineHeight: 1.02, letterSpacing: '-0.04em',
+            margin: 0, color: '#0A0A0B', maxWidth: '24ch',
+          }}>
+            Stores show shoppers <span style={{ color: '#71717A', whiteSpace: 'nowrap' }}>20 products.</span><br/>
+            Vrrrt shows them <span style={{ color: '#00E26A' }}>540.</span>
+          </h2>
+          <p style={{
+            fontFamily: 'Geist, system-ui, sans-serif',
+            fontSize: 17, color: '#71717A', maxWidth: '58ch',
+            marginTop: 22, marginBottom: 64, lineHeight: 1.5,
+          }}>
+            Shoppers bounce in 30 seconds after seeing 8 to 20 product images. Their eye is faster than your nav. Vrrrt is built for how people really browse — not how stores are built. Trawl, don't spearfish.
+          </p>
+
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 24 }}>
+            <div style={{ background: '#FAFAFA', borderRadius: 20, padding: '32px 36px', boxShadow: '0 0 0 1px rgba(0,0,0,0.05)' }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <span style={{ fontFamily: 'Geist, system-ui, sans-serif', fontSize: 12, fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#71717A' }}>Without Vrrrt</span>
+                <span style={{ fontFamily: 'Geist Mono, monospace', fontSize: 11, color: '#71717A' }}>30s · then they bounce</span>
+              </div>
+              <div style={{ fontFamily: 'Geist Mono, monospace', fontSize: 72, fontWeight: 500, color: '#0A0A0B', marginTop: 18, lineHeight: 1, letterSpacing: '-0.02em' }}>20</div>
+              <div style={{ fontSize: 14, color: '#71717A', marginTop: 6 }}>products seen</div>
+              <div style={{ marginTop: 32, display: 'grid', gridTemplateColumns: 'repeat(10, 1fr)', gap: 4 }}>
+                {Array.from({ length: 50 }).map((_, i) => (
+                  <div key={i} style={{ aspectRatio: '1/1', borderRadius: 3, background: i < 20 ? '#0A0A0B' : '#E4E4E7' }}/>
+                ))}
+              </div>
+            </div>
+            <div style={{ background: '#0A0A0B', color: '#fff', borderRadius: 20, padding: '32px 36px' }}>
+              <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between' }}>
+                <span style={{ fontFamily: 'Geist, system-ui, sans-serif', fontSize: 12, fontWeight: 600, letterSpacing: '0.12em', textTransform: 'uppercase', color: '#00E26A' }}>With Vrrrt</span>
+                <span style={{ fontFamily: 'Geist Mono, monospace', fontSize: 11, color: '#A1A1AA' }}>3:00 · they stayed to look</span>
+              </div>
+              <div style={{ fontFamily: 'Geist Mono, monospace', fontSize: 72, fontWeight: 500, color: '#00E26A', marginTop: 18, lineHeight: 1, letterSpacing: '-0.02em', textShadow: '0 0 28px rgba(0,226,106,0.4)' }}>540</div>
+              <div style={{ fontSize: 14, color: '#A1A1AA', marginTop: 6 }}>products seen</div>
+              <div style={{ marginTop: 24, marginLeft: -20, marginRight: -20, marginBottom: -16, position: 'relative', borderRadius: 12, overflow: 'hidden' }}>
+                {/*
+                  CUBE MEDIA SLOT — drop a spinning-cube file at one of these paths:
+                    site/assets/cube.webm  (preferred — smallest)
+                    site/assets/cube.mp4   (universal fallback)
+                    site/assets/cube.gif   (works automatically — overrides video if present)
+                  If none exist, the static PNG poster (assets/cube-hero.png) shows.
+                  Browsers pick the first source that 404s gracefully, then fall back to poster.
+                */}
+                <video
+                  autoPlay loop muted playsInline
+                  poster="assets/cube-hero.png"
+                  style={{ width: '100%', display: 'block', background: '#0A0A0B' }}
+                  onError={(e) => {
+                    // If video sources all fail, swap to a static <img> using the poster.
+                    const v = e.currentTarget;
+                    const fallback = document.createElement('img');
+                    fallback.src = v.poster;
+                    fallback.alt = 'The Vrrrt cube — 540 products in a single rotating discovery surface';
+                    fallback.style.cssText = 'width:100%; display:block;';
+                    v.replaceWith(fallback);
+                  }}
+                >
+                  <source src="assets/cube.webm" type="video/webm" />
+                  <source src="assets/cube.mp4"  type="video/mp4" />
+                </video>
+                {/* subtle glow halo behind the cube */}
+                <div style={{
+                  position: 'absolute', left: '50%', top: '50%', transform: 'translate(-50%, -50%)',
+                  width: '60%', aspectRatio: '1/1', borderRadius: '50%',
+                  background: 'radial-gradient(circle, rgba(0,226,106,0.18), transparent 70%)',
+                  pointerEvents: 'none', zIndex: 0,
+                }}/>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+
+    // ============ MERCHANTS / SOCIAL PROOF ============
+    const Merchants = () => (
+      <section id="merchants" style={{ background: '#FAFAFA', padding: '128px 32px' }}>
+        <div style={{ maxWidth: 1240, margin: '0 auto' }}>
+          <Eyebrow>— Merchants</Eyebrow>
+          <h2 style={{
+            fontFamily: 'Geist, system-ui, sans-serif',
+            fontWeight: 700, fontSize: 48, lineHeight: 1.02, letterSpacing: '-0.04em',
+            margin: 0, color: '#0A0A0B', maxWidth: '24ch',
+          }}>
+            Built for the way <span style={{ color: '#71717A' }}>shoppers actually shop.</span>
+          </h2>
+          <p style={{
+            fontFamily: 'Geist, system-ui, sans-serif', fontSize: 16, color: '#71717A',
+            maxWidth: '58ch', marginTop: 18, lineHeight: 1.5,
+          }}>
+            Walk in, look around, something catches their eye, then they pick it up. Fashion converts at 2.9–3.3%; the top decile does 4.7%+. The difference isn't the products — it's whether shoppers stay long enough to see them.
+          </p>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20, marginTop: 48 }}>
+            {[
+              { stat: '4–6×', label: 'more likely to convert', sub: 'When shoppers view 3+ products in a session.' },
+              { stat: '+30s', label: 'engaged browsing', sub: '= 3–5% conversion lift, per Contentsquare.' },
+              { stat: '13ms', label: 'per image, in the brain', sub: 'The eye is 600× faster than text. Vrrrt is built for that.' },
+            ].map((m, i) => (
+              <div key={i} style={{
+                background: '#fff', borderRadius: 14, padding: '24px 28px',
+                boxShadow: '0 1px 2px rgba(0,0,0,0.04), 0 0 0 1px rgba(0,0,0,0.05)',
+              }}>
+                <div style={{
+                  fontFamily: 'Geist Mono, monospace', fontSize: 48, fontWeight: 500,
+                  color: '#00E26A', letterSpacing: '-0.02em', lineHeight: 1,
+                  textShadow: '0 0 18px rgba(0,226,106,0.25)',
+                }}>{m.stat}</div>
+                <div style={{
+                  fontFamily: 'Geist, system-ui, sans-serif', fontSize: 14, fontWeight: 600,
+                  color: '#0A0A0B', marginTop: 10,
+                }}>{m.label}</div>
+                <div style={{
+                  fontFamily: 'Geist, system-ui, sans-serif', fontSize: 13, color: '#71717A',
+                  marginTop: 6, lineHeight: 1.5,
+                }}>{m.sub}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+
+    // ============ PRICING ============
+    const PricingTier = ({ name, price, sub, blurb, features, accent, cta }) => (
+      <div style={{
+        background: accent ? '#0A0A0B' : '#fff',
+        color: accent ? '#fff' : '#0A0A0B',
+        borderRadius: 20, padding: '36px 32px',
+        boxShadow: accent ? 'none' : '0 1px 2px rgba(0,0,0,0.04), 0 0 0 1px rgba(0,0,0,0.05)',
+        display: 'flex', flexDirection: 'column', position: 'relative',
+      }}>
+        {accent && (
+          <div style={{
+            position: 'absolute', top: 16, right: 16,
+            padding: '4px 10px', borderRadius: 999, background: '#00E26A', color: '#000',
+            fontFamily: 'Geist, system-ui, sans-serif', fontSize: 11, fontWeight: 600,
+            letterSpacing: '0.04em', whiteSpace: 'nowrap',
+          }}>MOST POPULAR</div>
+        )}
+        <div style={{
+          fontFamily: 'Geist, system-ui, sans-serif', fontSize: 14, fontWeight: 600,
+          color: accent ? '#A1A1AA' : '#71717A', marginBottom: 12,
+        }}>{name}</div>
+        <div style={{ display: 'flex', alignItems: 'baseline', gap: 6, marginBottom: 6 }}>
+          <span style={{
+            fontFamily: 'Geist Mono, monospace',
+            fontSize: typeof price === 'string' && price.length > 3 ? 32 : 56,
+            fontWeight: 500, letterSpacing: '-0.03em',
+            color: accent ? '#00E26A' : '#0A0A0B', lineHeight: 1,
+            fontVariantNumeric: 'tabular-nums',
+          }}>{price}</span>
+          <span style={{ fontSize: 14, color: accent ? '#A1A1AA' : '#71717A' }}>{sub}</span>
+        </div>
+        <p style={{
+          fontSize: 14, color: accent ? '#A1A1AA' : '#71717A',
+          marginTop: 8, marginBottom: 28, lineHeight: 1.45,
+        }}>{blurb}</p>
+        <ul style={{ listStyle: 'none', padding: 0, margin: '0 0 32px', display: 'flex', flexDirection: 'column', gap: 10, flex: 1 }}>
+          {features.map(f => (
+            <li key={f} style={{
+              display: 'flex', alignItems: 'center', gap: 10,
+              fontSize: 14, color: accent ? '#fff' : '#0A0A0B',
+              fontFamily: 'Geist, system-ui, sans-serif',
+            }}>
+              <Icon name="check" size={14} stroke={2.5} color="#00E26A" />
+              {f}
+            </li>
+          ))}
+        </ul>
+        <Button variant={accent ? 'primary' : 'tertiary'} size="lg" trailingIcon={<Icon name="arrow-right" size={14} stroke={2}/>}>
+          {cta}
+        </Button>
+      </div>
+    );
+
+    const Pricing = () => (
+      <section id="pricing" style={{ background: '#fff', padding: '128px 32px' }}>
+        <div style={{ maxWidth: 1240, margin: '0 auto' }}>
+          <div style={{ textAlign: 'center', marginBottom: 64 }}>
+            <Eyebrow>— Pricing</Eyebrow>
+            <h2 style={{
+              fontFamily: 'Geist, system-ui, sans-serif',
+              fontWeight: 700, fontSize: 48, lineHeight: 1.02, letterSpacing: '-0.04em',
+              margin: 0, color: '#0A0A0B',
+            }}>
+              14 days free. <span style={{ color: '#71717A' }}>No card required.</span>
+            </h2>
+            <p style={{
+              fontFamily: 'Geist, system-ui, sans-serif',
+              fontSize: 16, color: '#71717A', maxWidth: '54ch',
+              margin: '14px auto 0', lineHeight: 1.5,
+            }}>
+              Built for stores that want shoppers to stay long enough to buy.
+            </p>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20 }}>
+            <PricingTier
+              name="Starter" price="$29" sub="/ month"
+              blurb="1 cube, up to 540 products."
+              features={['Best for best sellers or one category.','14-day free trial — no card','Live conversion data','Email support']}
+              cta="Start free trial"
+            />
+            <PricingTier
+              accent name="Growth" price="$79" sub="/ month"
+              blurb="5 cubes, up to 540 products per cube."
+              features={['Best for whole-store discovery.','14-day free trial — no card','Per-cube conversion data','Webhooks + API','Priority support']}
+              cta="Start free trial"
+            />
+            <PricingTier
+              name="Pro" price="$199" sub="/ month"
+              blurb="Unlimited cubes. Unlimited products."
+              features={['Built for high-volume stores.','14-day free trial — no card','Custom data residency','Dedicated success manager','White-glove onboarding']}
+              cta="Start free trial"
+            />
+          </div>
+        </div>
+      </section>
+    );
+
+    const App = () => (
+      <>
+        <Header active="home" dark />
+        <Hero />
+        <ProductGrid />
+        <Comparison />
+        <Merchants />
+        <Pricing />
+        <FooterCTA
+          headline={'Give them a reason<br/><span style="color:#00E26A">to stay.</span>'}
+          sub="Visitors who stay past 3 minutes convert at 2.5–4% — up to 3× the Shopify average. More products seen means more who stay that long."
+        />
+        <Footer />
+      </>
+    );
+    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+  </script>
+</body>
+</html>

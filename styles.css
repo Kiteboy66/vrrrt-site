@@ -1,0 +1,327 @@
+/* =========================================================
+   VRRRT — Foundation tokens
+   Colors, type, spacing, elevation, motion.
+   Imported everywhere. No styling of elements — tokens only,
+   plus a couple of semantic typography classes.
+   ========================================================= */
+
+/* ---------- Fonts ---------- */
+/* Geist from Google Fonts — geometric, neutral, engineered.
+   Substitution flag: if you have licensed Geist .woff2 files,
+   self-host them in /fonts/ and replace this @import. */
+@import url("https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap");
+
+:root {
+  /* ============== COLOR ============== */
+
+  /* Core neutrals — true black + warm-tinted whites.
+     The whites have a hair of warmth so they don't read as
+     clinical/medical against the green. */
+  --vt-black:        #000000;
+  --vt-ink:          #0A0A0B;   /* page bg in dark mode, deep ink */
+  --vt-graphite:     #18181B;   /* card bg in dark mode */
+  --vt-iron:         #27272A;   /* dividers in dark */
+  --vt-steel:        #3F3F46;
+  --vt-fog:          #71717A;   /* muted text */
+  --vt-silver:       #A1A1AA;
+  --vt-mist:         #D4D4D8;
+  --vt-paper:        #F4F4F5;   /* card bg in light */
+  --vt-bone:         #FAFAFA;   /* page bg in light */
+  --vt-white:        #FFFFFF;
+
+  /* ============== ACCENT — CHARGED GREEN ==============
+     Vrrrt's signature. Use sparingly: one accent per surface.
+     Reads as electric energy + money moving. */
+  --vt-green-50:     #E6FFF1;
+  --vt-green-100:    #B8FFD4;
+  --vt-green-200:    #7BFFAF;
+  --vt-green-300:    #3CFA8B;
+  --vt-green-400:    #00E26A;   /* PRIMARY — the "Vrrrt green" */
+  --vt-green-500:    #00C25A;
+  --vt-green-600:    #009E48;
+  --vt-green-700:    #007635;
+  --vt-green-800:    #004F23;
+  --vt-green-900:    #002912;
+
+  --vt-accent:       var(--vt-green-400);
+  --vt-accent-hover: var(--vt-green-300);     /* lighter on hover — glow up */
+  --vt-accent-press: var(--vt-green-500);     /* slightly darker on press */
+  --vt-accent-ink:   var(--vt-black);          /* text on accent fills */
+
+  /* The electric "glow" — used as box-shadow on focus/hover of
+     accent surfaces. NEVER as a fill. */
+  --vt-glow-soft:   0 0 0 4px rgba(0, 226, 106, 0.18);
+  --vt-glow-med:    0 0 24px rgba(0, 226, 106, 0.45);
+  --vt-glow-hard:   0 0 0 2px rgba(0, 226, 106, 0.95), 0 0 32px rgba(0, 226, 106, 0.55);
+
+  /* Status colors — kept restrained, low chroma, so the accent
+     stays the loudest thing on the page. */
+  --vt-success:     var(--vt-green-400);
+  --vt-warning:     #F5B400;
+  --vt-danger:      #FF3B30;
+  --vt-info:        #5AC8FA;
+
+  /* ============== SEMANTIC — LIGHT (default) ============== */
+  --vt-bg:          var(--vt-bone);
+  --vt-bg-elev:     var(--vt-white);
+  --vt-bg-sunken:   var(--vt-paper);
+  --vt-surface:     var(--vt-white);
+  --vt-fg:          var(--vt-ink);        /* primary text */
+  --vt-fg-muted:    var(--vt-fog);        /* secondary text */
+  --vt-fg-faint:    var(--vt-silver);     /* tertiary text */
+  --vt-border:      #E4E4E7;
+  --vt-border-strong: var(--vt-mist);
+  --vt-overlay:     rgba(10, 10, 11, 0.65);
+
+  /* ============== TYPE ============== */
+  --vt-font-sans: "Geist", "Geist Sans", -apple-system, BlinkMacSystemFont, "SF Pro Display", system-ui, sans-serif;
+  --vt-font-mono: "Geist Mono", "SF Mono", ui-monospace, "JetBrains Mono", Menlo, monospace;
+  --vt-font-display: var(--vt-font-sans);   /* same family, weight does the work */
+
+  /* Scale — modular, slightly tightened. Display sizes are bold
+     and tight; body sizes are calmer. */
+  --vt-text-2xs:  11px;
+  --vt-text-xs:   12px;
+  --vt-text-sm:   13px;
+  --vt-text-base: 15px;
+  --vt-text-md:   17px;
+  --vt-text-lg:   20px;
+  --vt-text-xl:   24px;
+  --vt-text-2xl:  32px;
+  --vt-text-3xl:  44px;
+  --vt-text-4xl:  60px;
+  --vt-text-5xl:  84px;
+  --vt-text-6xl:  120px;   /* hero "Vrrrt." */
+
+  /* Weights — Geist supports 100–900. We use these four. */
+  --vt-weight-regular: 400;
+  --vt-weight-medium:  500;
+  --vt-weight-semibold:600;
+  --vt-weight-bold:    700;
+
+  --vt-leading-tight: 1.02;   /* display */
+  --vt-leading-snug:  1.15;   /* sub-display, large text */
+  --vt-leading-norm:  1.45;   /* body */
+  --vt-leading-loose: 1.6;    /* long prose */
+
+  --vt-tracking-tight:  -0.04em;  /* display */
+  --vt-tracking-snug:   -0.02em;  /* large text */
+  --vt-tracking-norm:    0em;     /* body */
+  --vt-tracking-wide:    0.04em;  /* eyebrow / caps */
+  --vt-tracking-caps:    0.12em;  /* ALL CAPS labels */
+
+  /* ============== SPACING ============== */
+  /* 4px grid. We name a few — code can use raw values too. */
+  --vt-s-0:  0px;
+  --vt-s-1:  4px;
+  --vt-s-2:  8px;
+  --vt-s-3:  12px;
+  --vt-s-4:  16px;
+  --vt-s-5:  20px;
+  --vt-s-6:  24px;
+  --vt-s-7:  32px;
+  --vt-s-8:  40px;
+  --vt-s-9:  56px;
+  --vt-s-10: 72px;
+  --vt-s-11: 96px;
+  --vt-s-12: 128px;
+
+  /* ============== RADIUS ============== */
+  /* Vrrrt favors RESTRAINED rounding. Cards 10–14, buttons 10,
+     pills full. Nothing softer than 14 except pills. */
+  --vt-r-none: 0px;
+  --vt-r-xs:   4px;
+  --vt-r-sm:   6px;
+  --vt-r-md:   10px;   /* default button + input */
+  --vt-r-lg:   14px;   /* default card */
+  --vt-r-xl:   20px;   /* hero / panel */
+  --vt-r-2xl:  28px;
+  --vt-r-pill: 999px;
+
+  /* ============== ELEVATION ==============
+     Vrrrt shadows are LOW and TIGHT. We don't float things on
+     fluffy clouds — we set them on hard surfaces with a thin
+     hairline. The "glow" effect is reserved for the accent. */
+  --vt-shadow-hairline: 0 0 0 1px rgba(0,0,0,0.06);
+  --vt-shadow-sm: 0 1px 2px rgba(0,0,0,0.04), 0 0 0 1px rgba(0,0,0,0.05);
+  --vt-shadow-md: 0 4px 12px rgba(0,0,0,0.06), 0 0 0 1px rgba(0,0,0,0.05);
+  --vt-shadow-lg: 0 12px 32px rgba(0,0,0,0.10), 0 0 0 1px rgba(0,0,0,0.05);
+  --vt-shadow-xl: 0 24px 64px rgba(0,0,0,0.14), 0 0 0 1px rgba(0,0,0,0.05);
+
+  /* On dark surfaces */
+  --vt-shadow-dark-md: 0 4px 12px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.06);
+
+  /* ============== MOTION ==============
+     Fast. Snappy. No bounce. The whole brand is built on the
+     feeling of momentum — animations should feel like they have
+     mass and stop hard, not wiggle.
+
+     Hover: 120ms. Click: 80ms. Layout: 220ms. Page: 320ms. */
+  --vt-ease-out:    cubic-bezier(0.2, 0.9, 0.2, 1);
+  --vt-ease-in:     cubic-bezier(0.6, 0, 0.8, 0.4);
+  --vt-ease-inout:  cubic-bezier(0.65, 0, 0.35, 1);
+  --vt-ease-snap:   cubic-bezier(0.85, 0, 0.15, 1);  /* tight + decisive */
+
+  --vt-dur-instant: 80ms;
+  --vt-dur-fast:    120ms;
+  --vt-dur-base:    180ms;
+  --vt-dur-slow:    320ms;
+  --vt-dur-page:    480ms;
+}
+
+/* ============== SEMANTIC — DARK ==============
+   Vrrrt feels at home in dark. The marketing site goes dark
+   for hero moments; the in-app surface is light. */
+[data-theme="dark"] {
+  --vt-bg:          var(--vt-ink);
+  --vt-bg-elev:     var(--vt-graphite);
+  --vt-bg-sunken:   var(--vt-black);
+  --vt-surface:     var(--vt-graphite);
+  --vt-fg:          var(--vt-white);
+  --vt-fg-muted:    var(--vt-silver);
+  --vt-fg-faint:    var(--vt-fog);
+  --vt-border:      var(--vt-iron);
+  --vt-border-strong: var(--vt-steel);
+  --vt-overlay:     rgba(0, 0, 0, 0.7);
+
+  --vt-shadow-hairline: 0 0 0 1px rgba(255,255,255,0.08);
+  --vt-shadow-sm: 0 1px 2px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.06);
+  --vt-shadow-md: 0 4px 12px rgba(0,0,0,0.4), 0 0 0 1px rgba(255,255,255,0.06);
+  --vt-shadow-lg: 0 12px 32px rgba(0,0,0,0.5), 0 0 0 1px rgba(255,255,255,0.06);
+  --vt-shadow-xl: 0 24px 64px rgba(0,0,0,0.6), 0 0 0 1px rgba(255,255,255,0.08);
+}
+
+/* =========================================================
+   SEMANTIC TYPOGRAPHY CLASSES
+   Use these to style text. Don't set font-size directly.
+   ========================================================= */
+
+.vt-display {
+  font-family: var(--vt-font-display);
+  font-size: var(--vt-text-5xl);
+  font-weight: var(--vt-weight-bold);
+  line-height: var(--vt-leading-tight);
+  letter-spacing: var(--vt-tracking-tight);
+  color: var(--vt-fg);
+  text-wrap: balance;
+}
+.vt-display-xl {
+  font-family: var(--vt-font-display);
+  font-size: var(--vt-text-6xl);
+  font-weight: var(--vt-weight-bold);
+  line-height: 0.95;
+  letter-spacing: -0.05em;
+  color: var(--vt-fg);
+}
+.vt-h1 {
+  font-family: var(--vt-font-sans);
+  font-size: var(--vt-text-4xl);
+  font-weight: var(--vt-weight-bold);
+  line-height: var(--vt-leading-tight);
+  letter-spacing: var(--vt-tracking-tight);
+  color: var(--vt-fg);
+  text-wrap: balance;
+}
+.vt-h2 {
+  font-family: var(--vt-font-sans);
+  font-size: var(--vt-text-3xl);
+  font-weight: var(--vt-weight-semibold);
+  line-height: var(--vt-leading-snug);
+  letter-spacing: var(--vt-tracking-tight);
+  color: var(--vt-fg);
+  text-wrap: balance;
+}
+.vt-h3 {
+  font-family: var(--vt-font-sans);
+  font-size: var(--vt-text-2xl);
+  font-weight: var(--vt-weight-semibold);
+  line-height: var(--vt-leading-snug);
+  letter-spacing: var(--vt-tracking-snug);
+  color: var(--vt-fg);
+}
+.vt-h4 {
+  font-family: var(--vt-font-sans);
+  font-size: var(--vt-text-xl);
+  font-weight: var(--vt-weight-semibold);
+  line-height: var(--vt-leading-snug);
+  letter-spacing: var(--vt-tracking-snug);
+  color: var(--vt-fg);
+}
+.vt-h5 {
+  font-family: var(--vt-font-sans);
+  font-size: var(--vt-text-lg);
+  font-weight: var(--vt-weight-semibold);
+  line-height: var(--vt-leading-snug);
+  color: var(--vt-fg);
+}
+.vt-lead {
+  font-family: var(--vt-font-sans);
+  font-size: var(--vt-text-md);
+  font-weight: var(--vt-weight-regular);
+  line-height: var(--vt-leading-norm);
+  color: var(--vt-fg-muted);
+  text-wrap: pretty;
+}
+.vt-body {
+  font-family: var(--vt-font-sans);
+  font-size: var(--vt-text-base);
+  font-weight: var(--vt-weight-regular);
+  line-height: var(--vt-leading-norm);
+  color: var(--vt-fg);
+}
+.vt-small {
+  font-family: var(--vt-font-sans);
+  font-size: var(--vt-text-sm);
+  font-weight: var(--vt-weight-regular);
+  line-height: var(--vt-leading-norm);
+  color: var(--vt-fg-muted);
+}
+.vt-eyebrow {
+  font-family: var(--vt-font-sans);
+  font-size: var(--vt-text-xs);
+  font-weight: var(--vt-weight-semibold);
+  line-height: 1;
+  letter-spacing: var(--vt-tracking-caps);
+  text-transform: uppercase;
+  color: var(--vt-fg-muted);
+}
+.vt-label {
+  font-family: var(--vt-font-sans);
+  font-size: var(--vt-text-sm);
+  font-weight: var(--vt-weight-medium);
+  line-height: 1.2;
+  color: var(--vt-fg);
+}
+.vt-mono {
+  font-family: var(--vt-font-mono);
+  font-size: var(--vt-text-sm);
+  font-weight: var(--vt-weight-medium);
+  line-height: 1.3;
+  letter-spacing: 0;
+  color: var(--vt-fg);
+  font-variant-numeric: tabular-nums;
+}
+.vt-metric {
+  font-family: var(--vt-font-mono);
+  font-size: var(--vt-text-3xl);
+  font-weight: var(--vt-weight-medium);
+  line-height: 1;
+  letter-spacing: -0.02em;
+  color: var(--vt-fg);
+  font-variant-numeric: tabular-nums;
+}
+
+/* =========================================================
+   GLOBAL — minimal reset on the system root
+   ========================================================= */
+.vt-root {
+  font-family: var(--vt-font-sans);
+  font-size: var(--vt-text-base);
+  line-height: var(--vt-leading-norm);
+  color: var(--vt-fg);
+  background: var(--vt-bg);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-feature-settings: "ss01", "ss02", "cv11";
+}
+.vt-root *, .vt-root *::before, .vt-root *::after { box-sizing: border-box; }

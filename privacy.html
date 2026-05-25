@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Privacy — Vrrrt</title>
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    html, body { margin: 0; padding: 0; }
+    body { font-family: 'Geist', system-ui, sans-serif; background: #FAFAFA; color: #0A0A0B; -webkit-font-smoothing: antialiased; }
+    *, *::before, *::after { box-sizing: border-box; }
+    button, a { font-family: inherit; }
+    .vt-btn { white-space: nowrap; }
+    .vt-btn--primary:hover { background: #3CFA8B !important; box-shadow: 0 0 0 4px rgba(0,226,106,0.18), 0 0 24px rgba(0,226,106,0.45); }
+    .vt-btn--ghost:hover { background: #F4F4F5 !important; }
+    .vt-btn:active { transform: scale(0.97); }
+  </style>
+</head>
+<body>
+  <div id="root" data-screen-label="Privacy"></div>
+  <script>
+    window.__DOC = {
+      id: 'privacy',
+      kind: 'Privacy policy',
+      title: 'Privacy policy.',
+      lastUpdated: 'May 25, 2026',
+      intro: 'Vrrrt indexes merchant catalogs and serves them to shoppers. This policy explains what we collect, how we use it, and the controls you have.',
+      sections: [
+        { h: '1. What we collect',
+          body: [
+            'For merchants: store URL, public catalog data (products, variants, images, prices, stock status), aggregate session metrics (discoveries, conversion rate, GMV), and the account information you provide at sign-up.',
+            'For shoppers: anonymous session ID, browsing events (which product was glanced, hovered, opened), referring page, device class, country-level geo. We do not collect names, emails, or payment information from shoppers using a Vrrrt-equipped merchant.'
+          ]
+        },
+        { h: '2. How we use it',
+          body: [
+            'To operate the discovery engine: matching shoppers with products in real time.',
+            'To improve the product: aggregate metrics inform ranking, latency, and feature work.',
+            'To bill merchants: usage counters drive plan tiers and overages, where applicable.'
+          ]
+        },
+        { h: '3. What we do not do',
+          body: [
+            'We do not sell shopper data. To anyone, ever.',
+            'We do not run cross-merchant retargeting. A shopper\'s browse history on one store stays on one store.',
+            'We do not train large models on your catalog without an explicit per-merchant opt-in.'
+          ]
+        },
+        { h: '4. Cookies & tracking',
+          body: [
+            'Vrrrt sets a first-party session cookie (vrrrt_sid) to maintain a 3-minute browse session. It expires when the session ends or after 24 hours of inactivity, whichever comes first.',
+            'We use no third-party advertising cookies. We use first-party analytics (PostHog, self-hosted) and operational logging (Sentry).'
+          ]
+        },
+        { h: '5. Data residency & retention',
+          body: [
+            'Default region is US-East (AWS). EU and APAC residency available on Velocity and enterprise plans.',
+            'Session-level data is retained for 90 days. Aggregate metrics are retained for the life of the account.'
+          ]
+        },
+        { h: '6. Your rights',
+          body: [
+            'Merchants: export, delete, or transfer your data via the Vrrrt dashboard or by emailing privacy@vrrrt.com.',
+            'Shoppers: clearing your browser cookies removes Vrrrt\'s session ID. We have no other identifier tied to you.'
+          ]
+        },
+        { h: '7. Contact',
+          body: ['Questions? privacy@vrrrt.com. DPO inquiries: dpo@vrrrt.com. Mailing address available on request.']
+        },
+      ],
+    };
+  </script>
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+  <script type="text/babel" src="shared.jsx"></script>
+  <script type="text/babel" src="legal.jsx"></script>
+</body>
+</html>

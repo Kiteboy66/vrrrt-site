@@ -1,0 +1,201 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vrrrt for Shopify — Storefront discovery, in your theme.</title>
+  <meta name="description" content="Vrrrt for Shopify shows your shoppers 540 products in 3 minutes — without leaving your storefront. Live now on the Shopify App Store." />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    html, body { margin: 0; padding: 0; }
+    html, body { background: #0A0A0B; }
+    body { font-family: 'Geist', system-ui, sans-serif; color: #0A0A0B; -webkit-font-smoothing: antialiased; }
+    *, *::before, *::after { box-sizing: border-box; }
+    button, a { font-family: inherit; }
+    .vt-btn { white-space: nowrap; }
+    .vt-btn--primary:hover { background: #3CFA8B !important; box-shadow: 0 0 0 4px rgba(0,226,106,0.18), 0 0 24px rgba(0,226,106,0.45); }
+    .vt-btn--ghost:hover { background: #F4F4F5 !important; }
+    .vt-btn--ghost-on-dark:hover { background: rgba(255,255,255,0.06) !important; border-color: rgba(255,255,255,0.3) !important; }
+    .vt-btn--tertiary:hover { background: #FAFAFA !important; border-color: #D4D4D8 !important; }
+    .vt-btn:active { transform: scale(0.97); }
+    @keyframes pulse { 0%,100% { opacity: 1 } 50% { opacity: 0.4 } }
+    @keyframes spin { to { transform: rotate(360deg) } }
+  </style>
+</head>
+<body>
+  <div id="root" data-screen-label="Vrrrt for Shopify"></div>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+
+  <script type="text/babel" src="shared.jsx"></script>
+
+  <script type="text/babel">
+    const { useState, useEffect } = React;
+
+    const Hero = () => (
+      <section style={{ background: '#0A0A0B', color: '#fff', padding: '120px 32px 96px', position: 'relative', overflow: 'hidden' }}>
+        <div style={{
+          position: 'absolute', inset: 0, opacity: 0.06,
+          backgroundImage: 'repeating-linear-gradient(90deg, transparent 0 80px, #fff 80px 81px)',
+          maskImage: 'linear-gradient(90deg, transparent, #000 30%, #000 70%, transparent)',
+        }} />
+        <div style={{ maxWidth: 1240, margin: '0 auto', position: 'relative' }}>
+          <div style={{ display: 'inline-flex', alignItems: 'center', gap: 8, marginBottom: 24, padding: '4px 10px 4px 4px', borderRadius: 999, background: '#18181B', border: '1px solid #27272A' }}>
+            <span style={{ width: 22, height: 22, borderRadius: 999, background: '#0A0A0B', display: 'inline-flex', alignItems: 'center', justifyContent: 'center' }}>
+              <Icon name="shopify" size={12} stroke={1.8} color="#00E26A" />
+            </span>
+            <span style={{ fontFamily: 'Geist, system-ui, sans-serif', fontSize: 12, fontWeight: 500, color: '#fff', whiteSpace: 'nowrap' }}>Vrrrt for Shopify</span>
+            <StatusPill status="live" />
+          </div>
+          <h1 style={{
+            fontFamily: 'Geist, system-ui, sans-serif',
+            fontWeight: 700, fontSize: 88, letterSpacing: '-0.05em',
+            lineHeight: 0.95, margin: 0, maxWidth: '18ch',
+          }}>
+            Your storefront,<br/>
+            <span style={{ color: '#00E26A' }}>built for how eyes actually shop.</span>
+          </h1>
+          <p style={{
+            fontFamily: 'Geist, system-ui, sans-serif',
+            fontSize: 19, color: '#A1A1AA', maxWidth: '54ch', marginTop: 28, lineHeight: 1.5,
+          }}>
+            Same traffic. Same products. Same checkout. Shoppers just see more — 540 products in 3 minutes instead of 20 in 30 seconds. Longer stays. More add-to-carts. Higher conversion.
+          </p>
+          <div style={{ display: 'flex', gap: 12, marginTop: 36, alignItems: 'center' }}>
+            <Button variant="primary" size="lg" trailingIcon={<Icon name="arrow-right" size={16} stroke={2}/>}>
+              Install on Shopify
+            </Button>
+            <Button variant="ghost-on-dark" size="lg" leadingIcon={<Icon name="play" size={14} stroke={2}/>}>
+              Watch the demo
+            </Button>
+          </div>
+        </div>
+      </section>
+    );
+
+    // How it works — three numbered steps
+    const HowItWorks = () => (
+      <section style={{ background: '#FAFAFA', padding: '128px 32px' }}>
+        <div style={{ maxWidth: 1240, margin: '0 auto' }}>
+          <Eyebrow>— How it works</Eyebrow>
+          <h2 style={{ fontFamily: 'Geist, system-ui, sans-serif', fontWeight: 700, fontSize: 48, lineHeight: 1.02, letterSpacing: '-0.04em', margin: 0, color: '#0A0A0B', maxWidth: '22ch' }}>
+            Three minutes from install to <span style={{ color: '#00E26A' }}>"oh, that's it."</span>
+          </h2>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20, marginTop: 56 }}>
+            {[
+              { n: '01', t: 'Install from the Shopify App Store', d: 'One click, no developer needed.' },
+              { n: '02', t: 'Add the Vrrrt block to your theme', d: 'Drop it anywhere — homepage recommended. No code.' },
+              { n: '03', t: 'Assign collections, brand it, go live', d: 'Assign collections to cube faces, customise colours and layout to match your brand, save. Live instantly.' },
+            ].map(step => (
+              <div key={step.n} style={{
+                background: '#fff', borderRadius: 14, padding: '24px 28px',
+                boxShadow: '0 1px 2px rgba(0,0,0,0.04), 0 0 0 1px rgba(0,0,0,0.05)',
+              }}>
+                <div style={{ fontFamily: 'Geist Mono, monospace', fontSize: 12, color: '#00C25A', fontWeight: 600, marginBottom: 14 }}>{step.n}</div>
+                <h3 style={{ fontFamily: 'Geist, system-ui, sans-serif', fontWeight: 600, fontSize: 20, color: '#0A0A0B', margin: 0, lineHeight: 1.3, letterSpacing: '-0.02em' }}>{step.t}</h3>
+                <p style={{ fontFamily: 'Geist, system-ui, sans-serif', fontSize: 14, color: '#71717A', marginTop: 10, lineHeight: 1.5 }}>{step.d}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+
+    // Feature highlights — three-up
+    const Features = () => (
+      <section style={{ background: '#fff', padding: '128px 32px', borderTop: '1px solid #E4E4E7' }}>
+        <div style={{ maxWidth: 1240, margin: '0 auto' }}>
+          <Eyebrow>— Built for Shopify</Eyebrow>
+          <h2 style={{ fontFamily: 'Geist, system-ui, sans-serif', fontWeight: 700, fontSize: 48, lineHeight: 1.02, letterSpacing: '-0.04em', margin: 0, color: '#0A0A0B', maxWidth: '22ch' }}>
+            Doesn't replace your storefront. <span style={{ color: '#71717A' }}>Makes it look up.</span>
+          </h2>
+
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 20, marginTop: 56 }}>
+            {[
+              { t: 'Theme-native', d: 'Vrrrt picks up your CSS variables. It looks like your store because it is your store.' },
+              { t: 'Checkout-safe', d: 'Shoppers never leave Shopify. Same cart, same checkout, same conversion pipeline.' },
+              { t: 'Catalog-aware', d: 'Live sync. New product in Shopify? Live in Vrrrt within 30 seconds.' },
+              { t: 'Load-optimised', d: 'The cube loads in under 1 second. Shoppers see products instantly — no waiting, no friction.' },
+              { t: 'Mobile-first', d: 'Vertical swipe, fingertip pacing. Built for the 50% of your bounces happening on phones.' },
+              { t: 'Place it anywhere', d: 'Drop the Vrrrt block anywhere a Shopify theme block goes. Homepage, collection page, landing page — your call.' },
+            ].map(f => (
+              <div key={f.t} style={{
+                background: '#FAFAFA', borderRadius: 14, padding: '20px 24px',
+                border: '1px solid #E4E4E7',
+              }}>
+                <h3 style={{ fontFamily: 'Geist, system-ui, sans-serif', fontWeight: 600, fontSize: 16, color: '#0A0A0B', margin: 0, letterSpacing: '-0.02em' }}>{f.t}</h3>
+                <p style={{ fontFamily: 'Geist, system-ui, sans-serif', fontSize: 14, color: '#71717A', marginTop: 8, marginBottom: 0, lineHeight: 1.5 }}>{f.d}</p>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+
+    // Shopify-specific stats band
+    const Stats = () => (
+      <section style={{ background: '#0A0A0B', color: '#fff', padding: '96px 32px' }}>
+        <div style={{ maxWidth: 1240, margin: '0 auto' }}>
+          <div style={{ display: 'flex', alignItems: 'flex-end', justifyContent: 'space-between', marginBottom: 48, flexWrap: 'wrap', gap: 16 }}>
+            <div>
+              <Eyebrow color="#00E26A">— The numbers</Eyebrow>
+              <h2 style={{ fontFamily: 'Geist, system-ui, sans-serif', fontWeight: 700, fontSize: 48, lineHeight: 1.02, letterSpacing: '-0.04em', margin: 0, color: '#fff', maxWidth: '20ch' }}>
+                Built for the 3-minute conversion window.
+              </h2>
+            </div>
+          </div>
+          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 16 }}>
+            {[
+              { v: '3:36 vs 2:38', l: 'Top 20% Shopify session vs median', a: true },
+              { v: '+30s',         l: 'Engaged browsing = +3–5% conversion lift' },
+              { v: '4–6×',         l: 'More likely to convert (viewing 3+ products)' },
+              { v: '70%',          l: 'Gen Z prefer visual discovery over search' },
+            ].map((m, i) => (
+              <div key={i} style={{
+                background: i === 0 ? '#18181B' : 'transparent',
+                border: '1px solid ' + (i === 0 ? '#27272A' : '#18181B'),
+                borderRadius: 14, padding: '24px 24px',
+              }}>
+                <div style={{
+                  fontFamily: 'Geist Mono, monospace', fontSize: m.v.length > 5 ? 28 : 44, fontWeight: 500,
+                  color: m.a ? '#00E26A' : '#fff', lineHeight: 1, letterSpacing: '-0.02em',
+                  fontVariantNumeric: 'tabular-nums',
+                  textShadow: m.a ? '0 0 18px rgba(0,226,106,0.4)' : 'none', whiteSpace: 'nowrap',
+                }}>{m.v}</div>
+                <div style={{ fontSize: 13, color: '#A1A1AA', marginTop: 12, lineHeight: 1.5 }}>{m.l}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+
+    const App = () => (
+      <>
+        <Header active="shopify" dark />
+        <Hero />
+        <HowItWorks />
+        <Features />
+        <Stats />
+        <FooterCTA
+          eyebrow="— Vrrrt!"
+          headline={'Hear that?<br/><span style="color:#00E26A">That\'s your store converting.</span>'}
+          sub="The 3-minute window is real. Top-quintile Shopify stores hold shoppers 58 seconds longer than median — and convert 4–6× better when they see 3+ products. Vrrrt is how you get there."
+          primary="Install on Shopify"
+          secondary="Experience it yourself"
+          secondaryHref="https://navigatedemo.myshopify.com"
+        />
+        <Footer />
+      </>
+    );
+    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+  </script>
+</body>
+</html>
