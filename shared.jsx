@@ -295,6 +295,7 @@ const Footer = () => (
             { label: 'Pricing', href: 'index.html#pricing' },
             { label: 'Case studies', href: '#' },
             { label: 'Support', href: 'support.html' },
+            { label: 'Partners', href: 'partners.html' },
             { label: 'Status', href: '#' },
           ]},
           { h: 'Company', items: [

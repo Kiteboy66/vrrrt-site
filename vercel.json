@@ -1,3 +1,9 @@
 {
-  "cleanUrls": true
+  "cleanUrls": true,
+  "rewrites": [
+    {
+      "source": "/partners/pack",
+      "destination": "/partners-pack.html"
+    }
+  ]
 }

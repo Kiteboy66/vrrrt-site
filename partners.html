@@ -1,0 +1,113 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Partners — Vrrrt</title>
+  <meta name="description" content="Join the Vrrrt partner program for Shopify designers, agencies, freelancers, and theme developers." />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    html, body { margin: 0; padding: 0; background: #FAFAFA; }
+    body { font-family: 'Geist', system-ui, sans-serif; color: #0A0A0B; -webkit-font-smoothing: antialiased; }
+    *, *::before, *::after { box-sizing: border-box; }
+    button, a { font-family: inherit; }
+    .vt-btn { white-space: nowrap; }
+    .vt-btn--primary:hover { background: #3CFA8B !important; box-shadow: 0 0 0 4px rgba(0,226,106,0.18), 0 0 24px rgba(0,226,106,0.45); }
+    .vt-btn--ghost:hover { background: #F4F4F5 !important; }
+    .vt-btn--tertiary:hover { background: #FAFAFA !important; border-color: #D4D4D8 !important; }
+    .vt-btn:active { transform: scale(0.97); }
+  </style>
+</head>
+<body>
+  <div id="root" data-screen-label="Partners"></div>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+  <script type="text/babel" src="shared.jsx"></script>
+
+  <script type="text/babel">
+    const PartnerHero = () => (
+      <section style={{ background: '#0A0A0B', color: '#fff', padding: '96px 32px 88px' }}>
+        <div style={{ maxWidth: 1120, margin: '0 auto' }}>
+          <Eyebrow color="#00E26A">— Vrrrt partners</Eyebrow>
+          <h1 style={{ fontFamily: 'Geist, system-ui, sans-serif', fontWeight: 700, fontSize: 72, letterSpacing: '-0.05em', lineHeight: 0.98, margin: 0, maxWidth: '13ch' }}>
+            Sell the cube. Keep the upside.
+          </h1>
+          <p style={{ fontSize: 18, color: '#A1A1AA', lineHeight: 1.55, maxWidth: '56ch', margin: '24px 0 34px' }}>
+            Vrrrt gives Shopify designers, agencies, and freelancers a premium discovery feature to add to client stores.
+          </p>
+          <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
+            <Button variant="primary" size="lg" href="https://3dnavigate.vrrrt.app/partners/register" trailingIcon={<Icon name="arrow-right" size={16} stroke={2}/>}>Create partner account</Button>
+            <Button variant="ghost-on-dark" size="lg" href="partners-pack.html">View partner pack</Button>
+          </div>
+        </div>
+      </section>
+    );
+
+    const PartnerDetails = () => (
+      <section style={{ background: '#FAFAFA', padding: '72px 32px' }}>
+        <div style={{ maxWidth: 1120, margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }}>
+          {[
+            { h: '$29/mo', p: 'Simple merchant price that is easy to explain during a Shopify build.' },
+            { h: '$50', p: 'One-time commission option after a referred store reaches four paid months.' },
+            { h: '20%', p: 'Recurring commission option for 12 months on qualifying referred stores.' },
+          ].map((card) => (
+            <div key={card.h} style={{ background: '#fff', borderRadius: 14, padding: 28, boxShadow: '0 0 0 1px rgba(0,0,0,0.05)' }}>
+              <h2 style={{ fontSize: 34, letterSpacing: '-0.04em', margin: 0 }}>{card.h}</h2>
+              <p style={{ color: '#71717A', fontSize: 15, lineHeight: 1.55, margin: '12px 0 0' }}>{card.p}</p>
+            </div>
+          ))}
+        </div>
+      </section>
+    );
+
+    const HowItWorks = () => (
+      <section style={{ background: '#fff', padding: '88px 32px' }}>
+        <div style={{ maxWidth: 880, margin: '0 auto' }}>
+          <Eyebrow>— How it works</Eyebrow>
+          <div style={{ display: 'grid', gap: 18 }}>
+            {[
+              ['Create your partner account', 'Tell us who you are, where you sell, and which payout option you prefer.'],
+              ['Install Vrrrt for the client', 'Add the cube block, connect collections, tune the look, and test mobile and desktop.'],
+              ['Use your referral code', 'Your dashboard tracks referred stores, paid months, commission earned, and payout requests.'],
+            ].map(([h, p], i) => (
+              <div key={h} style={{ display: 'grid', gridTemplateColumns: '56px 1fr', gap: 18, alignItems: 'start' }}>
+                <div style={{ width: 42, height: 42, borderRadius: 12, background: '#0A0A0B', color: '#00E26A', display: 'grid', placeItems: 'center', fontWeight: 700 }}>{i + 1}</div>
+                <div>
+                  <h3 style={{ margin: 0, fontSize: 22, letterSpacing: '-0.02em' }}>{h}</h3>
+                  <p style={{ margin: '6px 0 0', color: '#71717A', lineHeight: 1.55 }}>{p}</p>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+
+    const App = () => (
+      <>
+        <Header active="support" />
+        <PartnerHero />
+        <PartnerDetails />
+        <HowItWorks />
+        <FooterCTA
+          headline="Ready to add Vrrrt<br/>to your offer?"
+          sub="Create a partner account and start tracking referred Shopify stores."
+          primary="Create partner account"
+          primaryHref="https://3dnavigate.vrrrt.app/partners/register"
+          secondary="Partner pack"
+          secondaryHref="partners-pack.html"
+        />
+        <Footer />
+      </>
+    );
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+  </script>
+</body>
+</html>
