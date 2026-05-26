@@ -306,8 +306,8 @@ const Footer = () => (
           { h: 'Legal', items: [
             { label: 'Privacy', href: 'privacy.html' },
             { label: 'Terms',   href: 'terms.html' },
-            { label: 'DPA',     href: '#' },
-            { label: 'Security',href: '#' },
+            { label: 'Data deletion', href: 'data-deletion.html' },
+            { label: 'Support', href: 'support.html' },
           ]},
         ].map(col => (
           <div key={col.h}>
