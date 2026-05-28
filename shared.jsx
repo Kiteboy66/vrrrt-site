@@ -76,7 +76,7 @@ const Icon = ({ name, size = 18, stroke = 1.5, color = 'currentColor', style }) 
 // ============ HEADER (with product mega-menu) ============
 
 const PRODUCTS = [
-  { id: 'shopify',     name: 'Vrrrt for Shopify',       href: 'shopify.html',     status: 'live',  blurb: 'Storefront discovery, baked into your theme.', icon: 'shopify' },
+  { id: 'shopify',     name: 'Vrrrt for Shopify',       href: 'https://apps.shopify.com/3dnavigate',     status: 'live',  blurb: 'Storefront discovery, baked into your theme.', icon: 'shopify' },
   { id: 'search',      name: 'Vrrrt for Google Search', href: 'search.html',      status: 'live',  blurb: 'Chrome extension. Browse before they click.',  icon: 'chrome'  },
   { id: 'wordpress',   name: 'Vrrrt for WordPress',     href: 'wordpress.html',   status: 'soon',  blurb: 'WP plugin. Drop-in discovery anywhere.',       icon: 'wordpress' },
   { id: 'woocommerce', name: 'Vrrrt for WooCommerce',   href: 'woocommerce.html', status: 'soon',  blurb: 'Woo-native discovery for store owners.',       icon: 'woo' },
@@ -209,6 +209,7 @@ const Header = ({ active = 'home', dark = false }) => {
           {[
             { id: 'pricing',   label: 'Pricing',   href: 'index.html#pricing' },
             { id: 'merchants', label: 'Merchants', href: 'index.html#merchants' },
+            { id: 'research',  label: 'Research',  href: 'research.html' },
             { id: 'support',   label: 'Support',   href: 'support.html' },
           ].map(item => (
             <a key={item.id} href={item.href} style={{
@@ -227,8 +228,8 @@ const Header = ({ active = 'home', dark = false }) => {
             </a>
           ))}
         </nav>
-        <Button variant={dark ? 'ghost-on-dark' : 'ghost'} size="sm">Sign in</Button>
-        <Button variant="primary" size="sm" trailingIcon={<Icon name="arrow-right" size={14} stroke={2}/>}>
+        <Button variant={dark ? 'ghost-on-dark' : 'ghost'} size="sm" href="https://3dnavigate.vrrrt.app/partners">Sign in</Button>
+        <Button variant="primary" size="sm" href="https://apps.shopify.com/3dnavigate" trailingIcon={<Icon name="arrow-right" size={14} stroke={2}/>}>
           Install on Shopify
         </Button>
       </div>
@@ -286,16 +287,15 @@ const Footer = () => (
           <p style={{
             fontSize: 14, color: '#71717A', marginTop: 16, maxWidth: '34ch', lineHeight: 1.5,
           }}>
-            One discovery engine. Every platform. Product discovery at the speed shoppers actually scroll.
+            One Rapid Discovery Cube. Every platform. Product discovery at the speed shoppers actually scroll.
           </p>
         </div>
         {[
           { h: 'Products', items: PRODUCTS.map(p => ({ label: p.name.replace('Vrrrt for ', ''), href: p.href, status: p.status })) },
           { h: 'Merchants', items: [
             { label: 'Pricing', href: 'index.html#pricing' },
-            { label: 'Case studies', href: '#' },
+            { label: 'Research', href: 'research.html' },
             { label: 'Support', href: 'support.html' },
-            { label: 'Partners', href: 'partners.html' },
             { label: 'Status', href: '#' },
           ]},
           { h: 'Company', items: [
@@ -307,8 +307,8 @@ const Footer = () => (
           { h: 'Legal', items: [
             { label: 'Privacy', href: 'privacy.html' },
             { label: 'Terms',   href: 'terms.html' },
-            { label: 'Data deletion', href: 'data-deletion.html' },
-            { label: 'Support', href: 'support.html' },
+            { label: 'DPA',     href: '#' },
+            { label: 'Security',href: '#' },
           ]},
         ].map(col => (
           <div key={col.h}>

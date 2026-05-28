@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Research — Vrrrt</title>
+  <meta name="description" content="The research behind Vrrrt's rapid product discovery claims." />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    html, body { margin: 0; padding: 0; background: #070708; }
+    body { font-family: 'Geist', system-ui, sans-serif; color: #F7F7F2; -webkit-font-smoothing: antialiased; }
+    *, *::before, *::after { box-sizing: border-box; }
+    .vt-btn--primary:hover { background: #3CFA8B !important; box-shadow: 0 0 0 4px rgba(0,226,106,0.18), 0 0 24px rgba(0,226,106,0.45); }
+    .vt-btn--ghost-on-dark:hover { background: rgba(255,255,255,0.06) !important; border-color: rgba(255,255,255,0.3) !important; }
+    .page { background: #070708; min-height: 100vh; }
+    .wrap { width: min(1240px, calc(100vw - 64px)); margin: 0 auto; }
+    .hero { padding: 96px 0 64px; }
+    .eyebrow {
+      color: #00E26A; font-family: 'Geist Mono', ui-monospace, monospace;
+      font-size: 12px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase;
+    }
+    h1 {
+      margin: 24px 0 0; max-width: 1050px;
+      font-size: clamp(54px, 6vw, 104px); line-height: 0.94;
+      letter-spacing: -0.065em; font-weight: 800;
+    }
+    .lead {
+      margin: 28px 0 0; max-width: 880px; color: #CFCFC8;
+      font-size: clamp(22px, 2.1vw, 34px); line-height: 1.18; font-weight: 750;
+      letter-spacing: -0.025em;
+    }
+    .source-grid {
+      display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 18px; padding: 24px 0 96px;
+    }
+    .source-card {
+      min-height: 320px; border: 1px solid #27272A; border-radius: 22px;
+      background: #101012; padding: 28px;
+    }
+    .source-card strong {
+      display: block; color: #00E26A; font-family: 'Geist Mono', ui-monospace, monospace;
+      font-size: 34px; line-height: 1; letter-spacing: -0.05em; margin-bottom: 18px;
+    }
+    .source-card h2 {
+      margin: 0; color: #F7F7F2; font-size: 28px; line-height: 1.05;
+      letter-spacing: -0.035em;
+    }
+    .source-card p {
+      margin: 18px 0 0; color: #B7B7B0; font-size: 15px; line-height: 1.5; font-weight: 600;
+    }
+    .source-card a {
+      display: inline-flex; margin-top: 20px; color: #00E26A;
+      font-size: 14px; font-weight: 800; text-decoration: none;
+    }
+    .source-card a:hover { text-decoration: underline; text-underline-offset: 4px; }
+    .note {
+      border-top: 1px solid #27272A; padding: 32px 0 80px;
+      color: #8F8F89; font-size: 14px; line-height: 1.55; max-width: 900px;
+    }
+    @media (max-width: 860px) {
+      .wrap { width: min(100vw - 32px, 720px); }
+      .source-grid { grid-template-columns: 1fr; padding-bottom: 72px; }
+      .hero { padding-top: 72px; }
+    }
+  </style>
+</head>
+<body>
+  <div id="root"></div>
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+  <script type="text/babel" src="shared.jsx"></script>
+  <script type="text/babel">
+    const sources = [
+      {
+        metric: '0-30 sec',
+        title: 'The danger window.',
+        copy: 'The paid research frames the first 0-30 seconds as the point where discovery fails before product pages, carts, upsells, reviews, or checkout fixes ever get a chance to work.',
+        link: '#paid-report',
+        label: 'Atypica.AI Business Intelligence Report, May 2026'
+      },
+      {
+        metric: '50-52%',
+        title: 'Mobile is where the bleed happens.',
+        copy: 'The research cites 50-52% mobile bounce rates and 65-75% mobile traffic share. That is why the early session matters: most shoppers are mobile, impatient, and deciding fast.',
+        link: 'https://contentsquare.com/blog/digital-experience-benchmark-report-2024/',
+        label: 'Contentsquare Digital Experience Benchmark'
+      },
+      {
+        metric: '13 ms',
+        title: 'The eye is not the bottleneck.',
+        copy: 'MIT research found the brain can identify images seen for as little as 13 milliseconds. Vrrrt is built around that truth: shoppers can process product visuals faster than stores usually deliver them.',
+        link: 'https://news.mit.edu/2014/in-the-blink-of-an-eye-0116',
+        label: 'MIT News: In the blink of an eye'
+      },
+      {
+        metric: '3.5',
+        title: 'The normal discovery ceiling.',
+        copy: 'The paid report cites 3.5 average pages per session globally. Most stores do not get shoppers deep enough into the catalog before patience runs out.',
+        link: '#paid-report',
+        label: 'Atypica.AI benchmark aggregation'
+      },
+      {
+        metric: '3 to 5',
+        title: 'Where buying intent starts.',
+        copy: 'The report separates two important windows: 3-5 product views for serious product consideration, and 3-5 minute sessions for peak conversion probability.',
+        link: '#paid-report',
+        label: 'Atypica.AI Business Intelligence Report'
+      },
+      {
+        metric: '27x',
+        title: 'The throughput advantage.',
+        copy: 'The 27x claim compares 540 products in 3 minutes against the old 20-product browsing baseline. Same time. Far more exposure. More chances for something to hit.',
+        link: '#paid-report',
+        label: 'Atypica.AI 540 / 3 Advantage'
+      }
+    ];
+
+    const App = () => (
+      <div className="page">
+        <Header active="research" dark />
+        <main>
+          <section className="hero">
+            <div className="wrap">
+              <div className="eyebrow">RESEARCH, NOT THUMB-SUCKING</div>
+              <h1>Here is where the numbers come from.</h1>
+              <p className="lead">
+                The page talks hard because the data is hard. These are the sources behind the 0-30 second danger zone, the discovery ceiling, and the Rapid Discovery Cube argument.
+              </p>
+            </div>
+          </section>
+          <section>
+            <div className="wrap source-grid">
+              {sources.map((s) => (
+                <article className="source-card" key={s.metric + s.title}>
+                  <strong>{s.metric}</strong>
+                  <h2>{s.title}</h2>
+                  <p>{s.copy}</p>
+                  <a href={s.link}>{s.label} →</a>
+                </article>
+              ))}
+            </div>
+            <div className="wrap">
+              <p className="note" id="paid-report">
+                The Atypica.AI report is a paid business-intelligence report supplied by the Vrrrt founders. Public links are included where the underlying source is available online. Vrrrt claims should be read as research-backed commercial positioning, not guaranteed outcomes for every store.
+              </p>
+            </div>
+          </section>
+        </main>
+        <Footer />
+      </div>
+    );
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+  </script>
+</body>
+</html>

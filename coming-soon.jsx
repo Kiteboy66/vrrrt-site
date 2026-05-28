@@ -116,7 +116,7 @@
         </h2>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 20, marginTop: 48 }}>
           {[
-            { id: 'shopify', name: 'Vrrrt for Shopify', icon: 'shopify', blurb: 'If you run Shopify too, install the live product. Same engine, ready today.', cta: 'Install on Shopify', href: 'shopify.html' },
+            { id: 'shopify', name: 'Vrrrt for Shopify', icon: 'shopify', blurb: 'If you run Shopify too, install the live product. Same engine, ready today.', cta: 'Install on Shopify', href: 'https://apps.shopify.com/3dnavigate' },
             { id: 'search',  name: 'Vrrrt for Google Search', icon: 'chrome', blurb: 'The Chrome extension lets you trawl 540 products from any Google search. Try it as a shopper.', cta: 'Add to Chrome', href: 'search.html' },
           ].map(p => (
             <a key={p.id} href={p.href} style={{

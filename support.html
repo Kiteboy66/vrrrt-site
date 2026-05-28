@@ -56,7 +56,7 @@
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 16 }}>
             {[
               { t: 'Docs', d: 'Install guides, theme integration, API reference.', cta: 'Open docs', href: '#' },
-              { t: 'Partner with us', d: 'Designer, agency, or theme developer? Let\'s build together. Vrrrt works on any Shopify theme.', cta: 'Join the partner program', href: 'partners.html' },
+              { t: 'Partner with us', d: 'Designer, agency, or theme developer? Let\'s build together. Vrrrt works on any Shopify theme.', cta: 'Join the partner program', href: 'https://3dnavigate.vrrrt.app/partners' },
             ].map(c => (
               <a key={c.t} href={c.href}
                 target={c.href.startsWith('http') ? '_blank' : undefined}
@@ -141,40 +141,6 @@
 
     const Contact = () => {
       const [sent, setSent] = useState(false);
-      const [loading, setLoading] = useState(false);
-      const [error, setError] = useState(null);
-
-      const handleSubmit = async (e) => {
-        e.preventDefault();
-        setLoading(true);
-        setError(null);
-        const form = e.target;
-        const data = {
-          name: form.elements['name'].value,
-          email: form.elements['email'].value,
-          store: form.elements['store'].value,
-          message: form.elements['message'].value,
-        };
-        try {
-          const res = await fetch('/api/contact', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify(data),
-          });
-          if (!res.ok) {
-            const body = await res.json().catch(() => ({}));
-            throw new Error(body.error || 'Failed to send. Please try again.');
-          }
-          setSent(true);
-        } catch (err) {
-          setError(err.message || 'Something went wrong. Email us at support@vrrrt.com');
-        } finally {
-          setLoading(false);
-        }
-      };
-
-      const disabled = sent || loading;
-
       return (
         <section style={{ background: '#0A0A0B', color: '#fff', padding: '96px 32px' }}>
           <div style={{ maxWidth: 880, margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 48 }}>
@@ -204,51 +170,39 @@
                 ))}
               </div>
             </div>
-            <form onSubmit={handleSubmit} style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+            <form onSubmit={e => { e.preventDefault(); setSent(true); }} style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
               {[
-                { id: 'name', label: 'Name', type: 'text', placeholder: 'Jane Merchant', required: true },
-                { id: 'email', label: 'Email', type: 'email', placeholder: 'jane@store.com', required: true },
+                { id: 'name', label: 'Name', type: 'text', placeholder: 'Jane Merchant' },
+                { id: 'email', label: 'Email', type: 'email', placeholder: 'jane@store.com' },
                 { id: 'store', label: 'Store URL', type: 'text', placeholder: 'cobalt-coffee.myshopify.com' },
               ].map(f => (
                 <label key={f.id} style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
                   <span style={{ fontFamily: 'Geist, system-ui, sans-serif', fontSize: 12, fontWeight: 600, color: '#A1A1AA', letterSpacing: '0.04em', textTransform: 'uppercase' }}>{f.label}</span>
-                  <input name={f.id} type={f.type} placeholder={f.placeholder} required={f.required} disabled={disabled}
+                  <input type={f.type} placeholder={f.placeholder} disabled={sent}
                     style={{
                       padding: '12px 14px', borderRadius: 10, background: '#18181B',
                       border: '1px solid #27272A', color: '#fff', outline: 'none',
                       fontFamily: 'Geist, system-ui, sans-serif', fontSize: 14,
-                      opacity: disabled ? 0.6 : 1,
                     }}/>
                 </label>
               ))}
               <label style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
                 <span style={{ fontFamily: 'Geist, system-ui, sans-serif', fontSize: 12, fontWeight: 600, color: '#A1A1AA', letterSpacing: '0.04em', textTransform: 'uppercase' }}>Message</span>
-                <textarea name="message" rows="4" placeholder="What's going on?" required disabled={disabled}
+                <textarea rows="4" placeholder="What's going on?" disabled={sent}
                   style={{
                     padding: '12px 14px', borderRadius: 10, background: '#18181B',
                     border: '1px solid #27272A', color: '#fff', outline: 'none',
                     fontFamily: 'Geist, system-ui, sans-serif', fontSize: 14, resize: 'vertical',
-                    opacity: disabled ? 0.6 : 1,
                   }}/>
               </label>
-              {error && (
-                <div style={{
-                  padding: '10px 14px', borderRadius: 8,
-                  background: 'rgba(239,68,68,0.1)', border: '1px solid rgba(239,68,68,0.25)',
-                  fontFamily: 'Geist, system-ui, sans-serif', fontSize: 13, color: '#FCA5A5',
-                }}>{error}</div>
-              )}
-              <button type="submit" disabled={disabled} style={{
-                padding: '14px 22px', fontSize: 15, fontWeight: 600,
-                cursor: disabled ? 'default' : 'pointer',
-                background: sent ? '#27272A' : '#00E26A',
-                color: sent ? '#A1A1AA' : '#000',
+              <button type="submit" disabled={sent} style={{
+                padding: '14px 22px', fontSize: 15, fontWeight: 600, cursor: sent ? 'default' : 'pointer',
+                background: sent ? '#27272A' : '#00E26A', color: sent ? '#A1A1AA' : '#000',
                 border: 'none', borderRadius: 10,
                 fontFamily: 'Geist, system-ui, sans-serif', whiteSpace: 'nowrap', marginTop: 4,
                 transition: 'all 120ms cubic-bezier(.2,.9,.2,1)',
-                opacity: loading ? 0.7 : 1,
               }}>
-                {sent ? '✓ Got it — we\'ll reply within 24h' : loading ? 'Sending…' : 'Send message →'}
+                {sent ? '✓ Got it — we\'ll reply within 24h' : 'Send message →'}
               </button>
             </form>
           </div>
