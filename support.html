@@ -56,7 +56,7 @@
           <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 16 }}>
             {[
               { t: 'Docs', d: 'Install guides, theme integration, API reference.', cta: 'Open docs', href: '/cube/docs' },
-              { t: 'Partner with us', d: 'Designer, agency, or theme developer? Let\'s build together. Vrrrt works on any Shopify theme.', cta: 'Join the partner program', href: 'partners.html' },
+              { t: 'Partner with us', d: 'Designer, agency, or theme developer? Let\'s build together. Vrrrt works on any Shopify theme.', cta: 'Join the partner program', href: '/partners' },
             ].map(c => (
               <a key={c.t} href={c.href}
                 target={c.href.startsWith('http') ? '_blank' : undefined}
@@ -140,7 +140,53 @@
     };
 
     const Contact = () => {
-      const [sent, setSent] = useState(false);
+      const [form, setForm] = useState({ name: '', email: '', store: '', message: '' });
+      const [status, setStatus] = useState('idle');
+      const [error, setError] = useState('');
+      const sent = status === 'sent';
+      const sending = status === 'sending';
+
+      const updateField = (id, value) => {
+        setForm(prev => ({ ...prev, [id]: value }));
+        if (error) setError('');
+      };
+
+      const submit = async (e) => {
+        e.preventDefault();
+        if (sending || sent) return;
+
+        if (!form.name.trim() || !form.email.trim() || !form.message.trim()) {
+          setError('Name, email, and message are required.');
+          return;
+        }
+
+        setStatus('sending');
+        setError('');
+
+        try {
+          const response = await fetch('/api/contact', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              name: form.name.trim(),
+              email: form.email.trim(),
+              store: form.store.trim(),
+              message: form.message.trim(),
+            }),
+          });
+
+          const result = await response.json().catch(() => ({}));
+          if (!response.ok) {
+            throw new Error(result.error || 'Message failed to send. Please email support@vrrrt.com.');
+          }
+
+          setStatus('sent');
+        } catch (err) {
+          setStatus('idle');
+          setError(err.message || 'Message failed to send. Please email support@vrrrt.com.');
+        }
+      };
+
       return (
         <section style={{ background: '#0A0A0B', color: '#fff', padding: '96px 32px' }}>
           <div style={{ maxWidth: 880, margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 48 }}>
@@ -170,7 +216,7 @@
                 ))}
               </div>
             </div>
-            <form onSubmit={e => { e.preventDefault(); setSent(true); }} style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+            <form onSubmit={submit} style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
               {[
                 { id: 'name', label: 'Name', type: 'text', placeholder: 'Jane Merchant' },
                 { id: 'email', label: 'Email', type: 'email', placeholder: 'jane@store.com' },
@@ -178,7 +224,10 @@
               ].map(f => (
                 <label key={f.id} style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
                   <span style={{ fontFamily: 'Geist, system-ui, sans-serif', fontSize: 12, fontWeight: 600, color: '#A1A1AA', letterSpacing: '0.04em', textTransform: 'uppercase' }}>{f.label}</span>
-                  <input type={f.type} placeholder={f.placeholder} disabled={sent}
+                  <input type={f.type} placeholder={f.placeholder} disabled={sent || sending}
+                    value={form[f.id]}
+                    onChange={e => updateField(f.id, e.target.value)}
+                    required={f.id !== 'store'}
                     style={{
                       padding: '12px 14px', borderRadius: 10, background: '#18181B',
                       border: '1px solid #27272A', color: '#fff', outline: 'none',
@@ -188,21 +237,30 @@
               ))}
               <label style={{ display: 'flex', flexDirection: 'column', gap: 6 }}>
                 <span style={{ fontFamily: 'Geist, system-ui, sans-serif', fontSize: 12, fontWeight: 600, color: '#A1A1AA', letterSpacing: '0.04em', textTransform: 'uppercase' }}>Message</span>
-                <textarea rows="4" placeholder="What's going on?" disabled={sent}
+                <textarea rows="4" placeholder="What's going on?" disabled={sent || sending}
+                  value={form.message}
+                  onChange={e => updateField('message', e.target.value)}
+                  required
                   style={{
                     padding: '12px 14px', borderRadius: 10, background: '#18181B',
                     border: '1px solid #27272A', color: '#fff', outline: 'none',
                     fontFamily: 'Geist, system-ui, sans-serif', fontSize: 14, resize: 'vertical',
                   }}/>
               </label>
-              <button type="submit" disabled={sent} style={{
-                padding: '14px 22px', fontSize: 15, fontWeight: 600, cursor: sent ? 'default' : 'pointer',
+              {error && (
+                <div role="alert" style={{
+                  color: '#FF8A8A', fontFamily: 'Geist, system-ui, sans-serif',
+                  fontSize: 13, lineHeight: 1.45,
+                }}>{error}</div>
+              )}
+              <button type="submit" disabled={sent || sending} style={{
+                padding: '14px 22px', fontSize: 15, fontWeight: 600, cursor: sent || sending ? 'default' : 'pointer',
                 background: sent ? '#27272A' : '#00E26A', color: sent ? '#A1A1AA' : '#000',
                 border: 'none', borderRadius: 10,
                 fontFamily: 'Geist, system-ui, sans-serif', whiteSpace: 'nowrap', marginTop: 4,
                 transition: 'all 120ms cubic-bezier(.2,.9,.2,1)',
               }}>
-                {sent ? '✓ Got it — we\'ll reply within 24h' : 'Send message →'}
+                {sent ? '✓ Got it — we\'ll reply within 24h' : sending ? 'Sending...' : 'Send message →'}
               </button>
             </form>
           </div>
