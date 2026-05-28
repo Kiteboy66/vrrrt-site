@@ -7,7 +7,7 @@ const { useState, useEffect, useRef } = React;
 // ============ ATOMS ============
 
 const Logo = ({ color = '#0A0A0B', size = 22 }) => (
-  <a href="index.html" style={{ textDecoration: 'none', display: 'inline-block' }}>
+  <a href="/" style={{ textDecoration: 'none', display: 'inline-block' }}>
     <span style={{
       fontFamily: 'Geist, system-ui, sans-serif', fontWeight: 700,
       letterSpacing: '-0.06em', fontSize: size, color, lineHeight: 1, whiteSpace: 'nowrap',
@@ -77,9 +77,9 @@ const Icon = ({ name, size = 18, stroke = 1.5, color = 'currentColor', style }) 
 
 const PRODUCTS = [
   { id: 'shopify',     name: 'Vrrrt for Shopify',       href: 'https://apps.shopify.com/3dnavigate',     status: 'live',  blurb: 'Storefront discovery, baked into your theme.', icon: 'shopify' },
-  { id: 'custom',      name: 'Vrrrt Custom Development', href: 'support.html',    status: 'soon',  blurb: 'Custom Cube builds for complex storefronts.', icon: 'code' },
-  { id: 'wordpress',   name: 'Vrrrt for WordPress',     href: 'wordpress.html',   status: 'soon',  blurb: 'WP plugin. Drop-in discovery anywhere.',       icon: 'wordpress' },
-  { id: 'woocommerce', name: 'Vrrrt for WooCommerce',   href: 'woocommerce.html', status: 'soon',  blurb: 'Woo-native discovery for store owners.',       icon: 'woo' },
+  { id: 'custom',      name: 'Vrrrt Custom Development', href: '/support',        status: 'soon',  blurb: 'Custom Cube builds for complex storefronts.', icon: 'code' },
+  { id: 'wordpress',   name: 'Vrrrt for WordPress',     href: '/wordpress',       status: 'soon',  blurb: 'WP plugin. Drop-in discovery anywhere.',       icon: 'wordpress' },
+  { id: 'woocommerce', name: 'Vrrrt for WooCommerce',   href: '/woocommerce',     status: 'soon',  blurb: 'Woo-native discovery for store owners.',       icon: 'woo' },
 ];
 
 const StatusPill = ({ status }) => {
@@ -207,10 +207,10 @@ const Header = ({ active = 'home', dark = false }) => {
             {menuOpen && <ProductsMenu active={active} onClose={() => setMenuOpen(false)} />}
           </div>
           {[
-            { id: 'pricing',   label: 'Pricing',   href: 'index.html#pricing' },
-            { id: 'merchants', label: 'Merchants', href: 'index.html#merchants' },
-            { id: 'research',  label: 'Research',  href: 'research.html' },
-            { id: 'support',   label: 'Support',   href: 'support.html' },
+            { id: 'pricing',   label: 'Pricing',   href: '/#pricing' },
+            { id: 'merchants', label: 'Merchants', href: '/#merchants' },
+            { id: 'research',  label: 'Research',  href: '/research' },
+            { id: 'support',   label: 'Support',   href: '/support' },
           ].map(item => (
             <a key={item.id} href={item.href} style={{
               fontFamily: 'Geist, system-ui, sans-serif', fontSize: 14, fontWeight: 500,
@@ -228,7 +228,7 @@ const Header = ({ active = 'home', dark = false }) => {
             </a>
           ))}
         </nav>
-        <Button variant={dark ? 'ghost-on-dark' : 'ghost'} size="sm" href="partners.html">Partners</Button>
+        <Button variant={dark ? 'ghost-on-dark' : 'ghost'} size="sm" href="/partners">Partners</Button>
         <Button variant="primary" size="sm" href="https://apps.shopify.com/3dnavigate" trailingIcon={<Icon name="arrow-right" size={14} stroke={2}/>}>
           Install on Shopify
         </Button>
@@ -293,15 +293,15 @@ const Footer = () => (
         {[
           { h: 'Products', items: PRODUCTS.map(p => ({ label: p.name.replace('Vrrrt for ', ''), href: p.href, status: p.status })) },
           { h: 'Merchants', items: [
-            { label: 'Pricing', href: 'index.html#pricing' },
-            { label: 'Research', href: 'research.html' },
-            { label: 'Partners', href: 'partners.html' },
-            { label: 'Support', href: 'support.html' },
+            { label: 'Pricing', href: '/#pricing' },
+            { label: 'Research', href: '/research' },
+            { label: 'Partners', href: '/partners' },
+            { label: 'Support', href: '/support' },
           ]},
           { h: 'Legal', items: [
-            { label: 'Privacy policy', href: 'privacy.html' },
-            { label: 'Terms of service', href: 'terms.html' },
-            { label: 'Data deletion', href: 'data-deletion.html' },
+            { label: 'Privacy policy', href: '/privacy' },
+            { label: 'Terms of service', href: '/terms' },
+            { label: 'Data deletion', href: '/data-deletion' },
           ]},
         ].map(col => (
           <div key={col.h}>

@@ -117,7 +117,7 @@
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 20, marginTop: 48 }}>
           {[
             { id: 'shopify', name: 'Vrrrt for Shopify', icon: 'shopify', blurb: 'If you run Shopify too, install the live product. Same Cube, ready today.', cta: 'Install on Shopify', href: 'https://apps.shopify.com/3dnavigate' },
-            { id: 'custom',  name: 'Vrrrt Custom Development', icon: 'code', blurb: 'Need a bespoke Cube, custom storefront integration, or non-standard product data flow? Talk to us.', cta: 'Contact us', href: 'support.html' },
+            { id: 'custom',  name: 'Vrrrt Custom Development', icon: 'code', blurb: 'Need a bespoke Cube, custom storefront integration, or non-standard product data flow? Talk to us.', cta: 'Contact us', href: '/support' },
           ].map(p => (
             <a key={p.id} href={p.href} style={{
               textDecoration: 'none', color: 'inherit',
