@@ -287,7 +287,7 @@ const Footer = () => (
           <p style={{
             fontSize: 14, color: '#71717A', marginTop: 16, maxWidth: '34ch', lineHeight: 1.5,
           }}>
-            One Rapid Discovery Cube. Every platform. Product discovery at the speed shoppers actually scroll.
+            Shopify-first, built for speed. One Rapid Discovery Cube. Product discovery at the speed shoppers actually scroll.
           </p>
         </div>
         {[
@@ -317,6 +317,11 @@ const Footer = () => (
               fontSize: 12, fontWeight: 600, letterSpacing: '0.12em',
               textTransform: 'uppercase', color: '#fff', marginBottom: 16,
             }}>{col.h}</div>
+            {col.h === 'Products' && (
+              <p style={{ margin: '-8px 0 14px', color: '#71717A', fontSize: 12, lineHeight: 1.35 }}>
+                Shopify-first, built for speed.
+              </p>
+            )}
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 10 }}>
               {col.items.map(it => (
                 <li key={it.label}>
