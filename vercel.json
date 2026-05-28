@@ -4,6 +4,10 @@
     {
       "source": "/partners/pack",
       "destination": "/partners-pack.html"
+    },
+    {
+      "source": "/partners/signup",
+      "destination": "/partners/signup.html"
     }
   ]
 }

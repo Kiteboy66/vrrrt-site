@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Partner signup — Vrrrt</title>
+  <meta name="description" content="Create a Vrrrt partner account request for Shopify designers, agencies, freelancers, and theme developers." />
+  <link rel="icon" type="image/svg+xml" href="/assets/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap">
+  <link rel="stylesheet" href="/styles.css" />
+  <style>
+    html, body { margin: 0; padding: 0; background: #FAFAFA; }
+    body { font-family: 'Geist', system-ui, sans-serif; color: #0A0A0B; -webkit-font-smoothing: antialiased; }
+    *, *::before, *::after { box-sizing: border-box; }
+    button, a, input, select, textarea { font-family: inherit; }
+    .vt-btn { white-space: nowrap; }
+    .vt-btn--primary:hover { background: #3CFA8B !important; box-shadow: 0 0 0 4px rgba(0,226,106,0.18), 0 0 24px rgba(0,226,106,0.45); }
+    .vt-btn--ghost:hover { background: #F4F4F5 !important; }
+    .vt-btn:active { transform: scale(0.97); }
+    @media (max-width: 900px) {
+      .partner-signup-grid { grid-template-columns: 1fr !important; }
+      .partner-signup-heading { font-size: 52px !important; }
+    }
+  </style>
+</head>
+<body>
+  <div id="root" data-screen-label="Partner signup"></div>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" integrity="sha384-m08KidiNqLdpJqLq95G/LEi8Qvjl/xUYll3QILypMoQ65QorJ9Lvtp2RXYGBFj1y" crossorigin="anonymous"></script>
+  <script type="text/babel" src="/shared.jsx"></script>
+
+  <script type="text/babel">
+    const { useState } = React;
+
+    const fieldStyle = {
+      width: '100%',
+      padding: '12px 14px',
+      borderRadius: 10,
+      background: '#fff',
+      border: '1px solid #D4D4D8',
+      color: '#0A0A0B',
+      outline: 'none',
+      fontSize: 14,
+    };
+
+    const Label = ({ children, htmlFor }) => (
+      <label htmlFor={htmlFor} style={{
+        fontSize: 12,
+        fontWeight: 700,
+        color: '#71717A',
+        letterSpacing: '0.08em',
+        textTransform: 'uppercase',
+      }}>{children}</label>
+    );
+
+    const SignupForm = () => {
+      const [form, setForm] = useState({
+        name: '',
+        email: '',
+        business: '',
+        country: '',
+        platform: '',
+        profileUrl: '',
+        paypalEmail: '',
+        commissionType: '$50 after 4 paid months',
+        message: '',
+      });
+      const [status, setStatus] = useState('idle');
+      const [error, setError] = useState('');
+      const sent = status === 'sent';
+      const sending = status === 'sending';
+
+      const updateField = (id, value) => {
+        setForm(prev => ({ ...prev, [id]: value }));
+        if (error) setError('');
+      };
+
+      const submit = async (e) => {
+        e.preventDefault();
+        if (sending || sent) return;
+
+        const required = ['name', 'email', 'country', 'platform', 'profileUrl', 'paypalEmail'];
+        const missing = required.some(id => !form[id].trim());
+        if (missing) {
+          setError('Please complete all required fields.');
+          return;
+        }
+
+        setStatus('sending');
+        setError('');
+
+        const message = [
+          'Partner account signup request',
+          '',
+          `Name: ${form.name.trim()}`,
+          `Business: ${form.business.trim() || '-'}`,
+          `Email: ${form.email.trim()}`,
+          `Country: ${form.country.trim()}`,
+          `Platform: ${form.platform.trim()}`,
+          `Profile URL: ${form.profileUrl.trim()}`,
+          `PayPal email: ${form.paypalEmail.trim()}`,
+          `Commission option: ${form.commissionType}`,
+          '',
+          'Notes:',
+          form.message.trim() || '-',
+        ].join('\n');
+
+        try {
+          const response = await fetch('/api/contact', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              name: form.name.trim(),
+              email: form.email.trim(),
+              store: form.profileUrl.trim(),
+              message,
+            }),
+          });
+
+          const result = await response.json().catch(() => ({}));
+          if (!response.ok) {
+            throw new Error(result.error || 'Signup request failed. Please email support@vrrrt.com.');
+          }
+
+          setStatus('sent');
+        } catch (err) {
+          setStatus('idle');
+          setError(err.message || 'Signup request failed. Please email support@vrrrt.com.');
+        }
+      };
+
+      return (
+        <form onSubmit={submit} style={{
+          background: '#fff',
+          borderRadius: 14,
+          padding: 28,
+          boxShadow: '0 0 0 1px rgba(0,0,0,0.06), 0 12px 36px rgba(0,0,0,0.06)',
+          display: 'grid',
+          gap: 16,
+        }}>
+          <div>
+            <h2 style={{ fontSize: 26, letterSpacing: '-0.03em', margin: 0, color: '#0A0A0B' }}>Create partner account</h2>
+            <p style={{ color: '#71717A', lineHeight: 1.5, margin: '8px 0 0', fontSize: 14 }}>
+              We will review your details and create your partner access.
+            </p>
+          </div>
+
+          {[
+            ['name', 'Name or business name', 'text', 'Jane Agency'],
+            ['email', 'Email', 'email', 'jane@agency.com'],
+            ['business', 'Company name', 'text', 'Optional'],
+            ['country', 'Country', 'text', 'South Africa'],
+            ['platform', 'Where you sell', 'text', 'Agency, Fiverr, Upwork, freelance'],
+            ['profileUrl', 'Profile or portfolio URL', 'url', 'https://example.com'],
+            ['paypalEmail', 'PayPal email', 'email', 'payout@example.com'],
+          ].map(([id, label, type, placeholder]) => (
+            <div key={id} style={{ display: 'grid', gap: 7 }}>
+              <Label htmlFor={id}>{label}{id === 'business' ? '' : ' *'}</Label>
+              <input
+                id={id}
+                type={type}
+                value={form[id]}
+                placeholder={placeholder}
+                disabled={sent || sending}
+                required={id !== 'business'}
+                onChange={e => updateField(id, e.target.value)}
+                style={fieldStyle}
+              />
+            </div>
+          ))}
+
+          <div style={{ display: 'grid', gap: 7 }}>
+            <Label htmlFor="commissionType">Commission option *</Label>
+            <select
+              id="commissionType"
+              value={form.commissionType}
+              disabled={sent || sending}
+              onChange={e => updateField('commissionType', e.target.value)}
+              style={fieldStyle}
+            >
+              <option>$50 after 4 paid months</option>
+              <option>20% monthly for 12 months</option>
+            </select>
+          </div>
+
+          <div style={{ display: 'grid', gap: 7 }}>
+            <Label htmlFor="message">Notes</Label>
+            <textarea
+              id="message"
+              rows="4"
+              value={form.message}
+              placeholder="Tell us what kind of Shopify clients you work with."
+              disabled={sent || sending}
+              onChange={e => updateField('message', e.target.value)}
+              style={{ ...fieldStyle, resize: 'vertical' }}
+            />
+          </div>
+
+          {error && (
+            <div role="alert" style={{ color: '#B42318', fontSize: 13, lineHeight: 1.45 }}>{error}</div>
+          )}
+
+          <button type="submit" disabled={sent || sending} style={{
+            padding: '15px 22px',
+            borderRadius: 10,
+            border: 0,
+            background: sent ? '#18181B' : '#00E26A',
+            color: sent ? '#A1A1AA' : '#000',
+            fontWeight: 800,
+            fontSize: 15,
+            cursor: sent || sending ? 'default' : 'pointer',
+          }}>
+            {sent ? 'Request sent' : sending ? 'Sending...' : 'Create partner account'}
+          </button>
+        </form>
+      );
+    };
+
+    const App = () => (
+      <>
+        <Header active="partners" />
+        <main>
+          <section style={{ background: '#0A0A0B', color: '#fff', padding: '92px 32px 96px' }}>
+            <div className="partner-signup-grid" style={{ maxWidth: 1120, margin: '0 auto', display: 'grid', gridTemplateColumns: '1fr 460px', gap: 56, alignItems: 'start' }}>
+              <div>
+                <Eyebrow color="#00E26A">— Partner signup</Eyebrow>
+                <h1 className="partner-signup-heading" style={{ fontSize: 72, letterSpacing: '-0.05em', lineHeight: 0.98, margin: 0, maxWidth: '11ch' }}>
+                  Get your Vrrrt partner code.
+                </h1>
+                <p style={{ color: '#A1A1AA', fontSize: 18, lineHeight: 1.55, maxWidth: '50ch', margin: '24px 0 0' }}>
+                  Register as a Shopify designer, agency, freelancer, or theme developer. We create your partner access and referral code after review.
+                </p>
+                <div style={{ display: 'grid', gap: 12, marginTop: 34, maxWidth: 520 }}>
+                  {[
+                    'Choose $50 after 4 paid months or 20% monthly for 12 months.',
+                    'Use your referral code when you install Vrrrt for a client.',
+                    'Track referred stores, paid months, commission, and payouts in the partner dashboard.',
+                  ].map(item => (
+                    <div key={item} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, color: '#D4D4D8', lineHeight: 1.5 }}>
+                      <span style={{ color: '#00E26A', fontWeight: 900 }}>+</span>
+                      <span>{item}</span>
+                    </div>
+                  ))}
+                </div>
+                <p style={{ color: '#71717A', fontSize: 13, marginTop: 26 }}>
+                  Already have access? <a href="https://3dnavigate.vrrrt.app/partners/login" style={{ color: '#00E26A', textDecoration: 'none', fontWeight: 700 }}>Log in to the partner dashboard</a>.
+                </p>
+              </div>
+              <SignupForm />
+            </div>
+          </section>
+        </main>
+        <Footer />
+      </>
+    );
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+  </script>
+</body>
+</html>

@@ -42,7 +42,7 @@
             Vrrrt gives Shopify designers, agencies, and freelancers a premium discovery feature to add to client stores.
           </p>
           <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-            <Button variant="primary" size="lg" href="mailto:support@vrrrt.app?subject=Vrrrt%20Cube%20partner%20account" trailingIcon={<Icon name="arrow-right" size={16} stroke={2}/>}>Create partner account</Button>
+            <Button variant="primary" size="lg" href="/partners/signup" trailingIcon={<Icon name="arrow-right" size={16} stroke={2}/>}>Create partner account</Button>
             <Button variant="ghost-on-dark" size="lg" href="/partners/pack">View partner pack</Button>
           </div>
         </div>
@@ -91,7 +91,7 @@
 
     const App = () => (
       <>
-        <Header active="support" />
+        <Header active="partners" />
         <PartnerHero />
         <PartnerDetails />
         <HowItWorks />
@@ -99,7 +99,7 @@
           headline="Ready to add Vrrrt<br/>to your offer?"
           sub="Create a partner account and start tracking referred Shopify stores."
           primary="Create partner account"
-          primaryHref="mailto:support@vrrrt.app?subject=Vrrrt%20Cube%20partner%20account"
+          primaryHref="/partners/signup"
           secondary="Partner pack"
           secondaryHref="/partners/pack"
         />
