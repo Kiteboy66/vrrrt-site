@@ -69,7 +69,7 @@
       <div style={{ maxWidth: 1240, margin: '0 auto' }}>
         <Eyebrow>— Roadmap</Eyebrow>
         <h2 style={{ fontFamily: 'Geist, system-ui, sans-serif', fontWeight: 700, fontSize: 48, lineHeight: 1.02, letterSpacing: '-0.04em', margin: 0, color: '#0A0A0B', maxWidth: '22ch' }}>
-          One engine. Every platform. <span style={{ color: '#71717A' }}>Here's the order.</span>
+          One Cube. Every platform. <span style={{ color: '#71717A' }}>Here's the order.</span>
         </h2>
         <div style={{ marginTop: 56, display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 16 }}>
           {[
@@ -112,11 +112,11 @@
       <div style={{ maxWidth: 1240, margin: '0 auto' }}>
         <Eyebrow>— While you wait</Eyebrow>
         <h2 style={{ fontFamily: 'Geist, system-ui, sans-serif', fontWeight: 700, fontSize: 48, lineHeight: 1.02, letterSpacing: '-0.04em', margin: 0, color: '#0A0A0B', maxWidth: '22ch' }}>
-          The engine works <span style={{ color: '#00E26A' }}>now</span>. <span style={{ color: '#71717A' }}>Two ways to see it.</span>
+          The Cube works <span style={{ color: '#00E26A' }}>now</span>. <span style={{ color: '#71717A' }}>Two ways to see it.</span>
         </h2>
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 20, marginTop: 48 }}>
           {[
-            { id: 'shopify', name: 'Vrrrt for Shopify', icon: 'shopify', blurb: 'If you run Shopify too, install the live product. Same engine, ready today.', cta: 'Install on Shopify', href: 'https://apps.shopify.com/3dnavigate' },
+            { id: 'shopify', name: 'Vrrrt for Shopify', icon: 'shopify', blurb: 'If you run Shopify too, install the live product. Same Cube, ready today.', cta: 'Install on Shopify', href: 'https://apps.shopify.com/3dnavigate' },
             { id: 'search',  name: 'Vrrrt for Google Search', icon: 'chrome', blurb: 'The Chrome extension lets you trawl 540 products from any Google search. Try it as a shopper.', cta: 'Add to Chrome', href: 'search.html' },
           ].map(p => (
             <a key={p.id} href={p.href} style={{

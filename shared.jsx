@@ -308,7 +308,7 @@ const Footer = () => (
             { label: 'Privacy', href: 'privacy.html' },
             { label: 'Terms',   href: 'terms.html' },
             { label: 'Data deletion', href: 'data-deletion.html' },
-            { label: '3dnavigate legal', href: '/3dnavigate/privacy' },
+            { label: 'Vrrrt Cube legal', href: '/cube/privacy' },
           ]},
         ].map(col => (
           <div key={col.h}>
