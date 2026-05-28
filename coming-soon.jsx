@@ -74,7 +74,7 @@
         <div style={{ marginTop: 56, display: 'grid', gridTemplateColumns: 'repeat(4, 1fr)', gap: 16 }}>
           {[
             { p: 'Shopify',     stat: 'LIVE',  d: 'Storefront-native discovery for Shopify themes.', state: 'done' },
-            { p: 'Google Search', stat: 'LIVE', d: 'Chrome extension overlay on Google Shopping.',   state: 'done' },
+            { p: 'Custom development', stat: 'SOON', d: 'Custom Cube builds for complex storefronts.', state: 'soon' },
             { p: 'WordPress',   stat: 'Q3 2026', d: 'Native WP plugin. Block-editor compatible.',    state: P.id === 'wordpress' ? 'now' : 'next' },
             { p: 'WooCommerce', stat: 'Q4 2026', d: 'Woo-native discovery for store owners.',        state: P.id === 'woocommerce' ? 'now' : 'next' },
           ].map((s, i) => {
@@ -117,7 +117,7 @@
         <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 20, marginTop: 48 }}>
           {[
             { id: 'shopify', name: 'Vrrrt for Shopify', icon: 'shopify', blurb: 'If you run Shopify too, install the live product. Same Cube, ready today.', cta: 'Install on Shopify', href: 'https://apps.shopify.com/3dnavigate' },
-            { id: 'search',  name: 'Vrrrt for Google Search', icon: 'chrome', blurb: 'The Chrome extension lets you trawl 540 products from any Google search. Try it as a shopper.', cta: 'Add to Chrome', href: 'search.html' },
+            { id: 'custom',  name: 'Vrrrt Custom Development', icon: 'code', blurb: 'Need a bespoke Cube, custom storefront integration, or non-standard product data flow? Talk to us.', cta: 'Contact us', href: 'support.html' },
           ].map(p => (
             <a key={p.id} href={p.href} style={{
               textDecoration: 'none', color: 'inherit',
@@ -155,7 +155,7 @@
         headline={`Vrrrt for ${P.name}.<br/><span style="color:#00E26A">${P.eta}.</span>`}
         sub={`Drop your email above. We'll ping you the moment Vrrrt for ${P.name} ships — and reserve an early-access slot.`}
         primary="Install on Shopify"
-        secondary="Add to Chrome"
+        secondary="Contact us"
         eyebrow={'— ' + P.name + ' soon'}
       />
       <Footer />

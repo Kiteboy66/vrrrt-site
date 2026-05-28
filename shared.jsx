@@ -61,7 +61,7 @@ const Icon = ({ name, size = 18, stroke = 1.5, color = 'currentColor', style }) 
     'chevron-down':<polyline points="6 9 12 15 18 9"/>,
     'sparkle':     <path d="m12 3 1.9 5.6L19 10l-5.1 1.4L12 17l-1.9-5.6L5 10l5.1-1.4L12 3z"/>,
     'shopify':     <><path d="M12 2 4 5v6c0 5 3.5 9.7 8 11 4.5-1.3 8-6 8-11V5l-8-3z"/></>,
-    'chrome':      <><circle cx="12" cy="12" r="10"/><circle cx="12" cy="12" r="4"/><line x1="21.17" y1="8" x2="12" y2="8"/><line x1="3.95" y1="6.06" x2="8.54" y2="14"/><line x1="10.88" y1="21.94" x2="15.46" y2="14"/></>,
+    'code':        <><path d="m16 18 6-6-6-6"/><path d="m8 6-6 6 6 6"/></>,
     'wordpress':   <><circle cx="12" cy="12" r="10"/><path d="M3 12h18M12 2a15 15 0 0 0 0 20M12 2a15 15 0 0 1 0 20"/></>,
     'woo':         <><path d="M3 7h18l-2 12H5L3 7z"/><path d="M8 10v4M12 10v4M16 10v4"/></>,
     'mail':        <><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></>,
@@ -77,7 +77,7 @@ const Icon = ({ name, size = 18, stroke = 1.5, color = 'currentColor', style }) 
 
 const PRODUCTS = [
   { id: 'shopify',     name: 'Vrrrt for Shopify',       href: 'https://apps.shopify.com/3dnavigate',     status: 'live',  blurb: 'Storefront discovery, baked into your theme.', icon: 'shopify' },
-  { id: 'search',      name: 'Vrrrt for Google Search', href: 'search.html',      status: 'live',  blurb: 'Chrome extension. Browse before they click.',  icon: 'chrome'  },
+  { id: 'custom',      name: 'Vrrrt Custom Development', href: 'support.html',    status: 'soon',  blurb: 'Custom Cube builds for complex storefronts.', icon: 'code' },
   { id: 'wordpress',   name: 'Vrrrt for WordPress',     href: 'wordpress.html',   status: 'soon',  blurb: 'WP plugin. Drop-in discovery anywhere.',       icon: 'wordpress' },
   { id: 'woocommerce', name: 'Vrrrt for WooCommerce',   href: 'woocommerce.html', status: 'soon',  blurb: 'Woo-native discovery for store owners.',       icon: 'woo' },
 ];
