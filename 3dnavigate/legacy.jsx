@@ -5,6 +5,7 @@ const navItems = [
   ['Overview', '/3dnavigate'],
   ['Setup', '/3dnavigate/setup'],
   ['Support', '/3dnavigate/support'],
+  ['Docs', '/3dnavigate/docs'],
   ['Privacy', '/3dnavigate/privacy'],
   ['Terms', '/3dnavigate/terms'],
 ];
@@ -183,6 +184,34 @@ function Support() {
   );
 }
 
+function Docs() {
+  const docs = [
+    ['Setup guide', '/3dnavigate/setup', 'Add the cube app block, choose collections, configure face layout, and test the storefront.'],
+    ['Support', '/3dnavigate/support', 'Contact details and common troubleshooting notes for storefront display issues.'],
+    ['Privacy', '/3dnavigate/privacy', 'What product, store, and shopper-adjacent data 3dnavigate uses to operate.'],
+    ['Terms', '/3dnavigate/terms', 'Service terms for merchants using the Shopify product discovery cube.'],
+  ];
+  return (
+    <Shell active="docs">
+      <PageSection>
+        <div style={styles.eyebrow}>Documentation</div>
+        <h1 style={styles.h1}>3dnavigate docs.</h1>
+        <p style={styles.copy}>The public resource hub for Shopify merchants reviewing, installing, or supporting the 3dnavigate Cube.</p>
+      </PageSection>
+      <PageSection>
+        <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, minmax(0, 1fr))', gap: 16 }} className="tdn-cards">
+          {docs.map(([title, href, body]) => (
+            <a key={title} href={href} style={{ ...styles.card, color: '#F7F7F2', textDecoration: 'none', display: 'block' }}>
+              <h2 style={{ ...styles.h2, fontSize: 30 }}>{title}</h2>
+              <p style={styles.copy}>{body}</p>
+            </a>
+          ))}
+        </div>
+      </PageSection>
+    </Shell>
+  );
+}
+
 const legalDocs = {
   privacy: {
     active: 'privacy',
@@ -240,6 +269,7 @@ function renderThreeDNavigatePage(page) {
     overview: <Overview />,
     setup: <Setup />,
     support: <Support />,
+    docs: <Docs />,
     privacy: <LegalDoc doc={legalDocs.privacy} />,
     terms: <LegalDoc doc={legalDocs.terms} />,
   };

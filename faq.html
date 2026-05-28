@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>FAQ — Vrrrt</title>
+  <meta name="description" content="Frequently asked questions about Vrrrt for Shopify merchants." />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500;600;800&display=swap">
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    html, body { margin: 0; padding: 0; background: #FAFAFA; }
+    body { font-family: 'Geist', system-ui, sans-serif; color: #0A0A0B; -webkit-font-smoothing: antialiased; }
+    *, *::before, *::after { box-sizing: border-box; }
+  </style>
+</head>
+<body>
+  <div id="root" data-screen-label="FAQ"></div>
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+  <script type="text/babel" src="shared.jsx"></script>
+  <script type="text/babel">
+    const FAQ_DATA = [
+      ['How fast does Vrrrt show up after install?', 'Instantly. The cube loads in under 1 second. Drop the block, assign your collections, save. Your shoppers see it on the next page load.'],
+      ['Will it slow my store down?', 'No. Vrrrt is built for speed. It loads in under 1 second and will not touch your Lighthouse or Core Web Vitals scores.'],
+      ['Does Vrrrt own my data?', 'No. Your store, your customers, your data. Vrrrt uses the minimum data needed to operate the Cube and support the app.'],
+      ['Can I use Vrrrt on a non-Shopify store today?', 'Not yet. Native WordPress and WooCommerce versions are coming. Shopify is live now.'],
+      ['Is there a contract or commitment?', 'No. Monthly, cancel any time. 14-day free trial on paid plans.'],
+      ['How is pricing structured?', 'Flat monthly. Plans start at $29. Your bill does not change based on traffic or conversions.'],
+    ];
+    const App = () => (
+      <>
+        <Header active="support" />
+        <section style={{ background: '#0A0A0B', color: '#fff', padding: '88px 32px 72px' }}>
+          <div style={{ maxWidth: 920, margin: '0 auto' }}>
+            <Eyebrow color="#00E26A">FAQ</Eyebrow>
+            <h1 style={{ fontSize: 72, letterSpacing: '-0.06em', lineHeight: 0.96, margin: 0 }}>The short answers.</h1>
+          </div>
+        </section>
+        <section style={{ padding: '72px 32px 96px', background: '#FAFAFA' }}>
+          <div style={{ maxWidth: 920, margin: '0 auto', display: 'grid', gap: 14 }}>
+            {FAQ_DATA.map(([q, a]) => (
+              <article key={q} style={{ background: '#fff', border: '1px solid #E4E4E7', borderRadius: 14, padding: '24px 28px' }}>
+                <h2 style={{ margin: 0, fontSize: 22, letterSpacing: '-0.025em' }}>{q}</h2>
+                <p style={{ color: '#71717A', lineHeight: 1.6, margin: '10px 0 0' }}>{a}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+        <Footer />
+      </>
+    );
+    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+  </script>
+</body>
+</html>

@@ -1,0 +1,57 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Changelog — Vrrrt</title>
+  <meta name="description" content="Public changelog for Vrrrt and the 3dnavigate Shopify app." />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500;600;800&display=swap">
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    html, body { margin: 0; padding: 0; background: #FAFAFA; }
+    body { font-family: 'Geist', system-ui, sans-serif; color: #0A0A0B; -webkit-font-smoothing: antialiased; }
+    *, *::before, *::after { box-sizing: border-box; }
+  </style>
+</head>
+<body>
+  <div id="root" data-screen-label="Changelog"></div>
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+  <script type="text/babel" src="shared.jsx"></script>
+  <script type="text/babel">
+    const entries = [
+      ['May 28, 2026', 'Marketing site refresh', 'Updated the Vrrrt homepage, partner resources, and public 3dnavigate documentation links.'],
+      ['May 26, 2026', 'Partner resources', 'Added partner program, partner pack, data deletion, privacy, and terms pages to the public site.'],
+      ['April 28, 2026', '3dnavigate public docs', 'Published setup, support, privacy, and terms resources for Shopify review and merchant onboarding.'],
+    ];
+    const App = () => (
+      <>
+        <Header active="support" />
+        <section style={{ background: '#0A0A0B', color: '#fff', padding: '88px 32px 72px' }}>
+          <div style={{ maxWidth: 920, margin: '0 auto' }}>
+            <Eyebrow color="#00E26A">Changelog</Eyebrow>
+            <h1 style={{ fontSize: 72, letterSpacing: '-0.06em', lineHeight: 0.96, margin: 0 }}>What changed.</h1>
+          </div>
+        </section>
+        <section style={{ padding: '72px 32px 96px', background: '#FAFAFA' }}>
+          <div style={{ maxWidth: 920, margin: '0 auto', display: 'grid', gap: 14 }}>
+            {entries.map(([date, title, body]) => (
+              <article key={title} style={{ background: '#fff', border: '1px solid #E4E4E7', borderRadius: 14, padding: '24px 28px' }}>
+                <div style={{ fontFamily: 'Geist Mono, monospace', color: '#00A84F', fontSize: 12, fontWeight: 800, letterSpacing: '0.08em', textTransform: 'uppercase' }}>{date}</div>
+                <h2 style={{ margin: '10px 0 0', fontSize: 24, letterSpacing: '-0.025em' }}>{title}</h2>
+                <p style={{ color: '#71717A', lineHeight: 1.6, margin: '10px 0 0' }}>{body}</p>
+              </article>
+            ))}
+          </div>
+        </section>
+        <Footer />
+      </>
+    );
+    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+  </script>
+</body>
+</html>
