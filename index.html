@@ -214,36 +214,6 @@
       text-transform: uppercase;
     }
 
-    .demo-affordance {
-      position: absolute;
-      right: 16px;
-      bottom: 16px;
-      z-index: 2;
-      display: inline-flex;
-      align-items: center;
-      gap: 8px;
-      padding: 9px 12px;
-      border-radius: 999px;
-      background: rgba(10,10,11,0.86);
-      color: #fff;
-      border: 1px solid rgba(255,255,255,0.18);
-      box-shadow: 0 12px 28px rgba(0,0,0,0.22);
-      font-family: 'Geist Mono', ui-monospace, monospace;
-      font-weight: 800;
-      font-size: 11px;
-      letter-spacing: 0.04em;
-      text-transform: uppercase;
-    }
-
-    .demo-affordance::before {
-      content: "";
-      width: 8px;
-      height: 8px;
-      border-radius: 50%;
-      background: var(--green);
-      box-shadow: 0 0 14px rgba(0,226,106,0.85);
-    }
-
     .metric-row {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
@@ -1338,12 +1308,6 @@
       .engine-media {
         border-radius: 12px;
       }
-      .demo-affordance {
-        right: 12px;
-        bottom: 12px;
-        max-width: calc(100% - 24px);
-        font-size: 10px;
-      }
     }
   </style>
 </head>
@@ -1380,7 +1344,6 @@
             <a className="engine-frame" href="https://engine.vrrrt.app/" aria-label="Test the live Vrrrt Rapid Discovery Cube demo">
               <div className="engine-media">
                 <div className="live-badge">Live Cube</div>
-                <div className="demo-affordance">Tap the live Cube -&gt;</div>
                 <video autoPlay muted loop playsInline poster="assets/cube-hero.png" aria-label="Vrrrt Rapid Discovery Cube spinning">
                   <source src="assets/vrrrt-engine-loop-960.mp4" type="video/mp4" />
                   <img src="assets/cube-loop.gif" alt="Vrrrt Rapid Discovery Cube spinning" />
