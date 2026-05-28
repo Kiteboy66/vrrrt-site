@@ -228,7 +228,7 @@ const Header = ({ active = 'home', dark = false }) => {
             </a>
           ))}
         </nav>
-        <Button variant={dark ? 'ghost-on-dark' : 'ghost'} size="sm" href="https://3dnavigate.vrrrt.app/partners">Sign in</Button>
+        <Button variant={dark ? 'ghost-on-dark' : 'ghost'} size="sm" href="partners.html">Partners</Button>
         <Button variant="primary" size="sm" href="https://apps.shopify.com/3dnavigate" trailingIcon={<Icon name="arrow-right" size={14} stroke={2}/>}>
           Install on Shopify
         </Button>
@@ -295,8 +295,8 @@ const Footer = () => (
           { h: 'Merchants', items: [
             { label: 'Pricing', href: 'index.html#pricing' },
             { label: 'Research', href: 'research.html' },
+            { label: 'Partners', href: 'partners.html' },
             { label: 'Support', href: 'support.html' },
-            { label: 'Status', href: '#' },
           ]},
           { h: 'Company', items: [
             { label: 'About',   href: '#' },
@@ -307,8 +307,8 @@ const Footer = () => (
           { h: 'Legal', items: [
             { label: 'Privacy', href: 'privacy.html' },
             { label: 'Terms',   href: 'terms.html' },
-            { label: 'DPA',     href: '#' },
-            { label: 'Security',href: '#' },
+            { label: 'Data deletion', href: 'data-deletion.html' },
+            { label: '3dnavigate legal', href: '/3dnavigate/privacy' },
           ]},
         ].map(col => (
           <div key={col.h}>
