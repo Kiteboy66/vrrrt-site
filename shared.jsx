@@ -279,7 +279,7 @@ const Footer = () => (
   }}>
     <div style={{ maxWidth: 1240, margin: '0 auto' }}>
       <div style={{
-        display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr 1fr', gap: 40,
+        display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr', gap: 40,
         marginBottom: 56,
       }}>
         <div>
@@ -298,17 +298,10 @@ const Footer = () => (
             { label: 'Partners', href: 'partners.html' },
             { label: 'Support', href: 'support.html' },
           ]},
-          { h: 'Company', items: [
-            { label: 'About',   href: '#' },
-            { label: 'Careers', href: '#' },
-            { label: 'Press',   href: '#' },
-            { label: 'Contact', href: 'support.html' },
-          ]},
           { h: 'Legal', items: [
-            { label: 'Privacy', href: 'privacy.html' },
-            { label: 'Terms',   href: 'terms.html' },
+            { label: 'Privacy policy', href: 'privacy.html' },
+            { label: 'Terms of service', href: 'terms.html' },
             { label: 'Data deletion', href: 'data-deletion.html' },
-            { label: 'Vrrrt Cube legal', href: '/cube/privacy' },
           ]},
         ].map(col => (
           <div key={col.h}>
