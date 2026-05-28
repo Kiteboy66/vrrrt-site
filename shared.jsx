@@ -10,7 +10,7 @@ const Logo = ({ color = '#0A0A0B', size = 22 }) => (
   <a href="/" style={{ textDecoration: 'none', display: 'inline-block' }}>
     <span style={{
       fontFamily: 'Geist, system-ui, sans-serif', fontWeight: 700,
-      letterSpacing: '-0.06em', fontSize: size, color, lineHeight: 1, whiteSpace: 'nowrap',
+      letterSpacing: 0, fontSize: size, color, lineHeight: 1, whiteSpace: 'nowrap',
     }}>
       Vrrrt<span style={{ color: '#00E26A' }}>.</span>
     </span>

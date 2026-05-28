@@ -43,13 +43,6 @@
               {D.intro}
             </p>
           )}
-          <div style={{
-            margin: '20px 0 32px',
-            padding: '12px 16px', background: '#FFF5DA', borderRadius: 8, borderLeft: '2px solid #F5B400',
-            fontFamily: 'Geist, system-ui, sans-serif', fontSize: 13, color: '#7A5500',
-          }}>
-            <strong>Placeholder.</strong> This is template legal text for design preview. Have your counsel review and replace before launch.
-          </div>
           {D.sections.map((s, i) => (
             <section key={i} id={`s${i}`} style={{ marginBottom: 40 }}>
               <h2 style={{
