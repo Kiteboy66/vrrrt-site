@@ -1,161 +1,1579 @@
 <!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Research — Vrrrt</title>
-  <meta name="description" content="The research behind Vrrrt's rapid product discovery claims." />
-  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
-  <link rel="preconnect" href="https://fonts.googleapis.com">
-  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500;600;700&display=swap">
-  <link rel="stylesheet" href="styles.css" />
-  <style>
-    html, body { margin: 0; padding: 0; background: #070708; }
-    body { font-family: 'Geist', system-ui, sans-serif; color: #F7F7F2; -webkit-font-smoothing: antialiased; }
-    *, *::before, *::after { box-sizing: border-box; }
-    .vt-btn--primary:hover { background: #3CFA8B !important; box-shadow: 0 0 0 4px rgba(0,226,106,0.18), 0 0 24px rgba(0,226,106,0.45); }
-    .vt-btn--ghost-on-dark:hover { background: rgba(255,255,255,0.06) !important; border-color: rgba(255,255,255,0.3) !important; }
-    .page { background: #070708; min-height: 100vh; }
-    .wrap { width: min(1240px, calc(100vw - 64px)); margin: 0 auto; }
-    .hero { padding: 96px 0 64px; }
-    .eyebrow {
-      color: #00E26A; font-family: 'Geist Mono', ui-monospace, monospace;
-      font-size: 12px; font-weight: 800; letter-spacing: 0.08em; text-transform: uppercase;
-    }
-    h1 {
-      margin: 24px 0 0; max-width: 1050px;
-      font-size: clamp(54px, 6vw, 104px); line-height: 0.94;
-      letter-spacing: -0.065em; font-weight: 800;
-    }
-    .lead {
-      margin: 28px 0 0; max-width: 880px; color: #CFCFC8;
-      font-size: clamp(22px, 2.1vw, 34px); line-height: 1.18; font-weight: 750;
-      letter-spacing: -0.025em;
-    }
-    .source-grid {
-      display: grid; grid-template-columns: repeat(2, minmax(0, 1fr));
-      gap: 18px; padding: 24px 0 96px;
-    }
-    .source-card {
-      min-height: 320px; border: 1px solid #27272A; border-radius: 22px;
-      background: #101012; padding: 28px;
-    }
-    .source-card strong {
-      display: block; color: #00E26A; font-family: 'Geist Mono', ui-monospace, monospace;
-      font-size: 34px; line-height: 1; letter-spacing: -0.05em; margin-bottom: 18px;
-    }
-    .source-card h2 {
-      margin: 0; color: #F7F7F2; font-size: 28px; line-height: 1.05;
-      letter-spacing: -0.035em;
-    }
-    .source-card p {
-      margin: 18px 0 0; color: #B7B7B0; font-size: 15px; line-height: 1.5; font-weight: 600;
-    }
-    .source-card a {
-      display: inline-flex; margin-top: 20px; color: #00E26A;
-      font-size: 14px; font-weight: 800; text-decoration: none;
-    }
-    .source-card a:hover { text-decoration: underline; text-underline-offset: 4px; }
-    .note {
-      border-top: 1px solid #27272A; padding: 32px 0 80px;
-      color: #8F8F89; font-size: 14px; line-height: 1.55; max-width: 900px;
-    }
-    @media (max-width: 860px) {
-      .wrap { width: min(100vw - 32px, 720px); }
-      .source-grid { grid-template-columns: 1fr; padding-bottom: 72px; }
-      .hero { padding-top: 72px; }
-    }
-  </style>
-</head>
+<!-- saved from url=(0056)https://atypica.ai/artifacts/report/GKGQ3X2JG6Aea3qJ/raw -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Research — Vrrrt</title>
+<link rel="icon" type="image/svg+xml" href="assets/favicon.svg">
+<style>
+  @import url('https://fonts.googleapis.com/css2?family=Archivo:ital,wght@0,300;0,400;0,600;0,700;0,900;1,300;1,400&family=Inter:wght@300;400;500;600&display=swap');
+
+  :root {
+    --teal: #00CED1;
+    --teal-dim: rgba(0,206,209,0.08);
+    --teal-border: rgba(0,206,209,0.25);
+    --slate: #121212;
+    --platinum: #8A9099;
+    --ink: #1a1a1a;
+    --mist: #f4f5f6;
+  }
+
+  * { margin: 0; padding: 0; box-sizing: border-box; }
+
+  html { scroll-behavior: smooth; }
+
+  body {
+    font-family: 'Inter', system-ui, -apple-system, sans-serif;
+    background: #ffffff;
+    color: var(--ink);
+    line-height: 1.75;
+    font-size: 16px;
+  }
+
+  .font-archivo { font-family: 'Archivo', sans-serif; }
+  .font-mono-custom { font-family: 'SF Mono', 'JetBrains Mono', monospace; }
+
+  .text-teal { color: var(--teal); }
+  .bg-teal { background: var(--teal); }
+  .border-teal { border-color: var(--teal); }
+
+  /* Hero Section */
+  .hero-bg {
+    background: var(--slate);
+    position: relative;
+    overflow: hidden;
+  }
+
+  .hero-grid-line {
+    position: absolute;
+    top: 0; left: 0; right: 0; bottom: 0;
+    background-image:
+      linear-gradient(rgba(0,206,209,0.04) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(0,206,209,0.04) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+  }
+
+  /* Timeline */
+  .timeline-spine {
+    border-left: 2px solid var(--teal);
+    position: relative;
+  }
+
+  .timeline-node {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    background: var(--teal);
+    position: absolute;
+    left: -8px;
+    top: 0;
+    flex-shrink: 0;
+  }
+
+  .timeline-node-outline {
+    width: 14px;
+    height: 14px;
+    border-radius: 50%;
+    border: 2px solid var(--teal);
+    background: white;
+    position: absolute;
+    left: -8px;
+    top: 0;
+    flex-shrink: 0;
+  }
+
+  /* Stat blocks */
+  .hero-stat {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 900;
+    font-size: 4rem;
+    line-height: 1;
+    color: white;
+    letter-spacing: -0.03em;
+  }
+
+  .big-number {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 900;
+    font-size: 3.5rem;
+    line-height: 1;
+    letter-spacing: -0.03em;
+    color: var(--ink);
+  }
+
+  .milestone-number {
+    font-family: 'Archivo', sans-serif;
+    font-weight: 900;
+    font-size: 2.5rem;
+    line-height: 1;
+    letter-spacing: -0.02em;
+  }
+
+  /* Quote styling */
+  .insight-quote {
+    border-left: 2px solid var(--teal);
+    padding-left: 1.5rem;
+    font-style: italic;
+    font-size: 1.05rem;
+    color: #374151;
+    line-height: 1.8;
+  }
+
+  /* Section divider */
+  .section-rule {
+    border: none;
+    border-top: 1px solid #e5e7eb;
+    margin: 0;
+  }
+
+  /* Evidence tag */
+  .evidence-tag {
+    font-family: 'SF Mono', 'JetBrains Mono', monospace;
+    font-size: 0.7rem;
+    color: var(--platinum);
+    letter-spacing: 0.05em;
+    text-transform: uppercase;
+  }
+
+  /* Risk callout */
+  .risk-callout {
+    border-left: 4px solid #f59e0b;
+    padding-left: 1.25rem;
+    background: #fffbeb;
+    padding-top: 1rem;
+    padding-bottom: 1rem;
+    padding-right: 1rem;
+  }
+
+  /* Platform badge */
+  .platform-badge {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    padding: 0.35rem 0.85rem;
+    border: 1px solid #e5e7eb;
+    border-radius: 4px;
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--ink);
+    background: white;
+  }
+
+  .platform-badge.active {
+    border-color: var(--teal);
+    background: var(--teal-dim);
+  }
+
+  /* Milestone card */
+  .milestone-card {
+    background: var(--teal-dim);
+    border-left: 4px solid var(--teal);
+    border-radius: 4px;
+  }
+
+  /* Bar chart simulation */
+  .bar-fill {
+    background: var(--teal);
+    border-radius: 2px;
+    transition: width 0.3s ease;
+  }
+
+  .bar-fill-muted {
+    background: #d1d5db;
+    border-radius: 2px;
+  }
+
+  /* Pricing tier */
+  .pricing-tier {
+    border: 1px solid #e5e7eb;
+    border-radius: 4px;
+    padding: 1.5rem;
+    position: relative;
+  }
+
+  .pricing-tier.featured {
+    border-color: var(--teal);
+    background: var(--teal-dim);
+  }
+
+  /* TAM circle visualization */
+  .market-ring {
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    border: 2px solid;
+  }
+
+  /* Scrollbar */
+  ::-webkit-scrollbar { width: 4px; }
+  ::-webkit-scrollbar-track { background: #f1f1f1; }
+  ::-webkit-scrollbar-thumb { background: var(--teal); border-radius: 2px; }
+
+  /* Print-ready typography */
+  h1, h2, h3 { letter-spacing: -0.02em; }
+
+  .label-caps {
+    font-size: 0.7rem;
+    font-weight: 600;
+    letter-spacing: 0.12em;
+    text-transform: uppercase;
+    color: var(--platinum);
+  }
+
+  /* Gradient text for hero only */
+  .teal-accent-text {
+    color: var(--teal);
+  }
+
+  /* Phase status indicators */
+  .status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 50%;
+    display: inline-block;
+    flex-shrink: 0;
+  }
+
+  .status-live { background: #22c55e; }
+  .status-growth { background: var(--teal); }
+  .status-planned { background: #f59e0b; }
+
+  /* Comparison bar */
+  .compare-bar-container {
+    height: 8px;
+    background: #f3f4f6;
+    border-radius: 2px;
+    overflow: hidden;
+  }
+
+  /* Invisible annotation lines */
+  .annotation-line {
+    border-top: 1px dashed #d1d5db;
+  }
+
+  .research-mobile-break { display: none; }
+</style>
+<style>*, ::before, ::after{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }::backdrop{--tw-border-spacing-x:0;--tw-border-spacing-y:0;--tw-translate-x:0;--tw-translate-y:0;--tw-rotate:0;--tw-skew-x:0;--tw-skew-y:0;--tw-scale-x:1;--tw-scale-y:1;--tw-pan-x: ;--tw-pan-y: ;--tw-pinch-zoom: ;--tw-scroll-snap-strictness:proximity;--tw-gradient-from-position: ;--tw-gradient-via-position: ;--tw-gradient-to-position: ;--tw-ordinal: ;--tw-slashed-zero: ;--tw-numeric-figure: ;--tw-numeric-spacing: ;--tw-numeric-fraction: ;--tw-ring-inset: ;--tw-ring-offset-width:0px;--tw-ring-offset-color:#fff;--tw-ring-color:rgb(59 130 246 / 0.5);--tw-ring-offset-shadow:0 0 #0000;--tw-ring-shadow:0 0 #0000;--tw-shadow:0 0 #0000;--tw-shadow-colored:0 0 #0000;--tw-blur: ;--tw-brightness: ;--tw-contrast: ;--tw-grayscale: ;--tw-hue-rotate: ;--tw-invert: ;--tw-saturate: ;--tw-sepia: ;--tw-drop-shadow: ;--tw-backdrop-blur: ;--tw-backdrop-brightness: ;--tw-backdrop-contrast: ;--tw-backdrop-grayscale: ;--tw-backdrop-hue-rotate: ;--tw-backdrop-invert: ;--tw-backdrop-opacity: ;--tw-backdrop-saturate: ;--tw-backdrop-sepia: ;--tw-contain-size: ;--tw-contain-layout: ;--tw-contain-paint: ;--tw-contain-style: }/* ! tailwindcss v3.4.17 | MIT License | https://tailwindcss.com */*,::after,::before{box-sizing:border-box;border-width:0;border-style:solid;border-color:#e5e7eb}::after,::before{--tw-content:''}:host,html{line-height:1.5;-webkit-text-size-adjust:100%;-moz-tab-size:4;tab-size:4;font-family:ui-sans-serif, system-ui, sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";font-feature-settings:normal;font-variation-settings:normal;-webkit-tap-highlight-color:transparent}body{margin:0;line-height:inherit}hr{height:0;color:inherit;border-top-width:1px}abbr:where([title]){-webkit-text-decoration:underline dotted;text-decoration:underline dotted}h1,h2,h3,h4,h5,h6{font-size:inherit;font-weight:inherit}a{color:inherit;text-decoration:inherit}b,strong{font-weight:bolder}code,kbd,pre,samp{font-family:ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;font-feature-settings:normal;font-variation-settings:normal;font-size:1em}small{font-size:80%}sub,sup{font-size:75%;line-height:0;position:relative;vertical-align:baseline}sub{bottom:-.25em}sup{top:-.5em}table{text-indent:0;border-color:inherit;border-collapse:collapse}button,input,optgroup,select,textarea{font-family:inherit;font-feature-settings:inherit;font-variation-settings:inherit;font-size:100%;font-weight:inherit;line-height:inherit;letter-spacing:inherit;color:inherit;margin:0;padding:0}button,select{text-transform:none}button,input:where([type=button]),input:where([type=reset]),input:where([type=submit]){-webkit-appearance:button;background-color:transparent;background-image:none}:-moz-focusring{outline:auto}:-moz-ui-invalid{box-shadow:none}progress{vertical-align:baseline}::-webkit-inner-spin-button,::-webkit-outer-spin-button{height:auto}[type=search]{-webkit-appearance:textfield;outline-offset:-2px}::-webkit-search-decoration{-webkit-appearance:none}::-webkit-file-upload-button{-webkit-appearance:button;font:inherit}summary{display:list-item}blockquote,dd,dl,figure,h1,h2,h3,h4,h5,h6,hr,p,pre{margin:0}fieldset{margin:0;padding:0}legend{padding:0}menu,ol,ul{list-style:none;margin:0;padding:0}dialog{padding:0}textarea{resize:vertical}input::placeholder,textarea::placeholder{opacity:1;color:#9ca3af}[role=button],button{cursor:pointer}:disabled{cursor:default}audio,canvas,embed,iframe,img,object,svg,video{display:block;vertical-align:middle}img,video{max-width:100%;height:auto}[hidden]:where(:not([hidden=until-found])){display:none}.absolute{position:absolute}.relative{position:relative}.sticky{position:sticky}.top-12{top:3rem}.right-0{right:0px}.top-0{top:0px}.z-10{z-index:10}.col-span-3{grid-column:span 3 / span 3}.col-span-5{grid-column:span 5 / span 5}.col-span-7{grid-column:span 7 / span 7}.col-span-9{grid-column:span 9 / span 9}.col-span-10{grid-column:span 10 / span 10}.col-span-2{grid-column:span 2 / span 2}.m-3{margin:0.75rem}.mx-auto{margin-left:auto;margin-right:auto}.my-10{margin-top:2.5rem;margin-bottom:2.5rem}.mb-1{margin-bottom:0.25rem}.mb-10{margin-bottom:2.5rem}.mb-16{margin-bottom:4rem}.mb-2{margin-bottom:0.5rem}.mb-3{margin-bottom:0.75rem}.mb-4{margin-bottom:1rem}.mb-6{margin-bottom:1.5rem}.mb-8{margin-bottom:2rem}.mt-1{margin-top:0.25rem}.mt-16{margin-top:4rem}.mt-2{margin-top:0.5rem}.mt-3{margin-top:0.75rem}.mt-4{margin-top:1rem}.mt-6{margin-top:1.5rem}.mt-8{margin-top:2rem}.ml-auto{margin-left:auto}.mt-10{margin-top:2.5rem}.block{display:block}.flex{display:flex}.grid{display:grid}.h-full{height:100%}.min-h-screen{min-height:100vh}.w-20{width:5rem}.w-72{width:18rem}.w-full{width:100%}.max-w-2xl{max-width:42rem}.max-w-5xl{max-width:64rem}.flex-1{flex:1 1 0%}.flex-shrink-0{flex-shrink:0}.grid-cols-12{grid-template-columns:repeat(12, minmax(0, 1fr))}.grid-cols-2{grid-template-columns:repeat(2, minmax(0, 1fr))}.grid-cols-3{grid-template-columns:repeat(3, minmax(0, 1fr))}.grid-cols-4{grid-template-columns:repeat(4, minmax(0, 1fr))}.flex-col{flex-direction:column}.items-start{align-items:flex-start}.items-center{align-items:center}.items-baseline{align-items:baseline}.justify-center{justify-content:center}.justify-between{justify-content:space-between}.gap-0{gap:0px}.gap-10{gap:2.5rem}.gap-12{gap:3rem}.gap-3{gap:0.75rem}.gap-4{gap:1rem}.gap-5{gap:1.25rem}.gap-6{gap:1.5rem}.gap-8{gap:2rem}.gap-16{gap:4rem}.space-y-3 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.75rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.75rem * var(--tw-space-y-reverse))}.space-y-4 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1rem * var(--tw-space-y-reverse))}.space-y-5 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.25rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.25rem * var(--tw-space-y-reverse))}.space-y-6 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(1.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(1.5rem * var(--tw-space-y-reverse))}.space-y-2 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(0.5rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(0.5rem * var(--tw-space-y-reverse))}.space-y-8 > :not([hidden]) ~ :not([hidden]){--tw-space-y-reverse:0;margin-top:calc(2rem * calc(1 - var(--tw-space-y-reverse)));margin-bottom:calc(2rem * var(--tw-space-y-reverse))}.rounded{border-radius:0.25rem}.border{border-width:1px}.border-b{border-bottom-width:1px}.border-gray-100{--tw-border-opacity:1;border-color:rgb(243 244 246 / var(--tw-border-opacity, 1))}.border-gray-200{--tw-border-opacity:1;border-color:rgb(229 231 235 / var(--tw-border-opacity, 1))}.border-white{--tw-border-opacity:1;border-color:rgb(255 255 255 / var(--tw-border-opacity, 1))}.border-opacity-10{--tw-border-opacity:0.1}.bg-amber-50{--tw-bg-opacity:1;background-color:rgb(255 251 235 / var(--tw-bg-opacity, 1))}.bg-gray-50{--tw-bg-opacity:1;background-color:rgb(249 250 251 / var(--tw-bg-opacity, 1))}.bg-white{--tw-bg-opacity:1;background-color:rgb(255 255 255 / var(--tw-bg-opacity, 1))}.bg-gray-900{--tw-bg-opacity:1;background-color:rgb(17 24 39 / var(--tw-bg-opacity, 1))}.p-4{padding:1rem}.p-5{padding:1.25rem}.p-6{padding:1.5rem}.p-8{padding:2rem}.px-12{padding-left:3rem;padding-right:3rem}.px-4{padding-left:1rem;padding-right:1rem}.px-8{padding-left:2rem;padding-right:2rem}.py-16{padding-top:4rem;padding-bottom:4rem}.py-24{padding-top:6rem;padding-bottom:6rem}.py-6{padding-top:1.5rem;padding-bottom:1.5rem}.py-8{padding-top:2rem;padding-bottom:2rem}.py-10{padding-top:2.5rem;padding-bottom:2.5rem}.py-4{padding-top:1rem;padding-bottom:1rem}.pb-20{padding-bottom:5rem}.pb-4{padding-bottom:1rem}.pl-12{padding-left:3rem}.pl-8{padding-left:2rem}.pr-8{padding-right:2rem}.pt-12{padding-top:3rem}.pt-3{padding-top:0.75rem}.pt-6{padding-top:1.5rem}.pb-16{padding-bottom:4rem}.pt-4{padding-top:1rem}.pt-8{padding-top:2rem}.text-center{text-align:center}.text-right{text-align:right}.text-2xl{font-size:1.5rem;line-height:2rem}.text-3xl{font-size:1.875rem;line-height:2.25rem}.text-base{font-size:1rem;line-height:1.5rem}.text-lg{font-size:1.125rem;line-height:1.75rem}.text-sm{font-size:0.875rem;line-height:1.25rem}.text-xl{font-size:1.25rem;line-height:1.75rem}.text-xs{font-size:0.75rem;line-height:1rem}.font-black{font-weight:900}.font-bold{font-weight:700}.font-semibold{font-weight:600}.uppercase{text-transform:uppercase}.not-italic{font-style:normal}.leading-relaxed{line-height:1.625}.leading-tight{line-height:1.25}.tracking-wide{letter-spacing:0.025em}.tracking-wider{letter-spacing:0.05em}.text-gray-400{--tw-text-opacity:1;color:rgb(156 163 175 / var(--tw-text-opacity, 1))}.text-gray-500{--tw-text-opacity:1;color:rgb(107 114 128 / var(--tw-text-opacity, 1))}.text-gray-600{--tw-text-opacity:1;color:rgb(75 85 99 / var(--tw-text-opacity, 1))}.text-gray-700{--tw-text-opacity:1;color:rgb(55 65 81 / var(--tw-text-opacity, 1))}.text-gray-800{--tw-text-opacity:1;color:rgb(31 41 55 / var(--tw-text-opacity, 1))}.text-gray-900{--tw-text-opacity:1;color:rgb(17 24 39 / var(--tw-text-opacity, 1))}.text-white{--tw-text-opacity:1;color:rgb(255 255 255 / var(--tw-text-opacity, 1))}.text-amber-700{--tw-text-opacity:1;color:rgb(180 83 9 / var(--tw-text-opacity, 1))}.text-opacity-40{--tw-text-opacity:0.4}</style>
+<style>
+  @media (max-width: 760px) {
+    html, body { width: 100%; max-width: 100%; overflow-x: hidden; }
+    body { font-size: 15px; }
+    section { max-width: 100vw; overflow: hidden; }
+    .px-12, .px-8 { padding-left: 1.5rem !important; padding-right: 1.5rem !important; }
+    .pl-12, .pl-8 { padding-left: 1.25rem !important; }
+    .pr-8 { padding-right: 1.25rem !important; }
+    .py-24 { padding-top: 4rem !important; padding-bottom: 4rem !important; }
+    .py-16 { padding-top: 3rem !important; padding-bottom: 3rem !important; }
+    .min-h-screen { min-height: auto !important; }
+    .hero-bg > .relative.z-10.flex.items-center.justify-between { flex-direction: column; align-items: flex-start; gap: 1rem; }
+    .grid, .grid-cols-12, .grid-cols-2, .grid-cols-3, .grid-cols-4 { grid-template-columns: minmax(0, 1fr) !important; }
+    .grid > *, .flex > * { min-width: 0 !important; }
+    .col-span-2, .col-span-3, .col-span-5, .col-span-7, .col-span-9, .col-span-10 { grid-column: span 1 / span 1 !important; }
+    .gap-16 { gap: 2rem !important; }
+    .gap-12, .gap-10, .gap-8 { gap: 1.5rem !important; }
+    .hero-bg h1 { font-size: clamp(2.25rem, 10vw, 2.75rem) !important; line-height: 1.04 !important; overflow-wrap: normal; max-width: 100% !important; }
+    .hero-bg h1 span { display: block; }
+    .desktop-space { display: none; }
+    .research-mobile-break { display: inline; }
+    p, h2, h3, h4, li { overflow-wrap: anywhere; }
+    .hero-bg p { font-size: 1rem !important; line-height: 1.65 !important; max-width: 100% !important; }
+    .hero-stat { font-size: clamp(2.75rem, 16vw, 4rem) !important; }
+    .big-number { font-size: clamp(2.35rem, 12vw, 3.5rem) !important; }
+    .milestone-number { font-size: clamp(1.8rem, 8vw, 2.5rem) !important; }
+    .label-caps { font-size: 0.65rem !important; overflow-wrap: anywhere; }
+    .w-72, .w-20 { width: 100% !important; }
+    .sticky { position: relative !important; }
+    .top-12 { top: auto !important; }
+  }
+</style></head>
 <body>
-  <div id="root"></div>
-  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
-  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
-  <script type="text/babel" src="shared.jsx"></script>
-  <script type="text/babel">
-    const sources = [
-      {
-        metric: '0-30 sec',
-        title: 'The danger window.',
-        copy: 'The paid research frames the first 0-30 seconds as the point where discovery fails before product pages, carts, upsells, reviews, or checkout fixes ever get a chance to work.',
-        link: '#paid-report',
-        label: 'Atypica.AI Business Intelligence Report, May 2026'
-      },
-      {
-        metric: '50-52%',
-        title: 'Mobile is where the bleed happens.',
-        copy: 'The research cites 50-52% mobile bounce rates and 65-75% mobile traffic share. That is why the early session matters: most shoppers are mobile, impatient, and deciding fast.',
-        link: 'https://contentsquare.com/blog/digital-experience-benchmark-report-2024/',
-        label: 'Contentsquare Digital Experience Benchmark'
-      },
-      {
-        metric: '13 ms',
-        title: 'The eye is not the bottleneck.',
-        copy: 'MIT research found the brain can identify images seen for as little as 13 milliseconds. Vrrrt is built around that truth: shoppers can process product visuals faster than stores usually deliver them.',
-        link: 'https://news.mit.edu/2014/in-the-blink-of-an-eye-0116',
-        label: 'MIT News: In the blink of an eye'
-      },
-      {
-        metric: '3.5',
-        title: 'The normal discovery ceiling.',
-        copy: 'The paid report cites 3.5 average pages per session globally. Most stores do not get shoppers deep enough into the catalog before patience runs out.',
-        link: '#paid-report',
-        label: 'Atypica.AI benchmark aggregation'
-      },
-      {
-        metric: '3 to 5',
-        title: 'Where buying intent starts.',
-        copy: 'The report separates two important windows: 3-5 product views for serious product consideration, and 3-5 minute sessions for peak conversion probability.',
-        link: '#paid-report',
-        label: 'Atypica.AI Business Intelligence Report'
-      },
-      {
-        metric: '27x',
-        title: 'The throughput advantage.',
-        copy: 'The 27x claim compares 540 products in 3 minutes against the old 20-product browsing baseline. Same time. Far more exposure. More chances for something to hit.',
-        link: '#paid-report',
-        label: 'Atypica.AI 540 / 3 Advantage'
-      }
-    ];
 
-    const App = () => (
-      <div className="page">
-        <Header active="research" dark />
-        <main>
-          <section className="hero">
-            <div className="wrap">
-              <div className="eyebrow">RESEARCH, NOT THUMB-SUCKING</div>
-              <h1>Here is where the numbers come from.</h1>
-              <p className="lead">
-                The page talks hard because the data is hard. These are the sources behind the 0-30 second danger zone, the discovery ceiling, and the Rapid Discovery Cube argument.
-              </p>
-            </div>
-          </section>
-          <section>
-            <div className="wrap source-grid">
-              {sources.map((s) => (
-                <article className="source-card" key={s.metric + s.title}>
-                  <strong>{s.metric}</strong>
-                  <h2>{s.title}</h2>
-                  <p>{s.copy}</p>
-                  <a href={s.link}>{s.label} →</a>
-                </article>
-              ))}
-            </div>
-            <div className="wrap">
-              <p className="note" id="paid-report">
-                The Atypica.AI report is a paid business-intelligence report supplied by the Vrrrt founders. Public links are included where the underlying source is available online. Vrrrt claims should be read as research-backed commercial positioning, not guaranteed outcomes for every store.
-              </p>
-            </div>
-          </section>
-        </main>
-        <Footer />
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- HERO: Dark Slate Investment Memorandum Opening          -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<section class="hero-bg min-h-screen flex flex-col">
+  <div class="hero-grid-line"></div>
+
+  <!-- Top nav bar -->
+  <div class="relative z-10 flex items-center justify-between px-12 py-6 border-b border-white border-opacity-10">
+    <div class="flex items-center gap-3">
+      <div style="width:28px;height:28px;background:var(--teal);border-radius:4px;"></div>
+      <span class="font-archivo font-bold text-white text-sm tracking-wider uppercase">atypica.AI</span>
+    </div>
+    <div class="flex items-center gap-6">
+      <span class="label-caps text-white text-opacity-40" style="color:rgba(255,255,255,0.4);">BUSINESS INTELLIGENCE REPORT</span>
+      <span class="font-mono-custom text-xs" style="color:rgba(255,255,255,0.3);">MAY 2026</span>
+    </div>
+  </div>
+
+  <!-- Hero main content -->
+  <div class="relative z-10 flex-1 flex items-center">
+    <div class="max-w-5xl mx-auto px-12 py-16 w-full">
+
+      <!-- Category label -->
+      <div class="flex items-center gap-3 mb-10">
+        <div style="width:32px;height:2px;background:var(--teal);"></div>
+        <span class="label-caps" style="color:rgba(255,255,255,0.5);">E-COMMERCE DISCOVERY INTELLIGENCE · 2026</span>
       </div>
-    );
 
-    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
-  </script>
-</body>
-</html>
+      <!-- Main headline -->
+      <h1 class="font-archivo font-black text-white mb-6" style="font-size:clamp(2.8rem,6vw,5rem);line-height:1.02;letter-spacing:-0.03em;max-width:820px;">
+        The 540 / 3<span class="desktop-space"> </span><span class="research-mobile-break"><br></span>Advantage:<br>
+        <span style="color:var(--teal);">Rapid Discovery</span> as the<br>
+        New Conversion Architecture
+      </h1>
+
+      <p class="text-white mt-8 max-w-2xl" style="font-size:1.1rem;line-height:1.8;opacity:0.7;">
+        Industry benchmark data, behavioral science, and category-specific metrics establish the quantitative case for a paradigm shift in how consumers find — and buy — products in the visual-first era.
+      </p>
+
+      <!-- Three hero stats -->
+      <div class="grid grid-cols-3 gap-0 mt-16 pt-12" style="border-top:1px solid rgba(255,255,255,0.1);">
+
+        <div class="pr-8" style="border-right:1px solid rgba(255,255,255,0.1);">
+          <div class="hero-stat teal-accent-text">540</div>
+          <p class="mt-3 font-archivo font-semibold text-white text-sm tracking-wide uppercase">Products Discoverable</p>
+          <p class="mt-1 text-sm" style="color:rgba(255,255,255,0.45);">per 3-minute session vs. industry standard of 8–20 in 30 seconds</p>
+        </div>
+
+        <div class="px-8" style="border-right:1px solid rgba(255,255,255,0.1);">
+          <div class="hero-stat">13<span class="text-3xl font-archivo font-bold" style="color:rgba(255,255,255,0.6);">ms</span></div>
+          <p class="mt-3 font-archivo font-semibold text-white text-sm tracking-wide uppercase">Visual Processing Speed</p>
+          <p class="mt-1 text-sm" style="color:rgba(255,255,255,0.45);">MIT-documented human brain image recognition threshold</p>
+        </div>
+
+        <div class="pl-8">
+          <div class="hero-stat teal-accent-text">$14.5B</div>
+          <p class="mt-3 font-archivo font-semibold text-white text-sm tracking-wide uppercase">Total Addressable Market</p>
+          <p class="mt-1 text-sm" style="color:rgba(255,255,255,0.45);">Global e-commerce discovery infrastructure, 2026 estimate</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+
+  <!-- Atmospheric hero image -->
+  <div class="relative z-10 w-full" style="height:220px;overflow:hidden;">
+    <img src="assets/research-velocity-topology.png" alt="Abstract data velocity visualization" style="width:100%;height:100%;object-fit:cover;opacity:0.55;">
+    <div style="position:absolute;inset:0;background:linear-gradient(to bottom, var(--slate) 0%, transparent 40%, transparent 60%, var(--slate) 100%);"></div>
+  </div>
+
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- SECTION 1: Research Background                         -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<section class="py-24 bg-white">
+  <div class="max-w-5xl mx-auto px-12">
+
+    <div class="grid grid-cols-12 gap-12">
+
+      <!-- Left: Section label -->
+      <div class="col-span-3">
+        <div class="sticky top-12">
+          <span class="label-caps" style="color:var(--teal);">01</span>
+          <h2 class="font-archivo font-bold text-2xl mt-3 text-gray-900 leading-tight">Research Background</h2>
+          <div style="width:32px;height:2px;background:var(--teal);margin-top:16px;"></div>
+        </div>
+      </div>
+
+      <!-- Right: Content -->
+      <div class="col-span-9">
+
+        <h3 class="font-archivo font-bold text-3xl text-gray-900 leading-tight mb-6" style="letter-spacing:-0.02em;">
+          Discovery is broken. The evidence is in the bounce rate.
+        </h3>
+
+        <p class="text-gray-600 mb-8 leading-relaxed">
+          Every Shopify merchant faces a structurally identical problem: a visitor arrives, cannot rapidly determine whether the store carries what they're looking for, and leaves within seconds. This is not a branding failure or a pricing failure — it is a <strong class="text-gray-900">discovery infrastructure failure</strong>.
+        </p>
+
+        <p class="text-gray-600 mb-8 leading-relaxed">
+          The conventional product browsing paradigm — paginated grids delivering 20 to 48 product thumbnails per page, requiring clicks and load cycles — was designed for desktop sessions and catalog-era mindsets. In 2026, it persists as the dominant UI pattern despite behavioral data indicating that shoppers have fundamentally changed how they scan, assess, and decide.
+        </p>
+
+        <!-- Key problem statement in milestone card -->
+        <div class="milestone-card p-8 my-10">
+          <span class="label-caps" style="color:var(--teal);">The Core Tension</span>
+          <p class="font-archivo font-bold text-2xl text-gray-900 mt-3 mb-4 leading-tight">
+            The human brain can process an image in 13 milliseconds. The average Shopify store delivers 8–20 images in 30 seconds.
+          </p>
+          <p class="text-gray-600 text-sm leading-relaxed">
+            The gap between biological capability and technological delivery represents both the commercial problem and the product opportunity this report quantifies.
+          </p>
+        </div>
+
+        <p class="text-gray-600 leading-relaxed">
+          This intelligence report documents the quantitative business case for rapid product discovery technology: specifically, the market mechanics, behavioral science, category data, and go-to-market trajectory for a Shopify application enabling shoppers to evaluate <strong class="text-gray-900">540 products in 3 minutes</strong> — a 27x increase in discovery throughput relative to baseline industry behavior.
+        </p>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-rule">
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- SECTION 2: Information Sources                         -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<section class="py-24" style="background:var(--mist);">
+  <div class="max-w-5xl mx-auto px-12">
+
+    <div class="grid grid-cols-12 gap-12">
+
+      <div class="col-span-3">
+        <div class="sticky top-12">
+          <span class="label-caps" style="color:var(--teal);">02</span>
+          <h2 class="font-archivo font-bold text-2xl mt-3 text-gray-900 leading-tight">Data Sources &amp; Credibility</h2>
+          <div style="width:32px;height:2px;background:var(--teal);margin-top:16px;"></div>
+        </div>
+      </div>
+
+      <div class="col-span-9">
+
+        <p class="text-gray-600 mb-10 leading-relaxed">
+          Findings in this report draw from six distinct categories of evidence, triangulated across multiple independent sources to prevent single-source bias in benchmark figures.
+        </p>
+
+        <div class="grid grid-cols-2 gap-6">
+
+          <div class="bg-white p-6 border border-gray-100 rounded" style="border-radius:4px;">
+            <div style="width:24px;height:24px;border:2px solid var(--teal);border-radius:4px;margin-bottom:12px;"></div>
+            <h4 class="font-archivo font-bold text-base text-gray-900 mb-2">Industry Benchmark Reports</h4>
+            <p class="text-sm text-gray-500 leading-relaxed">Contentsquare 2024 Digital Experience Benchmark, Deloitte 2024, CXL Institute, GA4 sector analytics, IRP Commerce, Adobe Digital Insights, Statista 2025 vertical data.</p>
+          </div>
+
+          <div class="bg-white p-6 border border-gray-100 rounded" style="border-radius:4px;">
+            <div style="width:24px;height:24px;border:2px solid var(--teal);border-radius:4px;margin-bottom:12px;"></div>
+            <h4 class="font-archivo font-bold text-base text-gray-900 mb-2">Peer-Reviewed Academic Research</h4>
+            <p class="text-sm text-gray-500 leading-relaxed">MIT neuroscience studies on visual processing speed. Mallapragada et al. (2016) on session depth and conversion efficiency. Information Foraging Theory (Pirolli &amp; Card). Paradox of Choice field experiments.</p>
+          </div>
+
+          <div class="bg-white p-6 border border-gray-100 rounded" style="border-radius:4px;">
+            <div style="width:24px;height:24px;border:2px solid var(--teal);border-radius:4px;margin-bottom:12px;"></div>
+            <h4 class="font-archivo font-bold text-base text-gray-900 mb-2">Category-Specific Vertical Data</h4>
+            <p class="text-sm text-gray-500 leading-relaxed">Apparel/Fashion PDP behavior studies; Home &amp; Garden multi-device session analytics; comparative desktop vs. mobile conversion funnels across 2024–2026 projections.</p>
+          </div>
+
+          <div class="bg-white p-6 border border-gray-100 rounded" style="border-radius:4px;">
+            <div style="width:24px;height:24px;border:2px solid var(--teal);border-radius:4px;margin-bottom:12px;"></div>
+            <h4 class="font-archivo font-bold text-base text-gray-900 mb-2">Large-Scale Consumer Field Experiments</h4>
+            <p class="text-sm text-gray-500 leading-relaxed">2025 field experiment spanning 1.6 million consumers on choice architecture and conversion. Adobe Analytics cross-platform session projections spanning 65–75M mobile sessions.</p>
+          </div>
+
+          <div class="bg-white p-6 border border-gray-100 rounded" style="border-radius:4px;">
+            <div style="width:24px;height:24px;border:2px solid var(--teal);border-radius:4px;margin-bottom:12px;"></div>
+            <h4 class="font-archivo font-bold text-base text-gray-900 mb-2">Platform-Native Shopify Analytics</h4>
+            <p class="text-sm text-gray-500 leading-relaxed">Databox 2024 Shopify benchmark panels. GA4 e-commerce schema conversion funnels. Shopify internal merchant data ranges cited via third-party benchmark aggregation.</p>
+          </div>
+
+          <div class="bg-white p-6 border border-gray-100 rounded" style="border-radius:4px;">
+            <div style="width:24px;height:24px;border:2px solid var(--teal);border-radius:4px;margin-bottom:12px;"></div>
+            <h4 class="font-archivo font-bold text-base text-gray-900 mb-2">Demographic Segmentation Research</h4>
+            <p class="text-sm text-gray-500 leading-relaxed">Gen Z vs. Millennial purchase behavior studies. Social commerce discovery pattern analysis. Impulse vs. deliberate browsing modality research across cohorts.</p>
+          </div>
+
+        </div>
+
+        <div class="mt-8 p-4 border border-gray-200 rounded" style="border-radius:4px;background:white;">
+          <p class="text-sm text-gray-500 leading-relaxed">
+            <span class="font-mono-custom text-xs" style="color:var(--teal);">NOTE ON DATA RECENCY</span>&nbsp;&nbsp;Where ranges are presented (e.g., CVR 1.4%–1.8%), the range reflects variation across source methodologies and merchant cohorts rather than uncertainty in the underlying measurement. The research treats conservative figures as baseline and top-quartile figures as opportunity ceiling.
+          </p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-rule">
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- SECTION 3: KEY FINDINGS — The Performance Gap          -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<section class="py-24 bg-white">
+  <div class="max-w-5xl mx-auto px-12">
+
+    <div class="mb-16">
+      <span class="label-caps" style="color:var(--teal);">03 · KEY FINDINGS &amp; PLANNING INSIGHTS</span>
+      <h2 class="font-archivo font-black text-gray-900 mt-4 mb-6" style="font-size:2.8rem;letter-spacing:-0.03em;line-height:1.05;">
+        Five Structural Findings That Define the Opportunity
+      </h2>
+      <p class="text-gray-500 max-w-2xl leading-relaxed">Ordered by commercial significance. Each finding traces to primary source evidence with reasoning chain from data to strategic implication.</p>
+    </div>
+
+    <!-- ──────────────────────────────────────────── -->
+    <!-- FINDING 1: The Bounce Crisis -->
+    <!-- ──────────────────────────────────────────── -->
+    <div class="timeline-spine pl-12 pb-20 relative">
+      <div class="timeline-node" style="top:4px;"></div>
+
+      <div class="mb-3">
+        <span class="label-caps" style="color:var(--teal);">FINDING 01 · HIGHEST PRIORITY</span>
+      </div>
+
+      <h3 class="font-archivo font-bold text-2xl text-gray-900 mb-8" style="letter-spacing:-0.02em;">
+        The Bounce Crisis: Half of All Mobile Visitors Are Leaving Before Discovery Begins
+      </h3>
+
+      <!-- Big number emphasis -->
+      <div class="grid grid-cols-3 gap-6 mb-10">
+        <div class="text-center py-8 px-4" style="border:1px solid #e5e7eb;border-radius:4px;">
+          <div class="big-number" style="font-size:3rem;color:var(--ink);">45.68%</div>
+          <p class="label-caps mt-3">Global avg. bounce rate</p>
+          <p class="text-xs text-gray-400 mt-1">Contentsquare 2024</p>
+        </div>
+        <div class="text-center py-8 px-4" style="border:1px solid var(--teal);background:var(--teal-dim);border-radius:4px;">
+          <div class="big-number" style="font-size:3rem;color:var(--ink);">50–52%</div>
+          <p class="label-caps mt-3">Mobile bounce rate</p>
+          <p class="text-xs text-gray-400 mt-1">CXL Institute · Databox 2024</p>
+        </div>
+        <div class="text-center py-8 px-4" style="border:1px solid #e5e7eb;border-radius:4px;">
+          <div class="big-number" style="font-size:3rem;color:var(--ink);">&lt;35%</div>
+          <p class="label-caps mt-3">Top 20% of stores</p>
+          <p class="text-xs text-gray-400 mt-1">Shopify top-performer threshold</p>
+        </div>
+      </div>
+
+      <!-- Time milestone visualization -->
+      <div class="my-10">
+        <p class="label-caps mb-6">Session Behavior by Time Milestone</p>
+        <div class="space-y-4">
+
+          <div class="flex items-center gap-4">
+            <span class="font-mono-custom text-sm w-20 text-right flex-shrink-0" style="color:var(--ink);">3 sec</span>
+            <div class="flex-1 compare-bar-container">
+              <div class="bar-fill h-full" style="width:53%;"></div>
+            </div>
+            <span class="text-sm text-gray-600 w-72 flex-shrink-0">53% of mobile users abandon slow-loading sites</span>
+          </div>
+
+          <div class="flex items-center gap-4">
+            <span class="font-mono-custom text-sm w-20 text-right flex-shrink-0" style="color:var(--ink);">10 sec</span>
+            <div class="flex-1 compare-bar-container">
+              <div class="bar-fill h-full" style="width:30%;background:#d1d5db;"></div>
+            </div>
+            <span class="text-sm text-gray-600 w-72 flex-shrink-0">GA4 defines this as minimum "Engaged Session" threshold</span>
+          </div>
+
+          <div class="flex items-center gap-4">
+            <span class="font-mono-custom text-sm w-20 text-right flex-shrink-0" style="color:var(--ink);">30 sec</span>
+            <div class="flex-1 compare-bar-container">
+              <div class="bar-fill h-full" style="width:72%;"></div>
+            </div>
+            <span class="text-sm text-gray-600 w-72 flex-shrink-0">+30 sec on PDP = 3–5% CVR lift; checkout &gt;30s = 50% abandonment</span>
+          </div>
+
+          <div class="flex items-center gap-4">
+            <span class="font-mono-custom text-sm w-20 text-right flex-shrink-0" style="color:var(--ink);">3–5 min</span>
+            <div class="flex-1 compare-bar-container">
+              <div class="bar-fill h-full" style="width:100%;"></div>
+            </div>
+            <span class="text-sm text-gray-600 w-72 flex-shrink-0">Peak conversion probability window — sessions at 40% higher "Add to Cart" rate</span>
+          </div>
+
+        </div>
+        <p class="evidence-tag mt-4">Sources: Deloitte 2024, GA4 Engaged Session Definition, Contentsquare 2024, Databox 2024</p>
+      </div>
+
+      <div class="insight-quote mb-8">
+        "Adding 30 seconds of engagement to a product page correlates with a 3-5% conversion rate lift. Sessions active at the 30-second mark show a 40% increase in Add to Cart probability."
+        <span class="block mt-2 not-italic text-xs text-gray-400 font-mono-custom">— CONTENTSQUARE 2024 DIGITAL EXPERIENCE BENCHMARK</span>
+      </div>
+
+      <div class="p-6 bg-gray-50 rounded mt-6" style="border-radius:4px;">
+        <p class="label-caps mb-2">REASONING CHAIN</p>
+        <p class="text-sm text-gray-700 leading-relaxed">
+          <strong>We found</strong> that mobile bounce rates sit at 50–52% globally, with checkout abandonment triggering at the 30-second mark. <strong>Evidence shows</strong> that the sessions most likely to convert are those reaching the 3–5 minute engagement window — a threshold most stores never achieve. <strong>This means</strong> the fundamental problem is not checkout friction; it is pre-checkout discovery infrastructure that fails to sustain engagement long enough for purchase intent to crystallize.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- ──────────────────────────────────────────── -->
+    <!-- FINDING 2: The 13ms Moat -->
+    <!-- ──────────────────────────────────────────── -->
+    <div class="timeline-spine pl-12 pb-20 relative">
+      <div class="timeline-node" style="top:4px;"></div>
+
+      <div class="mb-3">
+        <span class="label-caps" style="color:var(--teal);">FINDING 02 · BEHAVIORAL SCIENCE</span>
+      </div>
+
+      <h3 class="font-archivo font-bold text-2xl text-gray-900 mb-8" style="letter-spacing:-0.02em;">
+        The 13-Millisecond Window: Human Visual Processing Creates a Physics-Level Competitive Moat
+      </h3>
+
+      <div class="grid grid-cols-2 gap-8 mb-10">
+        <div>
+          <!-- Giant number -->
+          <div style="font-family:&#39;Archivo&#39;,sans-serif;font-weight:900;font-size:5rem;line-height:1;letter-spacing:-0.04em;color:var(--teal);">13ms</div>
+          <p class="font-archivo font-semibold text-gray-900 mt-3">Time for brain to recognize a visual image</p>
+          <p class="evidence-tag mt-2">MIT Research · Journal of Neuroscience</p>
+
+          <div class="mt-8">
+            <div style="font-family:&#39;Archivo&#39;,sans-serif;font-weight:900;font-size:3rem;line-height:1;letter-spacing:-0.03em;color:var(--ink);">60,000×</div>
+            <p class="font-archivo font-semibold text-gray-900 mt-3">Speed advantage of visual vs. text processing</p>
+            <p class="evidence-tag mt-2">Information Foraging Theory · Pirolli &amp; Card</p>
+          </div>
+        </div>
+
+        <div class="space-y-6">
+          <div>
+            <p class="label-caps mb-3">Current Industry Standard</p>
+            <div class="flex items-center gap-3">
+              <div style="width:48px;height:48px;border:2px solid #e5e7eb;border-radius:4px;display:flex;align-items:center;justify-content:center;">
+                <div style="width:32px;height:32px;background:#f3f4f6;border-radius:2px;"></div>
+              </div>
+              <div>
+                <p class="font-archivo font-bold text-xl text-gray-900">8–20 images</p>
+                <p class="text-sm text-gray-500">delivered per 30-second window</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="annotation-line pt-6">
+            <p class="label-caps mb-3" style="color:var(--teal);">Rapid Discovery Standard</p>
+            <div class="flex items-center gap-3">
+              <div style="width:48px;height:48px;border:2px solid var(--teal);background:var(--teal-dim);border-radius:4px;display:flex;align-items:center;justify-content:center;">
+                <div style="width:32px;height:32px;background:var(--teal);border-radius:2px;opacity:0.6;"></div>
+              </div>
+              <div>
+                <p class="font-archivo font-bold text-xl text-gray-900">540 products</p>
+                <p class="text-sm text-gray-500">discoverable per 3-minute session</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="annotation-line pt-6">
+            <p class="text-sm text-gray-500 leading-relaxed">
+              At 13ms per image, the human visual system can theoretically evaluate approximately 4,600 images per minute. The 540-product target operates at roughly <strong class="text-gray-900">12% of biological capacity</strong> — comfortable and non-fatiguing, while still delivering 27x the throughput of conventional grid navigation.
+            </p>
+          </div>
+        </div>
+      </div>
+
+      <div class="insight-quote mb-6">
+        "Information Foraging Theory establishes that users continuously evaluate the Gain/Cost Ratio — perceived information value gained versus cognitive effort expended. When a browsing experience fails this ratio test, users abandon the information environment and seek a more efficient scent trail."
+        <span class="block mt-2 not-italic text-xs text-gray-400 font-mono-custom">— INFORMATION FORAGING THEORY · PIROLLI &amp; CARD (ADAPTED FOR E-COMMERCE CONTEXT)</span>
+      </div>
+
+      <div class="p-6 bg-gray-50 rounded" style="border-radius:4px;">
+        <p class="label-caps mb-2">REASONING CHAIN</p>
+        <p class="text-sm text-gray-700 leading-relaxed">
+          <strong>We found</strong> that human visual processing operates at 13ms per image — a biological constant, not a technological variable. <strong>Evidence shows</strong> that the cognitive cost of slow pagination (click → load → scan → repeat) violates the Gain/Cost ratio at which users engage productively. <strong>This means</strong> a product that eliminates click-friction and delivers images at speed creates a structural moat rooted in neuroscience, not software features — making it extremely difficult to replicate through conventional UI optimization.
+        </p>
+      </div>
+
+    </div>
+
+    <!-- ──────────────────────────────────────────── -->
+    <!-- FINDING 3: Category Intelligence -->
+    <!-- ──────────────────────────────────────────── -->
+    <div class="timeline-spine pl-12 pb-20 relative">
+      <div class="timeline-node" style="top:4px;"></div>
+
+      <div class="mb-3">
+        <span class="label-caps" style="color:var(--teal);">FINDING 03 · CATEGORY ANALYSIS</span>
+      </div>
+
+      <h3 class="font-archivo font-bold text-2xl text-gray-900 mb-8" style="letter-spacing:-0.02em;">
+        Apparel Shoppers Are Already High-Volume Browsers — The Infrastructure Just Fails Them
+      </h3>
+
+      <div class="grid grid-cols-2 gap-10 mb-10">
+
+        <!-- Apparel Column -->
+        <div>
+          <div class="flex items-center gap-3 mb-6">
+            <div style="width:10px;height:10px;background:var(--teal);border-radius:50%;"></div>
+            <span class="font-archivo font-bold text-lg text-gray-900">Apparel &amp; Fashion</span>
+          </div>
+
+          <div class="space-y-5">
+            <div>
+              <div class="flex justify-between items-baseline mb-1">
+                <span class="text-sm text-gray-600">Pages per session</span>
+                <span class="font-mono-custom text-sm font-bold text-gray-900">8.0–10.0</span>
+              </div>
+              <div class="compare-bar-container">
+                <div class="bar-fill" style="height:8px;width:88%;"></div>
+              </div>
+              <p class="text-xs text-gray-400 mt-1">vs. 4.3–4.7 global e-commerce average</p>
+            </div>
+
+            <div>
+              <div class="flex justify-between items-baseline mb-1">
+                <span class="text-sm text-gray-600">Unique PDPs visited</span>
+                <span class="font-mono-custom text-sm font-bold text-gray-900">3–8 PDPs</span>
+              </div>
+              <div class="compare-bar-container">
+                <div class="bar-fill" style="height:8px;width:65%;"></div>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex justify-between items-baseline mb-1">
+                <span class="text-sm text-gray-600">Conversion Rate (2025)</span>
+                <span class="font-mono-custom text-sm font-bold text-gray-900">2.9–3.3%</span>
+              </div>
+              <div class="compare-bar-container">
+                <div class="bar-fill" style="height:8px;width:72%;background:#10b981;"></div>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex justify-between items-baseline mb-1">
+                <span class="text-sm text-gray-600">PDP purchase probability peak</span>
+                <span class="font-mono-custom text-sm font-bold text-gray-900">50 sec</span>
+              </div>
+              <div class="compare-bar-container">
+                <div class="bar-fill" style="height:8px;width:45%;"></div>
+              </div>
+            </div>
+
+            <div class="pt-3 p-4" style="background:var(--teal-dim);border-left:2px solid var(--teal);border-radius:0 4px 4px 0;">
+              <p class="text-sm text-gray-700 leading-relaxed">
+                <strong>Key Insight:</strong> Viewing 3+ unique PDPs correlates with being <strong>4x to 6x more likely to convert</strong> (IRP Commerce, Adobe Digital Insights). Apparel shoppers are biologically wired for discovery-heavy behavior — current tools simply cannot keep pace.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- Home/Garden Column -->
+        <div>
+          <div class="flex items-center gap-3 mb-6">
+            <div style="width:10px;height:10px;border:2px solid var(--ink);border-radius:50%;"></div>
+            <span class="font-archivo font-bold text-lg text-gray-900">Home, Garden &amp; Furniture</span>
+          </div>
+
+          <div class="space-y-5">
+            <div>
+              <div class="flex justify-between items-baseline mb-1">
+                <span class="text-sm text-gray-600">Pages per session</span>
+                <span class="font-mono-custom text-sm font-bold text-gray-900">4.8–6.5</span>
+              </div>
+              <div class="compare-bar-container">
+                <div class="bar-fill" style="height:8px;width:60%;background:#d1d5db;"></div>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex justify-between items-baseline mb-1">
+                <span class="text-sm text-gray-600">Mobile traffic share</span>
+                <span class="font-mono-custom text-sm font-bold text-gray-900">73–82%</span>
+              </div>
+              <div class="compare-bar-container">
+                <div class="bar-fill" style="height:8px;width:80%;background:#f59e0b;"></div>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex justify-between items-baseline mb-1">
+                <span class="text-sm text-gray-600">Mobile Web CVR</span>
+                <span class="font-mono-custom text-sm font-bold text-gray-900">1.8%</span>
+              </div>
+              <div class="compare-bar-container">
+                <div class="bar-fill" style="height:8px;width:30%;background:#ef4444;"></div>
+              </div>
+            </div>
+
+            <div>
+              <div class="flex justify-between items-baseline mb-1">
+                <span class="text-sm text-gray-600">Desktop CVR</span>
+                <span class="font-mono-custom text-sm font-bold text-gray-900">3.9%</span>
+              </div>
+              <div class="compare-bar-container">
+                <div class="bar-fill" style="height:8px;width:65%;background:#10b981;"></div>
+              </div>
+            </div>
+
+            <div class="pt-3 p-4 bg-amber-50" style="border-left:2px solid #f59e0b;border-radius:0 4px 4px 0;">
+              <p class="text-sm text-gray-700 leading-relaxed">
+                <strong>The Mobile Paradox:</strong> 73–82% of Home/Garden traffic is mobile, yet desktop converts at <strong>2.2x the rate</strong>. Mobile sessions fail earlier due to discovery friction — rapid visual scanning could close this gap materially.
+              </p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="insight-quote">
+        "Apparel shoppers view 8.0 to 10.0 pages per session — more than double the global e-commerce average of 4.3 to 4.7. This category is already exhibiting high-discovery behavior. The constraint is not shopper willingness; it is delivery infrastructure speed."
+        <span class="block mt-2 not-italic text-xs text-gray-400 font-mono-custom">— IRP COMMERCE · ADOBE DIGITAL INSIGHTS · STATISTA 2025 VERTICAL DATA</span>
+      </div>
+
+    </div>
+
+    <!-- ──────────────────────────────────────────── -->
+    <!-- FINDING 4: The Paradox of Choice -->
+    <!-- ──────────────────────────────────────────── -->
+    <div class="timeline-spine pl-12 pb-20 relative">
+      <div class="timeline-node" style="top:4px;"></div>
+
+      <div class="mb-3">
+        <span class="label-caps" style="color:var(--teal);">FINDING 04 · CHOICE ARCHITECTURE</span>
+      </div>
+
+      <h3 class="font-archivo font-bold text-2xl text-gray-900 mb-8" style="letter-spacing:-0.02em;">
+        More Options Create Paralysis — But Faster Exposure to More Options Resolves It
+      </h3>
+
+      <div class="grid grid-cols-12 gap-8 mb-10">
+        <div class="col-span-5">
+          <div style="font-family:&#39;Archivo&#39;,sans-serif;font-weight:900;font-size:4rem;line-height:1;letter-spacing:-0.04em;color:var(--ink);">64%</div>
+          <p class="font-archivo font-semibold text-gray-800 mt-3 text-lg">of conversion drop in high-choice environments</p>
+          <p class="text-sm text-gray-500 mt-2 leading-relaxed">occurs because users fail to initiate any search at all — not because they searched and found nothing relevant.</p>
+          <p class="evidence-tag mt-3">2025 Field Experiment · 1.6 Million Consumers</p>
+
+          <div class="mt-8">
+            <p class="label-caps mb-3">Optimal Simultaneous Choices</p>
+            <div style="font-family:&#39;Archivo&#39;,sans-serif;font-weight:900;font-size:3rem;line-height:1;letter-spacing:-0.03em;color:var(--ink);">3–7</div>
+            <p class="text-sm text-gray-500 mt-2">items presented at once for maximum conversion yield</p>
+          </div>
+        </div>
+
+        <div class="col-span-7">
+          <div class="p-6 bg-gray-50 rounded" style="border-radius:4px;">
+            <p class="label-caps mb-4">The Rapid Discovery Resolution</p>
+            <p class="text-sm text-gray-700 leading-relaxed mb-4">
+              The Paradox of Choice applies to <em>simultaneous</em> choices presented to a user at rest. Rapid discovery operates on a different cognitive model: sequential visual exposure at speed, allowing the brain to run pattern-matching at the subconscious level rather than deliberate comparison.
+            </p>
+            <p class="text-sm text-gray-700 leading-relaxed mb-4">
+              At 3 images/second, each image occupies approximately 230× the minimum visual processing time (13ms). The brain has sufficient exposure per frame to make an "approach or pass" signal — the same neural mechanism used in physical retail browsing of a rack of clothing.
+            </p>
+            <p class="text-sm text-gray-700 leading-relaxed">
+              <strong>The result:</strong> 540 products can be scanned without the paralysis of simultaneous choice overload — because choices are presented sequentially, at a pace that matches innate human visual sorting behavior.
+            </p>
+          </div>
+
+          <div class="grid grid-cols-2 gap-4 mt-4">
+            <div class="p-4 text-center" style="border:1px solid #e5e7eb;border-radius:4px;background:white;">
+              <p class="font-archivo font-bold text-2xl text-gray-900">2.5x</p>
+              <p class="text-xs text-gray-500 mt-1">Gen Z impulse purchase rate vs. other demographics</p>
+            </div>
+            <div class="p-4 text-center" style="border:1px solid var(--teal);background:var(--teal-dim);border-radius:4px;">
+              <p class="font-archivo font-bold text-2xl text-gray-900">70%</p>
+              <p class="text-xs text-gray-500 mt-1">Gen Z prioritize social platforms for discovery over search</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 gap-6">
+        <div class="p-5" style="border:1px solid #e5e7eb;border-radius:4px;">
+          <p class="font-archivo font-bold text-base text-gray-900 mb-2">🎯 Spearfishing Mode</p>
+          <p class="text-sm text-gray-600 leading-relaxed">Directed search: filters, keywords, specific queries. Preferred by Millennials (42% use Google Search first). High purchase intent but low discovery breadth. Desktop-dominant (avg. 2 hours/day methodical research).</p>
+        </div>
+        <div class="p-5" style="border:1px solid var(--teal);background:var(--teal-dim);border-radius:4px;">
+          <p class="font-archivo font-bold text-base text-gray-900 mb-2">🌊 Trawling Mode</p>
+          <p class="text-sm text-gray-600 leading-relaxed">Exploratory visual browsing: categories, visual recommendations, social-style feeds. Preferred by Gen Z mobile-exclusive users. High discovery breadth, impulse-responsive. <strong>Rapid discovery products serve this mode directly.</strong></p>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- ──────────────────────────────────────────── -->
+    <!-- FINDING 5: The Conversion Ceiling -->
+    <!-- ──────────────────────────────────────────── -->
+    <div class="timeline-spine pl-12 pb-4 relative">
+      <div class="timeline-node" style="top:4px;"></div>
+
+      <div class="mb-3">
+        <span class="label-caps" style="color:var(--teal);">FINDING 05 · CONVERSION ECONOMICS</span>
+      </div>
+
+      <h3 class="font-archivo font-bold text-2xl text-gray-900 mb-8" style="letter-spacing:-0.02em;">
+        The 400% Conversion Gap: Top Performers Don't Optimize Pages — They Optimize Discovery
+      </h3>
+
+      <div class="grid grid-cols-3 gap-5 mb-10">
+        <div class="p-6 text-center" style="border:1px solid #e5e7eb;border-radius:4px;">
+          <p class="label-caps mb-2">Median Shopify CVR</p>
+          <div style="font-family:&#39;Archivo&#39;,sans-serif;font-weight:900;font-size:2.5rem;color:#6b7280;">1.4–1.8%</div>
+          <p class="text-xs text-gray-400 mt-2">Industry median, all stores</p>
+        </div>
+        <div class="p-6 text-center" style="border:1px solid #e5e7eb;border-radius:4px;">
+          <p class="label-caps mb-2">Top 20% CVR</p>
+          <div style="font-family:&#39;Archivo&#39;,sans-serif;font-weight:900;font-size:2.5rem;color:var(--ink);">3.2–4.0%</div>
+          <p class="text-xs text-gray-400 mt-2">Upper quintile performers</p>
+        </div>
+        <div class="p-6 text-center milestone-card" style="border-radius:4px;">
+          <p class="label-caps mb-2">Top 10% CVR</p>
+          <div style="font-family:&#39;Archivo&#39;,sans-serif;font-weight:900;font-size:2.5rem;color:var(--ink);">4.7%+</div>
+          <p class="text-xs text-gray-500 mt-2">Category leaders — 3.4x median</p>
+        </div>
+      </div>
+
+      <div class="grid grid-cols-2 gap-8">
+        <div>
+          <p class="label-caps mb-4">Session Duration vs. Conversion Probability</p>
+          <div class="space-y-3">
+            <div>
+              <div class="flex justify-between text-xs text-gray-500 mb-1">
+                <span>Global Median Session (2:38)</span>
+                <span class="font-mono-custom">Baseline</span>
+              </div>
+              <div class="compare-bar-container">
+                <div class="bar-fill" style="height:8px;width:48%;background:#d1d5db;"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between text-xs text-gray-500 mb-1">
+                <span>Top 20% Stores (3:36 avg.)</span>
+                <span class="font-mono-custom" style="color:var(--teal);">High CVR</span>
+              </div>
+              <div class="compare-bar-container">
+                <div class="bar-fill" style="height:8px;width:68%;"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between text-xs text-gray-500 mb-1">
+                <span>Peak Conversion Window (3–5 min)</span>
+                <span class="font-mono-custom" style="color:var(--teal);">Maximum</span>
+              </div>
+              <div class="compare-bar-container">
+                <div class="bar-fill" style="height:8px;width:100%;"></div>
+              </div>
+            </div>
+          </div>
+          <p class="evidence-tag mt-3">Mallapragada et al. 2016 · GA4 Benchmark Data</p>
+        </div>
+
+        <div>
+          <p class="label-caps mb-4">Device CVR Comparison</p>
+          <div class="space-y-3">
+            <div>
+              <div class="flex justify-between text-xs text-gray-500 mb-1">
+                <span>Mobile App</span>
+                <span class="font-mono-custom">5.6–6.0%</span>
+              </div>
+              <div class="compare-bar-container">
+                <div class="bar-fill" style="height:8px;width:100%;background:#10b981;"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between text-xs text-gray-500 mb-1">
+                <span>Desktop Browser</span>
+                <span class="font-mono-custom">3.2–4.0%</span>
+              </div>
+              <div class="compare-bar-container">
+                <div class="bar-fill" style="height:8px;width:68%;"></div>
+              </div>
+            </div>
+            <div>
+              <div class="flex justify-between text-xs text-gray-500 mb-1">
+                <span>Mobile Web</span>
+                <span class="font-mono-custom" style="color:#ef4444;">1.8–2.5%</span>
+              </div>
+              <div class="compare-bar-container">
+                <div class="bar-fill" style="height:8px;width:42%;background:#ef4444;"></div>
+              </div>
+            </div>
+          </div>
+          <p class="evidence-tag mt-3">Adobe Analytics Projections · Shopify Platform Data</p>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<hr class="section-rule">
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- SECTION 4: TAM/SAM/SOM Market Sizing                   -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<section class="py-24" style="background:var(--slate);">
+  <div class="max-w-5xl mx-auto px-12">
+
+    <div class="mb-16">
+      <span class="label-caps" style="color:var(--teal);">04 · MARKET SIZING</span>
+      <h2 class="font-archivo font-black text-white mt-4 mb-6" style="font-size:2.8rem;letter-spacing:-0.03em;line-height:1.05;">
+        TAM / SAM / SOM — The 2026 Market Architecture
+      </h2>
+      <p class="max-w-2xl leading-relaxed" style="color:rgba(255,255,255,0.55);">A new product category demands a clear accounting of the addressable opportunity. Three concentric markets define the realistic capture pathway.</p>
+    </div>
+
+    <div class="grid grid-cols-3 gap-6">
+
+      <!-- TAM -->
+      <div class="p-8" style="border:1px solid rgba(255,255,255,0.1);border-radius:4px;">
+        <div class="flex items-center gap-3 mb-6">
+          <div style="width:40px;height:40px;border:2px solid rgba(0,206,209,0.4);border-radius:50%;"></div>
+          <span class="label-caps" style="color:rgba(255,255,255,0.4);">TAM · Total Addressable</span>
+        </div>
+        <div style="font-family:&#39;Archivo&#39;,sans-serif;font-weight:900;font-size:3rem;color:var(--teal);letter-spacing:-0.03em;line-height:1;">$14.5B</div>
+        <p class="mt-3 font-archivo font-semibold text-white">Global E-Commerce Discovery Infrastructure</p>
+        <p class="mt-4 text-sm leading-relaxed" style="color:rgba(255,255,255,0.5);">All merchants globally requiring product discovery, visual browsing, and catalog navigation tools across all e-commerce platforms — 2026 estimate including emerging markets acceleration.</p>
+      </div>
+
+      <!-- SAM -->
+      <div class="p-8" style="border:1px solid rgba(0,206,209,0.3);background:rgba(0,206,209,0.05);border-radius:4px;">
+        <div class="flex items-center gap-3 mb-6">
+          <div style="width:32px;height:32px;border:2px solid var(--teal);background:rgba(0,206,209,0.15);border-radius:50%;"></div>
+          <span class="label-caps" style="color:rgba(0,206,209,0.7);">SAM · Serviceable Addressable</span>
+        </div>
+        <div style="font-family:&#39;Archivo&#39;,sans-serif;font-weight:900;font-size:3rem;color:white;letter-spacing:-0.03em;line-height:1;">$3.0B</div>
+        <p class="mt-3 font-archivo font-semibold text-white">Multi-Platform Mid-Market Segment</p>
+        <p class="mt-4 text-sm leading-relaxed" style="color:rgba(255,255,255,0.5);">English-language mid-market merchants on Shopify, WooCommerce, and BigCommerce — the segment addressable with the current platform integration roadmap and pricing architecture.</p>
+      </div>
+
+      <!-- SOM -->
+      <div class="p-8" style="border:1px solid rgba(255,255,255,0.1);border-radius:4px;">
+        <div class="flex items-center gap-3 mb-6">
+          <div style="width:24px;height:24px;background:var(--teal);border-radius:50%;"></div>
+          <span class="label-caps" style="color:rgba(255,255,255,0.4);">SOM · Serviceable Obtainable</span>
+        </div>
+        <div style="font-family:&#39;Archivo&#39;,sans-serif;font-weight:900;font-size:3rem;color:var(--teal);letter-spacing:-0.03em;line-height:1;">$60.7M</div>
+        <p class="mt-3 font-archivo font-semibold text-white">2% Penetration Target — Shopify + Woo</p>
+        <p class="mt-4 text-sm leading-relaxed" style="color:rgba(255,255,255,0.5);">Conservative 2% penetration of combined Shopify and WooCommerce active merchant base at blended average revenue per account based on $29–$499 tiered pricing.</p>
+      </div>
+
+    </div>
+
+    <!-- Market context -->
+    <div class="mt-10 p-8" style="border:1px solid rgba(255,255,255,0.08);background:rgba(255,255,255,0.03);border-radius:4px;">
+      <div class="grid grid-cols-4 gap-8">
+        <div class="text-center">
+          <div style="font-family:&#39;Archivo&#39;,sans-serif;font-weight:700;font-size:1.8rem;color:white;">65–75%</div>
+          <p class="text-xs mt-2" style="color:rgba(255,255,255,0.4);">of e-commerce traffic is mobile (Adobe Analytics)</p>
+        </div>
+        <div class="text-center" style="border-left:1px solid rgba(255,255,255,0.08);">
+          <div style="font-family:&#39;Archivo&#39;,sans-serif;font-weight:700;font-size:1.8rem;color:white;">3.5</div>
+          <p class="text-xs mt-2" style="color:rgba(255,255,255,0.4);">avg. pages/session globally — discovery ceiling</p>
+        </div>
+        <div class="text-center" style="border-left:1px solid rgba(255,255,255,0.08);">
+          <div style="font-family:&#39;Archivo&#39;,sans-serif;font-weight:700;font-size:1.8rem;color:white;">3–5</div>
+          <p class="text-xs mt-2" style="color:rgba(255,255,255,0.4);">product views = peak conversion probability window</p>
+        </div>
+        <div class="text-center" style="border-left:1px solid rgba(255,255,255,0.08);">
+          <div style="font-family:&#39;Archivo&#39;,sans-serif;font-weight:700;font-size:1.8rem;color:var(--teal);">27x</div>
+          <p class="text-xs mt-2" style="color:rgba(255,255,255,0.4);">discovery throughput advantage of the 540 standard</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="section-rule">
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- SECTION 5: IMPLEMENTATION ROADMAP (Timeline Spine)     -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<section class="py-24 bg-white">
+  <div class="max-w-5xl mx-auto px-12">
+
+    <div class="mb-16">
+      <span class="label-caps" style="color:var(--teal);">05 · IMPLEMENTATION ROADMAP</span>
+      <h2 class="font-archivo font-black text-gray-900 mt-4 mb-6" style="font-size:2.8rem;letter-spacing:-0.03em;line-height:1.05;">
+        Platform Expansion Architecture<br>
+        <span style="color:var(--platinum);font-size:1.8rem;font-weight:600;">As of May 2026 · Three-Phase Rollout</span>
+      </h2>
+    </div>
+
+    <!-- Timeline -->
+    <div class="timeline-spine pl-12" style="border-left-color:var(--teal);">
+
+      <!-- PHASE 1 -->
+      <div class="relative pb-16">
+        <div class="timeline-node" style="top:8px;background:var(--teal);"></div>
+
+        <div class="flex items-start gap-4 mb-6">
+          <div>
+            <div class="flex items-center gap-3 mb-1">
+              <span class="status-dot status-live"></span>
+              <span class="label-caps" style="color:#22c55e;">LIVE · ESTABLISHED &amp; SCALING</span>
+            </div>
+            <h3 class="font-archivo font-black text-gray-900" style="font-size:1.8rem;letter-spacing:-0.02em;">Phase 1: Shopify</h3>
+            <p class="font-mono-custom text-sm text-gray-400 mt-1">App Store Approved · Active Merchant Base</p>
+          </div>
+          <div class="ml-auto flex-shrink-0">
+            <div style="padding:8px 16px;background:var(--teal-dim);border:1px solid var(--teal-border);border-radius:4px;">
+              <span style="font-family:&#39;Archivo&#39;,sans-serif;font-weight:700;font-size:1.1rem;color:var(--ink);">Shopify</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="milestone-card p-8 mb-6">
+          <div class="grid grid-cols-3 gap-8">
+            <div>
+              <p class="label-caps mb-2">Status</p>
+              <p class="font-archivo font-bold text-lg text-gray-900">App Store Approved</p>
+              <p class="text-sm text-gray-500 mt-1">Shopify Partner ecosystem integration</p>
+            </div>
+            <div>
+              <p class="label-caps mb-2">Primary Mechanism</p>
+              <p class="font-archivo font-bold text-lg text-gray-900">540 / 3-Min Discovery</p>
+              <p class="text-sm text-gray-500 mt-1">Rapid visual swipe-through navigation</p>
+            </div>
+            <div>
+              <p class="label-caps mb-2">Market Alignment</p>
+              <p class="font-archivo font-bold text-lg text-gray-900">Apparel-First GTM</p>
+              <p class="text-sm text-gray-500 mt-1">Highest-discovery category; 8–10 pages/session</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="insight-quote">
+          "Apparel shoppers already view 8–10 pages per session — more than double the global average. This is the highest-discovery category in e-commerce. Shopify's 1.75M+ active merchant base in fashion/apparel represents the most concentrated opportunity for rapid discovery adoption."
+          <span class="block mt-2 not-italic text-xs text-gray-400 font-mono-custom">— STRATEGIC POSITIONING RATIONALE · PHASE 1 PRIORITIZATION</span>
+        </div>
+
+      </div>
+
+      <!-- PHASE 2 -->
+      <div class="relative pb-16">
+        <div class="timeline-node" style="top:8px;background:var(--teal);"></div>
+
+        <div class="flex items-start gap-4 mb-6">
+          <div>
+            <div class="flex items-center gap-3 mb-1">
+              <span class="status-dot status-growth"></span>
+              <span class="label-caps" style="color:var(--teal);">RELEASED 2025 · CURRENT GROWTH FOCUS</span>
+            </div>
+            <h3 class="font-archivo font-black text-gray-900" style="font-size:1.8rem;letter-spacing:-0.02em;">Phase 2: WordPress / WooCommerce</h3>
+            <p class="font-mono-custom text-sm text-gray-400 mt-1">Plugin Released · Active Merchant Acquisition</p>
+          </div>
+          <div class="ml-auto flex-shrink-0">
+            <div style="padding:8px 16px;background:#f0f4ff;border:1px solid #c7d2fe;border-radius:4px;">
+              <span style="font-family:&#39;Archivo&#39;,sans-serif;font-weight:700;font-size:1.1rem;color:#4f46e5;">WordPress</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="p-8 mb-6 bg-gray-50 rounded" style="border-radius:4px;border:1px solid #e5e7eb;">
+          <div class="grid grid-cols-3 gap-8">
+            <div>
+              <p class="label-caps mb-2">Status</p>
+              <p class="font-archivo font-bold text-lg text-gray-900">Active Growth Phase</p>
+              <p class="text-sm text-gray-500 mt-1">Plugin available; merchant acquisition in progress</p>
+            </div>
+            <div>
+              <p class="label-caps mb-2">Market Expansion</p>
+              <p class="font-archivo font-bold text-lg text-gray-900">43% of the Web</p>
+              <p class="text-sm text-gray-500 mt-1">WordPress powers largest installed merchant base</p>
+            </div>
+            <div>
+              <p class="label-caps mb-2">Category Fit</p>
+              <p class="font-archivo font-bold text-lg text-gray-900">Home &amp; Garden</p>
+              <p class="text-sm text-gray-500 mt-1">4.8–6.5 pages/session; mobile discovery gap prime target</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+
+      <!-- PHASE 3 -->
+      <div class="relative pb-4">
+        <div class="timeline-node-outline" style="top:8px;"></div>
+
+        <div class="flex items-start gap-4 mb-6">
+          <div>
+            <div class="flex items-center gap-3 mb-1">
+              <span class="status-dot status-planned"></span>
+              <span class="label-caps" style="color:#f59e0b;">SCHEDULED · Q3/Q4 2026 LAUNCH</span>
+            </div>
+            <h3 class="font-archivo font-black text-gray-900" style="font-size:1.8rem;letter-spacing:-0.02em;">Phase 3: BigCommerce &amp; Enterprise API</h3>
+            <p class="font-mono-custom text-sm text-gray-400 mt-1">Planned · Q3/Q4 2026 Target</p>
+          </div>
+          <div class="ml-auto flex-shrink-0">
+            <div style="padding:8px 16px;background:#fffbeb;border:1px solid #fcd34d;border-radius:4px;">
+              <span style="font-family:&#39;Archivo&#39;,sans-serif;font-weight:700;font-size:1.1rem;color:#92400e;">BigCommerce</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="risk-callout rounded" style="border-radius:0 4px 4px 0;">
+          <p class="label-caps mb-2">PHASE 3 STRATEGIC CONTEXT</p>
+          <p class="text-sm text-gray-700 leading-relaxed">
+            BigCommerce's enterprise merchant segment represents higher ACV accounts with larger catalogs — precisely where rapid discovery delivers disproportionate value. The headless API integration enables white-label deployment for enterprise retailers operating custom frontends. Phase 3 timing (Q3/Q4 2026) allows Phase 1 and 2 case studies to inform enterprise sales cycles.
+          </p>
+        </div>
+
+      </div>
+
+    </div>
+
+    <!-- Platform summary -->
+    <div class="mt-16 grid grid-cols-3 gap-4">
+      <div class="platform-badge active justify-center py-4" style="display:flex;flex-direction:column;align-items:center;padding:1.5rem;border-radius:4px;">
+        <div style="width:8px;height:8px;background:#22c55e;border-radius:50%;margin-bottom:8px;"></div>
+        <span style="font-family:&#39;Archivo&#39;,sans-serif;font-weight:700;font-size:1rem;color:var(--ink);">Shopify</span>
+        <span class="evidence-tag mt-1">LIVE · Phase 1</span>
+      </div>
+      <div class="platform-badge active justify-center py-4" style="display:flex;flex-direction:column;align-items:center;padding:1.5rem;border-radius:4px;border-color:var(--teal);">
+        <div style="width:8px;height:8px;background:var(--teal);border-radius:50%;margin-bottom:8px;"></div>
+        <span style="font-family:&#39;Archivo&#39;,sans-serif;font-weight:700;font-size:1rem;color:var(--ink);">WordPress / WooCommerce</span>
+        <span class="evidence-tag mt-1">GROWTH · Phase 2</span>
+      </div>
+      <div class="platform-badge justify-center py-4" style="display:flex;flex-direction:column;align-items:center;padding:1.5rem;border-radius:4px;">
+        <div style="width:8px;height:8px;background:#f59e0b;border-radius:50%;margin-bottom:8px;"></div>
+        <span style="font-family:&#39;Archivo&#39;,sans-serif;font-weight:700;font-size:1rem;color:var(--ink);">BigCommerce + API</span>
+        <span class="evidence-tag mt-1">PLANNED · Phase 3 · Q3/Q4 2026</span>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<hr class="section-rule">
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- SECTION 6: Unit Economics & Pricing                    -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<section class="py-24" style="background:var(--mist);">
+  <div class="max-w-5xl mx-auto px-12">
+
+    <div class="grid grid-cols-12 gap-12">
+
+      <div class="col-span-3">
+        <div class="sticky top-12">
+          <span class="label-caps" style="color:var(--teal);">06</span>
+          <h2 class="font-archivo font-bold text-2xl mt-3 text-gray-900 leading-tight">Unit Economics</h2>
+          <div style="width:32px;height:2px;background:var(--teal);margin-top:16px;"></div>
+          <p class="text-sm text-gray-500 mt-4 leading-relaxed">The $29–$499 tiered pricing architecture and the Multi-Cube upsell mechanism.</p>
+        </div>
+      </div>
+
+      <div class="col-span-9">
+
+        <h3 class="font-archivo font-bold text-2xl text-gray-900 mb-4" style="letter-spacing:-0.02em;">
+          Tiered Pricing Strategy: Accessible Entry, Enterprise Ceiling
+        </h3>
+        <p class="text-gray-600 mb-10 leading-relaxed">
+          The pricing architecture is designed to minimize initial adoption friction while building a compounding upsell surface through the Multi-Cube feature set — where each additional Cube represents an additional use case (additional category, promotional campaign, or seasonal collection).
+        </p>
+
+        <div class="grid grid-cols-3 gap-5 mb-10">
+
+          <!-- Starter -->
+          <div class="pricing-tier">
+            <p class="label-caps mb-3">Starter</p>
+            <div style="font-family:&#39;Archivo&#39;,sans-serif;font-weight:900;font-size:2.2rem;letter-spacing:-0.03em;color:var(--ink);">$29</div>
+            <p class="text-sm text-gray-400 mb-4">/month</p>
+            <hr class="section-rule mb-4">
+            <ul class="space-y-2 text-sm text-gray-600">
+              <li>· 1 Rapid Discovery Cube</li>
+              <li>· Shopify native integration</li>
+              <li>· Up to 500 products</li>
+              <li>· Standard analytics</li>
+            </ul>
+            <div class="mt-4 pt-4" style="border-top:1px solid #e5e7eb;">
+              <p class="text-xs text-gray-400">Target: Solo founders &amp; boutique stores</p>
+            </div>
+          </div>
+
+          <!-- Growth - Featured -->
+          <div class="pricing-tier featured">
+            <div class="absolute top-0 right-0 m-3">
+              <span style="font-size:0.65rem;font-weight:700;letter-spacing:0.08em;text-transform:uppercase;color:var(--teal);background:rgba(0,206,209,0.15);padding:2px 8px;border-radius:2px;">MOST POPULAR</span>
+            </div>
+            <p class="label-caps mb-3">Growth</p>
+            <div style="font-family:&#39;Archivo&#39;,sans-serif;font-weight:900;font-size:2.2rem;letter-spacing:-0.03em;color:var(--ink);">$99</div>
+            <p class="text-sm text-gray-400 mb-4">/month</p>
+            <hr style="border-top:1px solid var(--teal-border);margin-bottom:1rem;">
+            <ul class="space-y-2 text-sm text-gray-600">
+              <li>· 3 Rapid Discovery Cubes</li>
+              <li>· Multi-platform support</li>
+              <li>· Unlimited products</li>
+              <li>· Conversion analytics suite</li>
+              <li>· A/B testing module</li>
+            </ul>
+            <div class="mt-4 pt-4" style="border-top:1px solid var(--teal-border);">
+              <p class="text-xs text-gray-500">Target: Growing DTC brands · Ideal SOM unit</p>
+            </div>
+          </div>
+
+          <!-- Enterprise -->
+          <div class="pricing-tier">
+            <p class="label-caps mb-3">Enterprise</p>
+            <div style="font-family:&#39;Archivo&#39;,sans-serif;font-weight:900;font-size:2.2rem;letter-spacing:-0.03em;color:var(--ink);">$499</div>
+            <p class="text-sm text-gray-400 mb-4">/month</p>
+            <hr class="section-rule mb-4">
+            <ul class="space-y-2 text-sm text-gray-600">
+              <li>· Unlimited Cubes</li>
+              <li>· Headless API access</li>
+              <li>· BigCommerce + custom</li>
+              <li>· White-label options</li>
+              <li>· Dedicated CSM</li>
+            </ul>
+            <div class="mt-4 pt-4" style="border-top:1px solid #e5e7eb;">
+              <p class="text-xs text-gray-400">Target: Enterprise · Phase 3 segment</p>
+            </div>
+          </div>
+
+        </div>
+
+        <!-- Multi-Cube upsell callout -->
+        <div class="p-8" style="background:white;border:1px solid #e5e7eb;border-radius:4px;">
+          <div class="flex items-start gap-6">
+            <div style="width:48px;height:48px;background:var(--teal);border-radius:4px;flex-shrink:0;display:flex;align-items:center;justify-content:center;">
+              <div style="width:24px;height:24px;background:rgba(0,0,0,0.2);border-radius:3px;"></div>
+            </div>
+            <div>
+              <h4 class="font-archivo font-bold text-lg text-gray-900 mb-2">The Multi-Cube Upsell Lever</h4>
+              <p class="text-sm text-gray-600 leading-relaxed">
+                Each "Cube" represents a discrete discovery experience — a category, a campaign, a seasonal collection, or a curated editorial set. A merchant launching a summer collection, for example, creates a new Cube rather than modifying the evergreen Cube. This creates a natural, value-additive upsell path: merchants demonstrably see value from Cube #1, then purchase Cube #2 for their next campaign cycle. The architecture ensures revenue expansion is tied directly to merchant success metrics, not arbitrary feature gating.
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- SOM calculation display -->
+        <div class="mt-8 p-6" style="background:var(--teal-dim);border:1px solid var(--teal-border);border-radius:4px;">
+          <p class="label-caps mb-4" style="color:var(--teal);">SOM Calculation Bridge</p>
+          <div class="grid grid-cols-4 gap-4 text-center">
+            <div>
+              <p class="font-mono-custom text-sm text-gray-500">Shopify + Woo</p>
+              <p class="font-archivo font-bold text-xl text-gray-900 mt-1">~5M</p>
+              <p class="text-xs text-gray-400">Active merchants</p>
+            </div>
+            <div style="font-size:1.5rem;color:var(--platinum);display:flex;align-items:center;justify-content:center;">×</div>
+            <div>
+              <p class="font-mono-custom text-sm text-gray-500">Target Penetration</p>
+              <p class="font-archivo font-bold text-xl text-gray-900 mt-1">2%</p>
+              <p class="text-xs text-gray-400">Conservative capture</p>
+            </div>
+            <div>
+              <p class="font-mono-custom text-sm" style="color:var(--teal);">= $60.7M SOM</p>
+              <p class="font-archivo font-bold text-xl text-gray-900 mt-1">~$99</p>
+              <p class="text-xs text-gray-400">Blended ARPA assumption</p>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<hr class="section-rule">
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- SECTION 7: Core Planning Recommendations               -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<section class="py-24 bg-white">
+  <div class="max-w-5xl mx-auto px-12">
+
+    <div class="mb-16">
+      <span class="label-caps" style="color:var(--teal);">07 · STRATEGIC RECOMMENDATIONS</span>
+      <h2 class="font-archivo font-black text-gray-900 mt-4 mb-6" style="font-size:2.8rem;letter-spacing:-0.03em;line-height:1.05;">
+        Four Core Planning Directions
+      </h2>
+      <p class="text-gray-500 max-w-2xl leading-relaxed">Each recommendation traces directly to primary evidence findings. Priority ranking reflects commercial impact and implementation sequencing.</p>
+    </div>
+
+    <div class="space-y-8">
+
+      <!-- Recommendation 1 -->
+      <div class="grid grid-cols-12 gap-8 py-10" style="border-top:2px solid var(--teal);">
+        <div class="col-span-2">
+          <div style="font-family:&#39;Archivo&#39;,sans-serif;font-weight:900;font-size:3.5rem;color:var(--teal);line-height:1;letter-spacing:-0.04em;">01</div>
+        </div>
+        <div class="col-span-10">
+          <h3 class="font-archivo font-bold text-xl text-gray-900 mb-3">Position as the "Session Depth" Solution, Not a UI Feature</h3>
+          <p class="text-gray-600 mb-4 leading-relaxed">
+            The behavioral data is unequivocal: conversion probability peaks in the 3–5 minute window, but most stores lose visitors at the 30-second mark. Rapid discovery is not a navigation enhancement — it is a <strong>session duration extension mechanism</strong> that keeps users in the conversion probability window long enough for purchase intent to form.
+          </p>
+          <div class="grid grid-cols-3 gap-4 mt-4">
+            <div class="p-4" style="background:var(--mist);border-radius:4px;">
+              <p class="evidence-tag">EVIDENCE BASE</p>
+              <p class="text-sm text-gray-700 mt-2">Sessions active at 30-second mark = 40% higher Add to Cart. 3–5 min window = peak CVR.</p>
+            </div>
+            <div class="p-4" style="background:var(--mist);border-radius:4px;">
+              <p class="evidence-tag">EXPECTED IMPACT</p>
+              <p class="text-sm text-gray-700 mt-2">Framing aligns with merchant KPIs (CVR, session duration, ATC rate) enabling ROI-based sales.</p>
+            </div>
+            <div class="p-4" style="background:var(--mist);border-radius:4px;">
+              <p class="evidence-tag">SUCCESS INDICATOR</p>
+              <p class="text-sm text-gray-700 mt-2">Merchant-reported session duration increase of 45–90 seconds post-implementation.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recommendation 2 -->
+      <div class="grid grid-cols-12 gap-8 py-10" style="border-top:1px solid #e5e7eb;">
+        <div class="col-span-2">
+          <div style="font-family:&#39;Archivo&#39;,sans-serif;font-weight:900;font-size:3.5rem;color:var(--ink);line-height:1;letter-spacing:-0.04em;opacity:0.3;">02</div>
+        </div>
+        <div class="col-span-10">
+          <h3 class="font-archivo font-bold text-xl text-gray-900 mb-3">Lead Go-to-Market with Apparel; Use Home/Garden as the Mobile-Gap Case Study</h3>
+          <p class="text-gray-600 mb-4 leading-relaxed">
+            Apparel/Fashion shoppers already exhibit extreme discovery behavior (8–10 pages/session, 3–8 PDPs, 4–6x CVR lift when they reach 3+ PDPs). This category doesn't need behavior change — it needs better infrastructure. Home/Garden presents the secondary case: 73–82% mobile traffic but 2.2x lower CVR on mobile vs. desktop, which rapid discovery directly addresses.
+          </p>
+          <div class="insight-quote mt-4">
+            "Viewing 3+ unique PDPs correlates with being 4x to 6x more likely to convert in the Apparel segment. The category has the highest organic pull for discovery products."
+            <span class="block mt-2 not-italic text-xs text-gray-400 font-mono-custom">— IRP COMMERCE · ADOBE DIGITAL INSIGHTS · STATISTA 2025</span>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recommendation 3 -->
+      <div class="grid grid-cols-12 gap-8 py-10" style="border-top:1px solid #e5e7eb;">
+        <div class="col-span-2">
+          <div style="font-family:&#39;Archivo&#39;,sans-serif;font-weight:900;font-size:3.5rem;color:var(--ink);line-height:1;letter-spacing:-0.04em;opacity:0.3;">03</div>
+        </div>
+        <div class="col-span-10">
+          <h3 class="font-archivo font-bold text-xl text-gray-900 mb-3">Build the Gen Z Demographic Case Explicitly into Marketing Materials</h3>
+          <p class="text-gray-600 mb-4 leading-relaxed">
+            Gen Z (70% social-platform-first, 2.5x higher impulse purchase rate, mobile-exclusive) is the primary behavioral cohort that rapid discovery was built for. Merchants targeting Gen Z consumers face a paradox: their audience is best reached on visual platforms, but their owned storefronts offer a degraded visual discovery experience. Rapid discovery bridges this expectation gap.
+          </p>
+          <div class="grid grid-cols-2 gap-4 mt-4">
+            <div class="p-4" style="background:var(--mist);border-radius:4px;">
+              <p class="evidence-tag">THE GEN Z EXPECTATION GAP</p>
+              <p class="text-sm text-gray-700 mt-2">Instagram/TikTok visual feeds deliver hundreds of product visuals in minutes. Merchants' own Shopify stores deliver 20–48. Rapid discovery closes the gap to social-native UX standards.</p>
+            </div>
+            <div class="p-4" style="background:var(--mist);border-radius:4px;">
+              <p class="evidence-tag">MILLENNIAL COUNTER-POSITIONING</p>
+              <p class="text-sm text-gray-700 mt-2">42% of Millennials use Google Search first. This cohort is served by Spearfishing tools. Position rapid discovery as complementary (Trawling), not competitive to search/filter infrastructure.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Recommendation 4 -->
+      <div class="grid grid-cols-12 gap-8 py-10" style="border-top:1px solid #e5e7eb;">
+        <div class="col-span-2">
+          <div style="font-family:&#39;Archivo&#39;,sans-serif;font-weight:900;font-size:3.5rem;color:var(--ink);line-height:1;letter-spacing:-0.04em;opacity:0.3;">04</div>
+        </div>
+        <div class="col-span-10">
+          <h3 class="font-archivo font-bold text-xl text-gray-900 mb-3">Anchor the Enterprise Pitch to the 4.7%+ CVR Ceiling — Not the Average</h3>
+          <p class="text-gray-600 mb-4 leading-relaxed">
+            The median Shopify store converts at 1.4–1.8%. The top 10% convert at 4.7%+. For enterprise-tier merchants (Phase 3, BigCommerce), the pitch is not "improve from 2% to 2.5%" — it is "join the 4.7% tier." The data shows that top performers achieve these rates not through price optimization or advertising, but through session engagement metrics that rapid discovery directly improves.
+          </p>
+          <div class="p-6 bg-gray-900 rounded" style="border-radius:4px;">
+            <p class="font-archivo font-bold text-white text-lg mb-2">The 4.7% Threshold Proof Point</p>
+            <p class="text-sm leading-relaxed" style="color:rgba(255,255,255,0.65);">
+              Top 10% CVR stores average session durations of 3:36 vs. the global median of 2:38 — a 37% longer session. Rapid discovery is the mechanism that extends sessions into the conversion probability window (3–5 minutes), converting median-performing stores into top-decile performers on the single metric most correlated with revenue.
+            </p>
+          </div>
+        </div>
+      </div>
+
+    </div>
+
+  </div>
+</section>
+
+<hr class="section-rule">
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- SECTION 8: Risks & Uncertainties                       -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<section class="py-24" style="background:var(--mist);">
+  <div class="max-w-5xl mx-auto px-12">
+
+    <div class="grid grid-cols-12 gap-12">
+
+      <div class="col-span-3">
+        <span class="label-caps" style="color:var(--teal);">08</span>
+        <h2 class="font-archivo font-bold text-2xl mt-3 text-gray-900 leading-tight">Risk Identification &amp; Mitigation</h2>
+        <div style="width:32px;height:2px;background:var(--teal);margin-top:16px;"></div>
+        <p class="text-sm text-gray-500 mt-4 leading-relaxed">Qualitative assessment of principal uncertainty factors affecting the planning pathway.</p>
+      </div>
+
+      <div class="col-span-9 space-y-6">
+
+        <div class="risk-callout rounded bg-white" style="border-radius:0 4px 4px 0;border-left-width:4px;">
+          <p class="label-caps text-amber-700 mb-2">RISK 01 · SESSION DEPTH PLATEAU</p>
+          <p class="font-archivo font-semibold text-gray-900 mb-2">Mallapragada et al. documents a conversion plateau above 10 product views</p>
+          <p class="text-sm text-gray-600 leading-relaxed mb-3">Research shows that sessions exceeding 10 product views can plateau or slightly drop in purchase probability — suggesting there is an upper bound to discovery-volume as a conversion driver.</p>
+          <p class="text-sm text-gray-700 leading-relaxed"><strong>Mitigation:</strong> Position rapid discovery not as "view more" but as "find the right product faster." The product interaction model (gesture-based pass/approach) ensures non-converting views are cognitively costless — preserving the Gain/Cost ratio that drives engagement without triggering choice fatigue.</p>
+        </div>
+
+        <div class="risk-callout rounded bg-white" style="border-radius:0 4px 4px 0;border-left-width:4px;">
+          <p class="label-caps text-amber-700 mb-2">RISK 02 · PARADOX OF CHOICE AT SCALE</p>
+          <p class="font-archivo font-semibold text-gray-900 mb-2">64% of CVR drop in high-abundance environments may affect rapid discovery if poorly sequenced</p>
+          <p class="text-sm text-gray-600 leading-relaxed mb-3">The 2025 field experiment (1.6M consumers) confirms that abundant choice creates abandonment — even before users engage with any specific product. Sequential rapid exposure mitigates this, but catalog curation quality remains a variable outside product control.</p>
+          <p class="text-sm text-gray-700 leading-relaxed"><strong>Mitigation:</strong> Develop a merchant onboarding framework focused on Cube-level curation: each Cube should contain a curated, coherent assortment (50–200 products) rather than a full-catalog dump. Maintain optimal 3–7 simultaneous choice architecture within the Cube configuration UI.</p>
+        </div>
+
+        <div class="risk-callout rounded bg-white" style="border-radius:0 4px 4px 0;border-left-width:4px;">
+          <p class="label-caps text-amber-700 mb-2">RISK 03 · MOBILE PERFORMANCE CONSTRAINTS</p>
+          <p class="font-archivo font-semibold text-gray-900 mb-2">53% of mobile users abandon if load time exceeds 3 seconds — rapid image delivery is technically demanding</p>
+          <p class="text-sm text-gray-600 leading-relaxed mb-3">Rapid discovery at 3 images/second requires low-latency image delivery infrastructure. Mobile network variance (4G vs. 5G vs. WiFi) introduces performance inconsistency that could undermine the core value proposition.</p>
+          <p class="text-sm text-gray-700 leading-relaxed"><strong>Mitigation:</strong> Implement progressive preload architecture (buffer 10–15 images ahead of current view position). Offer quality/speed trade-off settings in merchant dashboard. Measure and surface image delivery latency as a merchant health metric.</p>
+        </div>
+
+        <div class="risk-callout rounded bg-white" style="border-radius:0 4px 4px 0;border-left-width:4px;">
+          <p class="label-caps text-amber-700 mb-2">RISK 04 · PLATFORM DEPENDENCY CONCENTRATION</p>
+          <p class="font-archivo font-semibold text-gray-900 mb-2">Phase 1 revenue concentration in Shopify App Store creates policy/algorithm risk</p>
+          <p class="text-sm text-gray-600 leading-relaxed mb-3">Shopify's App Store terms, fee structures, and algorithm changes can materially affect app visibility and economics. Single-platform concentration in the early stage creates existential exposure to policy changes.</p>
+          <p class="text-sm text-gray-700 leading-relaxed"><strong>Mitigation:</strong> The multi-platform roadmap (Phase 2: WooCommerce already active; Phase 3: BigCommerce + API) is itself the risk mitigation. Direct merchant relationships built via Phase 1 create a portable user base that can follow across platform transitions. Prioritize direct email capture and merchant relationship investment from day one.</p>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ═══════════════════════════════════════════════════════ -->
+<!-- CLOSING: The Thesis Restated                           -->
+<!-- ═══════════════════════════════════════════════════════ -->
+<section class="py-24" style="background:var(--slate);">
+  <div class="max-w-5xl mx-auto px-12">
+
+    <div class="text-center mb-16">
+      <span class="label-caps" style="color:rgba(255,255,255,0.35);">CLOSING THESIS</span>
+    </div>
+
+    <div class="grid grid-cols-2 gap-16 items-center">
+      <div>
+        <h2 class="font-archivo font-black text-white mb-6" style="font-size:2.5rem;letter-spacing:-0.03em;line-height:1.1;">
+          Discovery is the new Search. Visual speed is the new SEO.
+        </h2>
+        <p class="mb-6 leading-relaxed" style="color:rgba(255,255,255,0.6);">
+          For two decades, e-commerce optimization focused on the funnel below discovery: better product pages, faster checkout, smarter recommendations. The conversion data presented in this report reveals that the leverage point has shifted upstream.
+        </p>
+        <p class="leading-relaxed" style="color:rgba(255,255,255,0.6);">
+          In a world where 50% of mobile visitors leave before they've seen more than a handful of products, where the human eye processes images in 13 milliseconds, and where the conversion probability window opens at 3 minutes and closes before most merchants' average session duration — the product that solves <em>discovery</em> solves conversion.
+        </p>
+        <div class="mt-8 pt-8" style="border-top:1px solid rgba(255,255,255,0.1);">
+          <p class="text-sm font-mono-custom" style="color:rgba(255,255,255,0.3);">Research compiled by atypica.AI Business Intelligence · May 2026</p>
+        </div>
+      </div>
+
+      <div class="space-y-6">
+        <div class="p-6" style="border:1px solid rgba(0,206,209,0.2);border-radius:4px;background:rgba(0,206,209,0.05);">
+          <div style="font-family:&#39;Archivo&#39;,sans-serif;font-weight:900;font-size:2rem;color:var(--teal);letter-spacing:-0.03em;">540 / 3</div>
+          <p class="text-white text-sm mt-2">The discovery standard that defines the category</p>
+        </div>
+        <div class="p-6" style="border:1px solid rgba(255,255,255,0.1);border-radius:4px;">
+          <div style="font-family:&#39;Archivo&#39;,sans-serif;font-weight:900;font-size:2rem;color:white;letter-spacing:-0.03em;">$60.7M</div>
+          <p class="text-sm mt-2" style="color:rgba(255,255,255,0.5);">SOM at 2% penetration of Shopify + WooCommerce</p>
+        </div>
+        <div class="p-6" style="border:1px solid rgba(255,255,255,0.1);border-radius:4px;">
+          <div style="font-family:&#39;Archivo&#39;,sans-serif;font-weight:900;font-size:2rem;color:white;letter-spacing:-0.03em;">27×</div>
+          <p class="text-sm mt-2" style="color:rgba(255,255,255,0.5);">discovery throughput vs. conventional paginated grid browsing</p>
+        </div>
+        <div class="p-6" style="border:1px solid rgba(255,255,255,0.1);border-radius:4px;">
+          <div style="font-family:&#39;Archivo&#39;,sans-serif;font-weight:900;font-size:2rem;color:white;letter-spacing:-0.03em;">13ms</div>
+          <p class="text-sm mt-2" style="color:rgba(255,255,255,0.5);">the biological constant that makes this a physics-level moat</p>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="py-8" style="background:var(--slate);border-top:1px solid rgba(255,255,255,0.06);">
+  <div class="max-w-5xl mx-auto px-12 flex items-center justify-between">
+    <div class="flex items-center gap-3">
+      <div style="width:20px;height:20px;background:var(--teal);border-radius:3px;opacity:0.7;"></div>
+      <span class="font-archivo font-semibold text-sm tracking-wider" style="color:rgba(255,255,255,0.4);">atypica.AI</span>
+    </div>
+    <span class="font-mono-custom text-xs" style="color:rgba(255,255,255,0.2);">BUSINESS INTELLIGENCE · RAPID DISCOVERY CATEGORY · MAY 2026</span>
+  </div>
+</footer>
+
+
+</body></html>
