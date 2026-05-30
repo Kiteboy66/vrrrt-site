@@ -27,19 +27,22 @@
       id: 'privacy',
       kind: 'Privacy policy',
       title: 'Privacy policy.',
-      lastUpdated: 'May 25, 2026',
-      intro: 'Vrrrt Cube indexes merchant catalogs and serves them to shoppers. This policy explains what we collect, how we use it, and the controls you have.',
+      lastUpdated: 'May 30, 2026',
+      intro: 'Vrrrt Cube indexes merchant catalogs, serves the Cube to shoppers, and reports non-identifying engagement analytics to merchants. This policy explains what we collect, how we use it, and the controls you have.',
       sections: [
         { h: '1. What we collect',
           body: [
-            'For merchants: store URL, public catalog data (products, variants, images, prices, stock status), aggregate session metrics (discoveries, conversion rate, GMV), and the account information you provide at sign-up.',
-            'For shoppers: anonymous session ID, browsing events (which product was glanced, hovered, opened), referring page, device class, country-level geo. We do not collect names, emails, or payment information from shoppers using a Vrrrt-equipped merchant.'
+            'For merchants: store URL, public catalog data (products, variants, images, prices, stock status), Cube configuration, aggregate engagement metrics, and the account information you provide at sign-up.',
+            'For storefront visitors: Vrrrt Cube may collect non-identifying interaction events such as Cube load/session events, active time spent with the Cube while it is visible, retention milestones such as 10s, 30s, 60s, 2m38s, and 3m+, Cube navigation interactions, search terms submitted inside the Cube, number of search results returned, product tile clicks, quick-view opens, and View product clicks from the Cube.',
+            'For reporting context: Vrrrt Cube may process product and image metadata needed to show merchant analytics, such as product title, product ID, image URL, collection title, Cube key, and shop domain.',
+            'We do not need to identify individual shoppers to provide these analytics. We do not collect shopper names, email addresses, payment information, or account credentials from storefront visitors using a Vrrrt-equipped merchant.'
           ]
         },
         { h: '2. How we use it',
           body: [
             'To operate Vrrrt Cube: showing shoppers more products in real time.',
-            'To improve the product: aggregate metrics inform ranking, latency, and feature work.',
+            'To provide merchant analytics: helping merchants understand whether shoppers load the Cube, stay engaged with it, search inside it, open product details, and click through to product pages.',
+            'To improve the product: aggregate metrics inform ranking, search quality, latency, reliability, and feature work.',
             'To bill merchants: usage counters drive plan tiers and overages, where applicable.'
           ]
         },
@@ -47,6 +50,7 @@
           body: [
             'We do not sell shopper data. To anyone, ever.',
             'We do not run cross-merchant retargeting. A shopper\'s browse history on one store stays on one store.',
+            'We do not claim to track checkout conversion unless a separate conversion feature is implemented and disclosed.',
             'We do not train large models on your catalog without an explicit per-merchant opt-in.'
           ]
         },
@@ -59,13 +63,13 @@
         { h: '5. Data residency & retention',
           body: [
             'Default region is US-East (AWS). EU and APAC residency options are available on Pro and enterprise plans.',
-            'Session-level data is retained for 90 days. Aggregate metrics are retained for the life of the account.'
+            'Session-level interaction events are retained for 90 days. Aggregate merchant analytics are retained for the life of the account unless deleted earlier by request or account closure.'
           ]
         },
         { h: '6. Your rights',
           body: [
             'Merchants: export, delete, or transfer your data via the Vrrrt dashboard or by emailing privacy@vrrrt.com.',
-            'Shoppers: clearing your browser cookies removes Vrrrt\'s session ID. We have no other identifier tied to you.'
+            'Shoppers: clearing your browser cookies removes Vrrrt\'s session ID. Because Vrrrt Cube analytics are designed not to identify individual shoppers, we may not be able to locate a specific visitor session without details such as the store URL, approximate visit time, and browser/device context.'
           ]
         },
         { h: '7. Contact',

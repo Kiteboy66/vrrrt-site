@@ -1,5 +1,5 @@
 const SUPPORT_EMAIL = 'support@vrrrt.app';
-const LAST_UPDATED = 'April 28, 2026';
+const LAST_UPDATED = 'May 30, 2026';
 
 const navItems = [
   ['Overview', '/cube'],
@@ -217,11 +217,12 @@ const legalDocs = {
     active: 'privacy',
     kind: 'Vrrrt Cube',
     title: 'Privacy Policy',
-    intro: 'This policy explains what information Vrrrt Cube uses to provide the Shopify storefront Cube.',
+    intro: 'This policy explains what information Vrrrt Cube uses to provide the Shopify storefront Cube and merchant engagement analytics.',
     sections: [
-      ['Information we use', 'Vrrrt Cube uses Shopify product and collection information that a merchant makes available to the app, including product titles, images, prices, availability, vendors, product types, tags, and product links.', 'The app may receive store-identifying information needed to install, authenticate, and operate the Shopify app.'],
-      ['Shopper data', 'Vrrrt Cube does not require shoppers to create an account with Vrrrt and does not intentionally collect payment card details. Add-to-cart actions are handled through Shopify storefront cart endpoints.'],
-      ['How information is used', 'Information is used to render the product discovery Cube, support merchant configuration, maintain app security, troubleshoot issues, and respond to support requests.'],
+      ['Information we use', 'Vrrrt Cube uses Shopify product and collection information that a merchant makes available to the app, including product titles, product IDs, images, prices, availability, vendors, product types, tags, collection titles, Cube keys, shop domain, and product links.', 'The app may receive store-identifying information needed to install, authenticate, operate the Shopify app, and report Cube performance to the merchant.'],
+      ['Storefront interaction analytics', 'Vrrrt Cube may collect non-identifying Cube load/session events, active time spent with the Cube while visible, retention milestones such as 10s, 30s, 60s, 2m38s, and 3m+, Cube navigation interactions, search terms submitted inside the Cube, number of search results returned, product tile clicks, quick-view opens, and View product clicks from the Cube.', 'These events are used to provide merchant analytics and improve Vrrrt Cube performance. The app currently tracks through View product and does not claim to track checkout conversion unless separately implemented and disclosed.'],
+      ['Shopper data', 'Vrrrt Cube does not require shoppers to create an account with Vrrrt and does not intentionally collect shopper names, email addresses, payment card details, or account credentials. Add-to-cart actions are handled through Shopify storefront cart endpoints.'],
+      ['How information is used', 'Information is used to render the product discovery Cube, support merchant configuration, provide engagement reporting, maintain app security, troubleshoot issues, and respond to support requests.'],
       ['Sharing', 'We do not sell personal information. We may use service providers for hosting, app delivery, logging, email, and operational support.'],
       ['Contact', `Privacy questions can be sent to ${SUPPORT_EMAIL}.`],
     ],
