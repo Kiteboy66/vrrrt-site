@@ -82,39 +82,6 @@
       </section>
     );
 
-    const HelpCards = () => (
-      <section style={{ background: '#FAFAFA', padding: '64px 32px' }}>
-        <div style={{ maxWidth: 1240, margin: '0 auto' }}>
-          <div style={{ display: 'grid', gridTemplateColumns: 'repeat(2, 1fr)', gap: 16 }}>
-            {[
-              { t: 'Docs', d: 'Install guides, theme integration, API reference.', cta: 'Open docs', href: '/cube/docs' },
-              { t: 'Partner with us', d: 'Designer, agency, or theme developer? Let\'s build together. Vrrrt works on any Shopify theme.', cta: 'Join the partner program', href: '/partners' },
-            ].map(c => (
-              <a key={c.t} href={c.href}
-                target={c.href.startsWith('http') ? '_blank' : undefined}
-                rel={c.href.startsWith('http') ? 'noopener noreferrer' : undefined}
-                style={{
-                textDecoration: 'none', color: 'inherit',
-                background: '#fff', borderRadius: 14, padding: '24px 28px',
-                boxShadow: '0 1px 2px rgba(0,0,0,0.04), 0 0 0 1px rgba(0,0,0,0.05)',
-                display: 'flex', flexDirection: 'column', gap: 12,
-                transition: 'all 180ms cubic-bezier(.2,.9,.2,1)',
-              }}
-              onMouseEnter={e => { e.currentTarget.style.transform = 'translateY(-2px)'; e.currentTarget.style.boxShadow = '0 12px 32px rgba(0,0,0,0.08), 0 0 0 1px rgba(0,0,0,0.05)'; }}
-              onMouseLeave={e => { e.currentTarget.style.transform = 'none'; e.currentTarget.style.boxShadow = '0 1px 2px rgba(0,0,0,0.04), 0 0 0 1px rgba(0,0,0,0.05)'; }}
-              >
-                <h3 style={{ fontFamily: 'Geist, system-ui, sans-serif', fontWeight: 600, fontSize: 22, color: '#0A0A0B', margin: 0, letterSpacing: '-0.02em' }}>{c.t}</h3>
-                <p style={{ fontFamily: 'Geist, system-ui, sans-serif', fontSize: 14, color: '#71717A', margin: 0, lineHeight: 1.5, flex: 1 }}>{c.d}</p>
-                <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontFamily: 'Geist, system-ui, sans-serif', fontSize: 14, fontWeight: 600, color: '#0A0A0B' }}>
-                  {c.cta} <Icon name="arrow-right" size={14} stroke={2.5} />
-                </div>
-              </a>
-            ))}
-          </div>
-        </div>
-      </section>
-    );
-
     const FAQ_DATA = [
       { q: 'How fast does Vrrrt show up after install?',
         a: 'Instantly. The Cube loads in under 1 second. Drop the block, assign your collections, save. Your shoppers see it on the next page load.' },
@@ -305,7 +272,6 @@
         <Header active="support" dark />
         <Hero />
         <GuideButtons />
-        <HelpCards />
         <FAQ />
         <Contact />
         <Footer />
