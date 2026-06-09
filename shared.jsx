@@ -273,12 +273,18 @@ const FooterCTA = ({ headline, sub, primary = 'Install on Shopify', secondary = 
 // ============ FOOTER ============
 
 const Footer = () => (
+  <>
+  <style>{`
+    @media (max-width: 700px) {
+      .footer-grid { grid-template-columns: 1fr !important; gap: 32px !important; }
+    }
+  `}</style>
   <footer style={{
     background: '#0A0A0B', color: '#A1A1AA', padding: '64px 32px 40px',
     borderTop: '1px solid #18181B',
   }}>
     <div style={{ maxWidth: 1240, margin: '0 auto' }}>
-      <div style={{
+      <div className="footer-grid" style={{
         display: 'grid', gridTemplateColumns: '2fr 1fr 1fr 1fr', gap: 40,
         marginBottom: 56,
       }}>
@@ -350,6 +356,7 @@ const Footer = () => (
       </div>
     </div>
   </footer>
+  </>
 );
 
 // ============ PAGE WRAPPER ============
