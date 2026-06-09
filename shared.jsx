@@ -361,6 +361,7 @@ const Footer = () => (
             { label: 'Pricing', href: '/#pricing' },
             { label: 'Research', href: '/research' },
             { label: 'Partners', href: '/partners' },
+            { label: 'Partner login', href: 'https://3dnavigate.vrrrt.app/partners/login' },
             { label: 'Support', href: '/support' },
           ]},
           { h: 'Legal', items: [
@@ -383,7 +384,7 @@ const Footer = () => (
             <ul style={{ listStyle: 'none', padding: 0, margin: 0, display: 'flex', flexDirection: 'column', gap: 10 }}>
               {col.items.map(it => (
                 <li key={it.label}>
-                  <a href={it.href} style={{
+                  <a href={it.href} target={it.href.startsWith('http') ? '_blank' : undefined} rel={it.href.startsWith('http') ? 'noopener noreferrer' : undefined} style={{
                     color: '#71717A', fontSize: 13, textDecoration: 'none',
                     display: 'inline-flex', alignItems: 'center', gap: 8,
                   }}>
