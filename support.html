@@ -50,6 +50,38 @@
       </section>
     );
 
+    const GuideButtons = () => (
+      <section style={{ background: '#0A0A0B', padding: '64px 32px 0' }}>
+        <div style={{ maxWidth: 1240, margin: '0 auto' }}>
+          <h2 style={{ fontFamily: 'Geist, system-ui, sans-serif', fontWeight: 700, fontSize: 32, letterSpacing: '-0.03em', color: '#fff', margin: '0 0 24px' }}>Installation guides</h2>
+          <div className="guide-grid" style={{ display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }}>
+            {[
+              { t: 'App Install Guide', d: 'Install the Vrrrt app on your Shopify store.', href: '/guides/app-install' },
+              { t: 'One-Cube Installation', d: 'Set up your first Vrrrt Cube, step by step.', href: '/guides/one-cube' },
+              { t: 'Multi-Cube Installation', d: 'Set up multiple Cubes across your store.', href: '/guides/multi-cube' },
+            ].map(c => (
+              <a key={c.t} href={c.href} target="_blank" rel="noopener noreferrer" style={{
+                textDecoration: 'none', color: 'inherit',
+                background: '#161619', border: '1px solid #29292d', borderRadius: 14, padding: '24px 28px',
+                display: 'flex', flexDirection: 'column', gap: 12,
+                transition: 'all 180ms cubic-bezier(.2,.9,.2,1)',
+              }}
+              onMouseEnter={e => { e.currentTarget.style.borderColor = '#00E26A'; e.currentTarget.style.transform = 'translateY(-2px)'; }}
+              onMouseLeave={e => { e.currentTarget.style.borderColor = '#29292d'; e.currentTarget.style.transform = 'none'; }}
+              >
+                <h3 style={{ fontFamily: 'Geist, system-ui, sans-serif', fontWeight: 600, fontSize: 20, color: '#fff', margin: 0, letterSpacing: '-0.02em' }}>{c.t}</h3>
+                <p style={{ fontFamily: 'Geist, system-ui, sans-serif', fontSize: 14, color: '#A1A1AA', margin: 0, lineHeight: 1.5, flex: 1 }}>{c.d}</p>
+                <div style={{ display: 'inline-flex', alignItems: 'center', gap: 6, fontFamily: 'Geist, system-ui, sans-serif', fontSize: 14, fontWeight: 600, color: '#00E26A' }}>
+                  Open guide <Icon name="arrow-right" size={14} stroke={2.5} />
+                </div>
+              </a>
+            ))}
+          </div>
+        </div>
+        <style>{`@media (max-width: 700px) { .guide-grid { grid-template-columns: 1fr !important; } }`}</style>
+      </section>
+    );
+
     const HelpCards = () => (
       <section style={{ background: '#FAFAFA', padding: '64px 32px' }}>
         <div style={{ maxWidth: 1240, margin: '0 auto' }}>
@@ -272,6 +304,7 @@
       <>
         <Header active="support" dark />
         <Hero />
+        <GuideButtons />
         <HelpCards />
         <FAQ />
         <Contact />
