@@ -147,6 +147,7 @@ const ProductsMenu = ({ active, onClose }) => (
 const Header = ({ active = 'home', dark = false }) => {
   const [scrolled, setScrolled] = useState(false);
   const [menuOpen, setMenuOpen] = useState(false);
+  const [mobileOpen, setMobileOpen] = useState(false);
   const menuRef = useRef(null);
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 12);
@@ -169,6 +170,15 @@ const Header = ({ active = 'home', dark = false }) => {
   const textActive = dark ? '#fff' : '#0A0A0B';
 
   return (
+    <>
+    <style>{`
+      .mobile-toggle { display: none; }
+      @media (max-width: 700px) {
+        .desktop-nav { display: none !important; }
+        .desktop-cta { display: none !important; }
+        .mobile-toggle { display: inline-flex !important; }
+      }
+    `}</style>
     <header style={{
       position: 'sticky', top: 0, zIndex: 50,
       background: bg,
@@ -182,7 +192,7 @@ const Header = ({ active = 'home', dark = false }) => {
         display: 'flex', alignItems: 'center', gap: 36,
       }}>
         <Logo color={dark ? '#fff' : '#0A0A0B'} size={22} />
-        <nav style={{ display: 'flex', gap: 26, flex: 1, alignItems: 'center' }}>
+        <nav className="desktop-nav" style={{ display: 'flex', gap: 26, flex: 1, alignItems: 'center' }}>
           <div ref={menuRef} style={{ position: 'relative' }}>
             <button onClick={() => setMenuOpen(o => !o)} style={{
               display: 'inline-flex', alignItems: 'center', gap: 4,
@@ -228,12 +238,61 @@ const Header = ({ active = 'home', dark = false }) => {
             </a>
           ))}
         </nav>
+        <span className="desktop-cta" style={{ display: 'inline-flex', alignItems: 'center', gap: 36 }}>
         <Button variant={dark ? 'ghost-on-dark' : 'ghost'} size="sm" href="/partners">Partners</Button>
         <Button variant="primary" size="sm" href="https://apps.shopify.com/3dnavigate" trailingIcon={<Icon name="arrow-right" size={14} stroke={2}/>}>
           Install on Shopify
         </Button>
+        </span>
+        <button
+          className="mobile-toggle"
+          onClick={() => setMobileOpen(o => !o)}
+          aria-label="Menu"
+          style={{
+            marginLeft: 'auto', alignItems: 'center', justifyContent: 'center',
+            width: 40, height: 40, background: 'transparent',
+            border: '1px solid ' + (dark ? 'rgba(255,255,255,0.18)' : 'rgba(0,0,0,0.14)'),
+            borderRadius: 10, cursor: 'pointer', padding: 0,
+          }}>
+          <span style={{ fontSize: 18, lineHeight: 1, color: dark ? '#fff' : '#0A0A0B' }}>
+            {mobileOpen ? '\u2715' : '\u2630'}
+          </span>
+        </button>
       </div>
+      {mobileOpen && (
+        <div style={{
+          display: 'flex', flexDirection: 'column', gap: 4,
+          padding: '8px 20px 20px',
+          background: dark ? '#0A0A0B' : '#FAFAFA',
+          borderBottom: '1px solid ' + (dark ? 'rgba(255,255,255,0.08)' : 'rgba(0,0,0,0.08)'),
+        }}>
+          {[
+            { label: 'Products',  href: '/shopify' },
+            { label: 'Pricing',   href: '/#pricing' },
+            { label: 'Merchants', href: '/#merchants' },
+            { label: 'Research',  href: '/research' },
+            { label: 'Support',   href: '/support' },
+            { label: 'Partners',  href: '/partners' },
+          ].map(item => (
+            <a key={item.label} href={item.href} onClick={() => setMobileOpen(false)} style={{
+              fontFamily: 'Geist, system-ui, sans-serif', fontSize: 16, fontWeight: 500,
+              color: dark ? '#fff' : '#0A0A0B', textDecoration: 'none',
+              padding: '12px 0', borderBottom: '1px solid ' + (dark ? 'rgba(255,255,255,0.06)' : 'rgba(0,0,0,0.06)'),
+            }}>
+              {item.label}
+            </a>
+          ))}
+          <a href="https://apps.shopify.com/3dnavigate" onClick={() => setMobileOpen(false)} style={{
+            marginTop: 12, textAlign: 'center', background: '#00E26A', color: '#000',
+            fontFamily: 'Geist, system-ui, sans-serif', fontSize: 16, fontWeight: 600,
+            textDecoration: 'none', padding: '14px 0', borderRadius: 12,
+          }}>
+            Install on Shopify
+          </a>
+        </div>
+      )}
     </header>
+    </>
   );
 };
 
