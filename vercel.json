@@ -1,5 +1,18 @@
 {
   "cleanUrls": true,
+  "redirects": [
+    {
+      "source": "/",
+      "has": [
+        {
+          "type": "host",
+          "value": "cube.vrrrt.app"
+        }
+      ],
+      "destination": "https://xyyt1b-ip.myshopify.com",
+      "permanent": false
+    }
+  ],
   "rewrites": [
     {
       "source": "/partners/pack",
