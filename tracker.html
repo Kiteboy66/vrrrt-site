@@ -18,6 +18,12 @@
     .vt-btn { min-height: 44px; white-space: normal; justify-content: center; text-align: center; }
     .vt-btn--primary:hover { background: #3CFA8B !important; box-shadow: 0 0 0 4px rgba(0,226,106,0.18), 0 0 24px rgba(0,226,106,0.45); }
     .vt-btn:active { transform: scale(0.97); }
+    .tracker-root .vt-eyebrow,
+    .tracker-root [style*="text-transform: uppercase"] {
+      font-size: 13px !important;
+      letter-spacing: 0.08em !important;
+      text-transform: uppercase;
+    }
 
     .tracker-root {
       min-height: 100vh;
@@ -26,7 +32,7 @@
         var(--vt-ink);
     }
     .tracker-section {
-      padding: clamp(72px, 11vw, 128px) 24px;
+      padding: 80px 24px;
       border-top: 1px solid rgba(255,255,255,0.07);
     }
     .tracker-section:first-child { border-top: 0; }
@@ -38,15 +44,18 @@
       max-width: 840px;
     }
     .tracker-hero {
-      min-height: 100svh;
+      min-height: auto;
       display: flex;
       align-items: center;
-      padding: 56px 24px 88px;
+      padding: 80px 24px;
     }
     .tracker-hero h1 {
       margin: 0;
-      max-width: 1050px;
-      font-size: clamp(48px, 8.4vw, 112px);
+      max-width: 960px;
+      font-size: clamp(32px, 5vw, 60px);
+      line-height: 1.05;
+      font-weight: 700;
+      letter-spacing: 0;
     }
     .tracker-copy {
       display: grid;
@@ -61,16 +70,24 @@
       font-weight: 600;
     }
     .tracker-lead {
-      max-width: 840px;
+      max-width: 720px;
+      font-size: clamp(17px, 2vw, 20px);
+      line-height: 1.5;
       color: var(--vt-silver);
     }
     .tracker-body {
-      max-width: 820px;
+      max-width: 720px;
+      font-size: 17px;
+      line-height: 1.6;
       color: var(--vt-silver);
     }
     .tracker-heading {
       margin: 0;
-      max-width: 880px;
+      max-width: 720px;
+      font-size: clamp(26px, 3.5vw, 40px);
+      line-height: 1.15;
+      font-weight: 600;
+      letter-spacing: 0;
     }
     .tracker-cta {
       display: flex;
@@ -133,7 +150,10 @@
       margin: var(--vt-s-8) 0 0;
       padding-left: var(--vt-s-5);
       border-left: 3px solid var(--vt-green-400);
-      max-width: 940px;
+      max-width: 720px;
+      font-size: clamp(20px, 2.5vw, 26px);
+      line-height: 1.25;
+      letter-spacing: 0;
       color: var(--vt-white);
     }
     .tracker-honesty,
@@ -167,6 +187,8 @@
       padding: 0;
       list-style: none;
       max-width: 820px;
+      font-size: 17px;
+      line-height: 1.6;
     }
     .tracker-list li {
       display: grid;
@@ -235,12 +257,12 @@
     }
     .tracker-final {
       text-align: left;
-      padding-bottom: clamp(88px, 12vw, 144px);
+      padding-bottom: 80px;
     }
 
     @media (max-width: 760px) {
-      .tracker-section { padding: 72px 20px; }
-      .tracker-hero { min-height: auto; padding: 44px 20px 72px; }
+      .tracker-section { padding: 56px 20px; }
+      .tracker-hero { min-height: auto; padding: 56px 20px; }
       .tracker-cta .vt-btn { width: 100%; }
       .tracker-before-after,
       .tracker-founder {
@@ -305,7 +327,7 @@
       <section className="tracker-hero">
         <div className="tracker-wrap">
           <Eyebrow color="#00E26A">For Shopify store owners who want to convert more of the traffic they already pay for</Eyebrow>
-          <h1 className="vt-display-xl">
+          <h1 className="vt-display">
             Right now, shoppers are leaving your store in under 30 seconds.<br />
             <span style={{ color: '#A1A1AA' }}>You can't see which pages, or how fast — yet.</span>
           </h1>
@@ -322,7 +344,7 @@
 
     const Airfield = () => (
       <Section className="tracker-airfield">
-        <h2 className="tracker-heading vt-h1">Think of your store as an airfield</h2>
+        <h2 className="tracker-heading vt-h2">Think of your store as an airfield</h2>
         <Copy>
           <p>Every shopper your ads bring in is a plane coming down to land. Wheels touch the ground, and in those few seconds they're looking out the window — is there anything here worth getting off for?</p>
           <p>See something good, they stop. People get out, walk into the building, buy. See nothing, the stick goes back and they're gone — back up into the sky before they ever really landed.</p>
@@ -335,7 +357,7 @@
 
     const AnalyticsGap = () => (
       <Section>
-        <h2 className="tracker-heading vt-h1">You've got analytics. So why is this still so hard to see?</h2>
+        <h2 className="tracker-heading vt-h2">You've got analytics. So why is this still so hard to see?</h2>
         <Copy>
           <p>You're not flying without instruments. Open the Analytics tab in your Shopify admin and there's plenty there — sessions, sales, your conversion rate, the little map lighting up with dots. All of it real. None of it answers the question you just asked.</p>
           <p>Shopify tells you 662 shoppers landed and 4 of them bought. It hands you the result — the final tally. What it doesn't do is show you the moment in between, when most of them slipped away.</p>
@@ -346,7 +368,7 @@
 
     const Leaderboard = () => (
       <Section>
-        <h2 className="tracker-heading vt-h1">This is what's happening on your airfield</h2>
+        <h2 className="tracker-heading vt-h2">This is what's happening on your airfield</h2>
         <Copy>
           <p>Install the app, okay the tracking, that's it. Start watching straight away. As the shoppers land you will see immediate results — the full picture of your store. Every page that gets visited will show up here, and you'll find out how that page performs.</p>
         </Copy>
@@ -365,7 +387,7 @@
 
     const DropOffCurve = () => (
       <Section>
-        <h2 className="tracker-heading vt-h1">Now point it at one page and watch up close</h2>
+        <h2 className="tracker-heading vt-h2">Now point it at one page and watch up close</h2>
         <Copy>
           <p>The leaderboard watches your whole store at once. But when a page needs a proper look, you point Vrrrt straight at it — pick the page or collection, hit Track this page or collection, and now you're watching that one on its own. Where shoppers look, what they click, what they buy, and where they leave.</p>
         </Copy>
@@ -386,7 +408,7 @@
 
     const EcommerceBenchmarks = () => (
       <Section>
-        <h2 className="tracker-heading vt-h1">Before you think this is just your store — it isn't</h2>
+        <h2 className="tracker-heading vt-h2">Before you think this is just your store — it isn't</h2>
         <Copy>
           <p>You haven't built something broken. This is just how ecommerce goes — and lucky for you, being on Shopify means there are solid benchmarks to measure your store against. Here's what they say:</p>
           <ul className="tracker-bullets">
@@ -404,7 +426,7 @@
 
     const SafeToTry = () => (
       <Section>
-        <h2 className="tracker-heading vt-h1">Look, it costs you nothing to find out</h2>
+        <h2 className="tracker-heading vt-h2">Look, it costs you nothing to find out</h2>
         <Copy>
           <p>I know what's running through your head right now — here comes the catch. There isn't one. Here's the whole deal, plainly:</p>
           <ul className="tracker-bullets">
@@ -420,7 +442,7 @@
 
     const GridProblem = () => (
       <Section>
-        <h2 className="tracker-heading vt-h1">So everyone can see the problem. The real question is — how would you even fix it?</h2>
+        <h2 className="tracker-heading vt-h2">So everyone can see the problem. The real question is — how would you even fix it?</h2>
         <Copy>
           <p>Think about how you shop. You walk into a shop, you look around. See something you like, you head for it. See nothing, you walk out. You don't read anything, you don't click anything — you just look, and your gut decides in a couple of seconds. That's how people shop. The eye takes in a whole room at a glance.</p>
           <p>Now look at what we ask an online shopper to do. They land on your store and we hand them a flat grid. Eight products. Maybe sixteen. Want to see more? Scroll. Click "next page." Wait for it to load. Scroll again. We took the most natural thing in the world — looking around a room — and turned it into homework.</p>
@@ -435,7 +457,7 @@
 
     const CubeProof = () => (
       <Section>
-        <h2 className="tracker-heading vt-h1">This is the cube.</h2>
+        <h2 className="tracker-heading vt-h2">This is the cube.</h2>
         <Copy>
           <p>Instead of a flat grid, your products sit on a cube a shopper can spin. Each face shows a set of them — they flick it round, another set, flick again, another. In the same few seconds they'd have spent staring at one screenful of a grid, they've seen ninety. No scrolling, no "next page," no waiting. Just turning a cube and watching your store go by — the closest thing online to walking in and looking around.</p>
         </Copy>
@@ -474,7 +496,7 @@
         <div className="tracker-founder">
           <div className="tracker-founder-photo vt-small">Founder photo slot<br />LinkedIn headshot</div>
           <div>
-            <h2 className="tracker-heading vt-h1">Who built this, and why</h2>
+            <h2 className="tracker-heading vt-h2">Who built this, and why</h2>
             <Copy>
               <p>I'm not a software company — I'm an operator. Six businesses, three exits, and a fair stretch in the ecommerce game myself. What I do is find a problem everyone's quietly given up on and build the fix.</p>
               <p>This was one of those. Go scroll through Reddit for ten minutes — r/shopify, r/ecommerce, any of them. Same post, over and over: "my traffic's fine, my store looks good, why won't my conversion rate move?" Hundreds of owners asking the same question, and nobody's got a real answer. Everyone's made their peace with it, or they go after page speed — and the shoppers still leave, because speed was never the thing. It's the grid. We've all been selling through a layout that shows people a handful of products and makes them click for more, which isn't how anyone actually shops.</p>
@@ -487,7 +509,7 @@
 
     const Developers = () => (
       <Section id="developers" className="tracker-dev">
-        <h2 className="tracker-heading vt-h1">Build or run Shopify stores for other people?</h2>
+        <h2 className="tracker-heading vt-h2">Build or run Shopify stores for other people?</h2>
         <Copy>
           <p>There's a partner program. Drop the free tracker on any client's store, show them where they're losing shoppers, and there's a cut in it for you — $50 per referral once a client completes four paid months, or 20% recurring for twelve months. It costs you nothing to try it on a store and see.</p>
         </Copy>
@@ -497,7 +519,7 @@
 
     const HowItWorks = () => (
       <Section>
-        <h2 className="tracker-heading vt-h1">Three steps. The first two are free, and the third is up to you.</h2>
+        <h2 className="tracker-heading vt-h2">Three steps. The first two are free, and the third is up to you.</h2>
         <ol className="tracker-list vt-body">
           <li><span>1</span><p><strong>Track.</strong> Install the app, okay the tracking. It starts watching every page where shoppers land — automatically, from the first visit.</p></li>
           <li><span>2</span><p><strong>See.</strong> Open the dashboard. Your pages ranked, how fast shoppers leave each one, where they go. The whole picture, already waiting.</p></li>
@@ -508,7 +530,7 @@
 
     const FinalCTA = () => (
       <Section className="tracker-final">
-        <h2 className="tracker-heading vt-h1">You can keep guessing. Or you can look.</h2>
+        <h2 className="tracker-heading vt-h2">You can keep guessing. Or you can look.</h2>
         <Copy>
           <p>That's really the whole choice. Keep paying for traffic and hoping, telling yourself the bounce is "just how it goes" — or install the app, open the dashboard in a few days, and finally see exactly where your store is losing people. For free.</p>
           <p>The numbers are already there. They're yours. They've always been yours. You've just never been able to see them.</p>
