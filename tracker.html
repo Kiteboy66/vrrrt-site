@@ -132,7 +132,7 @@
       letter-spacing: -0.025em;
     }
     .tracker-body {
-      max-width: 720px;
+      max-width: 900px;
       color: #303844;
       font-size: clamp(18px, 1.45vw, 22px);
       line-height: 1.36;
@@ -150,7 +150,7 @@
       font-weight: 850;
     }
     .tracker-section-intro {
-      max-width: 720px;
+      max-width: 900px;
       margin: 0 0 24px;
       color: #303844;
       font-size: clamp(18px, 1.45vw, 22px);
@@ -320,12 +320,9 @@
       border: 1px solid #d9dce2;
       border-radius: 6px;
       background: #ffffff;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      color: #303844;
-      text-align: center;
-      padding: 18px;
+      display: block;
+      width: 100%;
+      object-fit: cover;
     }
     .tracker-dev {
       background: rgba(0,226,106,0.06);
@@ -628,6 +625,20 @@
             alt="Vrrrt Cube performance dashboard with green after-cube line over red before line, before and after journey-to-sale panels, and top clicked images"
             tag="Example — your own walkthrough / demo data"
           />
+        </div>
+        <div className="tracker-card">
+          <Screenshot
+            src="assets/PLACEHOLDER-tracker-beforeafter.png"
+            alt="Before and after cube — bounce rates and journey to sale."
+            tag="Example — your own walkthrough / demo data"
+          />
+        </div>
+        <div className="tracker-card">
+          <Screenshot
+            src="assets/PLACEHOLDER-tracker-topclicks.png"
+            alt="Top clicked images and top searches — the products shoppers reached for and what they searched but couldn't find."
+            tag="Example — your own walkthrough / demo data"
+          />
           <p className="tracker-caption vt-small">Green is after the cube, red is before — the green holding up where the red fell away. But look lower, because this is the part worth the whole thing: the exact products shoppers reached for. Which images they clicked. Which ones pulled them through to a product page — real buying intent. Which ones got added to cart. You're not guessing what sells anymore. You're watching it happen, product by product, on your own store.</p>
         </div>
         <Copy>
@@ -641,7 +652,7 @@
     const Founder = () => (
       <Section>
         <div className="tracker-founder">
-          <div className="tracker-founder-photo vt-small">Founder photo slot<br />LinkedIn headshot</div>
+          <img className="tracker-founder-photo" src="assets/founder-linkedin.jpg" alt="Vrrrt founder LinkedIn headshot" />
           <div>
             <h2 className="tracker-heading vt-h2">Who built this, and why</h2>
             <Copy>
