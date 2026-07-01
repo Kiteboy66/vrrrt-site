@@ -29,7 +29,7 @@
     body { font-family: var(--vt-font-sans); color: var(--vt-white); -webkit-font-smoothing: antialiased; }
     *, *::before, *::after { box-sizing: border-box; }
     button, a { font-family: inherit; }
-    .vt-btn { min-height: 44px; white-space: normal; justify-content: center; text-align: center; }
+    .vt-btn { min-height: 44px; justify-content: center; text-align: center; }
     .vt-btn--primary:hover { background: #3CFA8B !important; box-shadow: 0 0 0 4px rgba(0,226,106,0.18), 0 0 24px rgba(0,226,106,0.45); }
     .vt-btn:active { transform: scale(0.97); }
     .tracker-root .vt-eyebrow,
@@ -95,9 +95,16 @@
         linear-gradient(180deg, #080809 0%, #050506 100%);
       color: var(--text);
     }
+    .tracker-hero .tracker-wrap {
+      width: min(1180px, calc(100vw - 80px));
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
     .tracker-hero h1 {
       margin: 0;
-      max-width: 900px;
+      max-width: 1120px;
       color: var(--text);
       font-size: clamp(52px, 4.1vw, 76px);
       line-height: 0.95;
@@ -117,7 +124,7 @@
       font-weight: 600;
     }
     .tracker-lead {
-      max-width: 720px;
+      max-width: 820px;
       color: var(--text);
       font-size: clamp(21px, 1.75vw, 27px);
       line-height: 1.18;
@@ -157,6 +164,9 @@
       align-items: flex-start;
       gap: 10px;
       margin-top: var(--vt-s-7);
+    }
+    .tracker-hero .tracker-cta {
+      align-items: center;
     }
     .tracker-microcopy {
       margin: 0;
@@ -244,20 +254,6 @@
       height: 1px;
       margin: var(--vt-s-7) 0;
       background: #d9dce2;
-    }
-    .tracker-airfield {
-      position: relative;
-      overflow: hidden;
-    }
-    .tracker-runway {
-      margin-top: var(--vt-s-7);
-      height: 120px;
-      border: 1px solid #d9dce2;
-      border-radius: 6px;
-      background:
-        linear-gradient(90deg, transparent 0 47%, rgba(0,226,106,0.40) 47% 53%, transparent 53% 100%),
-        repeating-linear-gradient(90deg, transparent 0 70px, rgba(26,26,26,0.08) 70px 72px),
-        #ffffff;
     }
     .tracker-list {
       display: grid;
@@ -350,6 +346,9 @@
       .tracker-section:not(.tracker-hero) .tracker-wrap::before { left: 6px; }
       .tracker-section:not(.tracker-hero) .tracker-heading::before { left: -35px; }
       .tracker-hero { min-height: auto; padding: 72px 16px 52px; }
+      .tracker-hero .tracker-wrap {
+        width: min(100vw - 32px, 720px);
+      }
       .tracker-hero h1 {
         font-size: clamp(39px, 12.2vw, 47px);
         letter-spacing: -0.065em;
@@ -361,7 +360,15 @@
       .tracker-heading {
         font-size: clamp(28px, 7vw, 40px);
       }
-      .tracker-cta .vt-btn { width: 100%; }
+      .tracker-cta .vt-btn {
+        width: 100%;
+        max-width: 100%;
+        min-height: 54px;
+        padding-left: 18px !important;
+        padding-right: 18px !important;
+        line-height: 1.15 !important;
+        white-space: normal !important;
+      }
       .tracker-before-after,
       .tracker-founder {
         grid-template-columns: 1fr;
@@ -379,7 +386,6 @@
         max-width: calc(100% - 24px);
         font-size: 10px;
       }
-      .tracker-runway { height: 88px; }
       .tracker-card { margin-left: 0; margin-right: 0; }
     }
     .tracker-root .vt-small,
@@ -414,7 +420,13 @@
 
     const CTA = ({ microcopy = CTA_MICROCOPY }) => (
       <div className="tracker-cta">
-        <Button variant="primary" size="lg" href={CTA_HREF} trailingIcon={<Icon name="arrow-right" size={16} stroke={2}/>}>
+        <Button
+          variant="primary"
+          size="lg"
+          href={CTA_HREF}
+          trailingIcon={<Icon name="arrow-right" size={16} stroke={2}/>}
+          style={{ maxWidth: '100%', whiteSpace: 'normal', lineHeight: 1.15 }}
+        >
           {CTA_TEXT}
         </Button>
         <p className="tracker-microcopy">{microcopy}</p>
@@ -464,7 +476,6 @@
           <p>Every shopper your ads bring in is a plane coming down to land. Wheels touch the ground, and in those few seconds they're looking out the window — is there anything here worth getting off for?</p>
           <p>See something good, they stop. People get out, walk into the building, buy. See nothing, the stick goes back and they're gone — back up into the sky before they ever really landed.</p>
         </Copy>
-        <div className="tracker-runway" aria-hidden="true" />
         <Copy>
           <p>And that window is short. About 30 seconds — that's all the time most shoppers give you. In that half-minute they're looking for something worth getting off the plane for. Plenty don't find it, the stick goes back, and up they go — and you paid to bring every one of them down.</p>
           <p>So here's the only question that matters right now: what's your number? How many planes touched down on your field today and lifted off again? Not a guess. Not "probably around half." The exact number, page by page. You've never had it. For the first time, you could. That's where we start — not with a fix, with your number.</p>
