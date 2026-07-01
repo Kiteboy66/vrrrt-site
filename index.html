@@ -25,7 +25,7 @@
       --paper: #f6f4ef;
       --paper-2: #ebe7df;
     }
-    html, body { margin: 0; padding: 0; background: var(--vt-ink); overflow-x: hidden; }
+    html, body { margin: 0; padding: 0; background: var(--vt-ink); overflow-x: hidden; -webkit-text-size-adjust: 100%; text-size-adjust: 100%; }
     body { font-family: var(--vt-font-sans); color: var(--vt-white); -webkit-font-smoothing: antialiased; }
     *, *::before, *::after { box-sizing: border-box; }
     button, a { font-family: inherit; }
@@ -371,13 +371,16 @@
         grid-template-columns: 1fr;
       }
       .tracker-shot {
-        min-height: 300px;
+        min-height: 0;
         object-fit: contain;
         background: #fff;
       }
       .tracker-visual,
       .tracker-cube {
-        min-height: 300px;
+        min-height: 0;
+      }
+      .tracker-visual {
+        align-items: flex-start;
       }
       .tracker-tag {
         max-width: calc(100% - 24px);
