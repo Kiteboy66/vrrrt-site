@@ -1,0 +1,1633 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Vrrrt - 100 visitors. 2 buyers?</title>
+  <meta name="description" content="Vrrrt turns the first 30 seconds of a Shopify visit into rapid product discovery: 90 products visible, 540 in 3 minutes." />
+  <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700;800&family=Geist+Mono:wght@400;500;600;700&display=swap">
+  <link rel="stylesheet" href="styles.css" />
+  <style>
+    :root {
+      --ink: #070708;
+      --panel: #111113;
+      --panel-2: #161619;
+      --line: #29292d;
+      --text: #f6f4ef;
+      --muted: #c9c3b8;
+      --quiet: #8f897f;
+      --green: #00e26a;
+      --green-2: #39ff88;
+      --red: #ff453a;
+      --paper: #f6f4ef;
+      --paper-2: #ebe7df;
+    }
+
+    html, body { margin: 0; padding: 0; background: var(--ink); overflow-x: hidden; }
+    body {
+      font-family: 'Geist', system-ui, sans-serif;
+      color: var(--text);
+      -webkit-font-smoothing: antialiased;
+    }
+    *, *::before, *::after { box-sizing: border-box; }
+    button, a { font-family: inherit; }
+    .vt-btn { white-space: nowrap; }
+    .vt-btn--primary:hover { background: #3CFA8B !important; box-shadow: 0 0 0 4px rgba(0,226,106,0.18), 0 0 24px rgba(0,226,106,0.45); }
+    .vt-btn--secondary:hover { background: #27272A !important; }
+    .vt-btn--tertiary:hover  { background: #FAFAFA !important; border-color: #D4D4D8 !important; }
+    .vt-btn--ghost:hover     { background: #F4F4F5 !important; }
+    .vt-btn--ghost-on-dark:hover { background: rgba(255,255,255,0.06) !important; border-color: rgba(255,255,255,0.3) !important; }
+    .vt-btn:active { transform: scale(0.97); }
+
+    .section {
+      padding: 112px 32px;
+    }
+
+    .wrap {
+      width: min(1440px, calc(100vw - 64px));
+      margin: 0 auto;
+    }
+
+    .eyebrow {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      margin: 0 0 18px;
+      font-family: 'Geist Mono', ui-monospace, monospace;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--green);
+    }
+
+    .pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 7px 12px;
+      border: 1px solid var(--line);
+      border-radius: 999px;
+      background: rgba(255,255,255,0.04);
+      color: var(--muted);
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .dot {
+      width: 7px;
+      height: 7px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 12px rgba(0,226,106,0.8);
+    }
+
+    .hero {
+      min-height: calc(100vh - 64px);
+      padding: 62px 32px 58px;
+      background:
+        radial-gradient(circle at 74% 36%, rgba(0,226,106,0.13), transparent 26%),
+        linear-gradient(180deg, #080809 0%, #050506 100%);
+      overflow: hidden;
+    }
+
+    .hero .wrap {
+      width: min(1968px, calc(100vw - 80px));
+    }
+
+    .hero-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 1fr) minmax(520px, 1fr);
+      align-items: center;
+      gap: 56px;
+    }
+
+    .hero h1 {
+      margin: 28px 0 0;
+      max-width: 900px;
+      color: var(--text);
+      font-size: clamp(52px, 4.1vw, 76px);
+      line-height: 0.95;
+      letter-spacing: -0.065em;
+      font-weight: 800;
+    }
+
+    .hero-sub {
+      margin: 24px 0 0;
+      color: var(--text);
+      font-size: clamp(21px, 1.75vw, 27px);
+      line-height: 1.18;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+    }
+
+    .hero-proof {
+      margin: 20px 0 0;
+      color: var(--muted);
+      font-size: 17px;
+      line-height: 1.48;
+      font-weight: 600;
+    }
+
+    .green { color: var(--green); }
+    .mobile-break { display: none; }
+
+    .cta-row {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-top: 30px;
+      flex-wrap: wrap;
+    }
+
+    .engine-frame {
+      display: block;
+      position: relative;
+      max-width: 860px;
+      margin: 0 auto;
+      border: 1px solid rgba(0,226,106,0.24);
+      border-radius: 28px;
+      padding: 16px;
+      background: linear-gradient(180deg, rgba(255,255,255,0.06), rgba(255,255,255,0.025));
+      box-shadow: 0 0 0 1px rgba(255,255,255,0.04), 0 0 70px rgba(0,226,106,0.12);
+      color: inherit;
+      cursor: pointer;
+      text-decoration: none;
+      transition: border-color 140ms cubic-bezier(.2,.9,.2,1), box-shadow 140ms cubic-bezier(.2,.9,.2,1), transform 140ms cubic-bezier(.2,.9,.2,1);
+    }
+
+    .engine-frame:hover {
+      border-color: rgba(0,226,106,0.58);
+      box-shadow: 0 0 0 1px rgba(255,255,255,0.05), 0 0 90px rgba(0,226,106,0.2);
+      transform: translateY(-2px);
+    }
+
+    .engine-frame:focus-visible {
+      outline: 3px solid rgba(0,226,106,0.75);
+      outline-offset: 5px;
+    }
+
+    .engine-media {
+      position: relative;
+      width: 100%;
+      margin-inline: auto;
+      aspect-ratio: 4 / 3;
+      max-height: min(58vh, 620px);
+      border-radius: 18px;
+      background: #fff;
+      overflow: hidden;
+      display: grid;
+      place-items: center;
+    }
+
+    .engine-media img {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      display: block;
+    }
+
+    .engine-media video {
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      object-position: center center;
+      display: block;
+    }
+
+    .live-badge {
+      position: absolute;
+      top: 16px;
+      left: 16px;
+      z-index: 2;
+      padding: 7px 11px;
+      border-radius: 8px;
+      background: var(--green);
+      color: #020202;
+      font-family: 'Geist Mono', ui-monospace, monospace;
+      font-weight: 800;
+      font-size: 12px;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .metric-row {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 10px;
+      margin-top: 12px;
+    }
+
+    .metric-chip {
+      min-height: 98px;
+      border: 1px solid var(--line);
+      border-radius: 14px;
+      background: rgba(255,255,255,0.035);
+      padding: 14px 15px;
+    }
+
+    .metric-chip.speed-chip {
+      border-color: rgba(0,226,106,0.48);
+      background: rgba(0,226,106,0.08);
+      box-shadow: inset 0 0 0 1px rgba(0,226,106,0.12), 0 0 32px rgba(0,226,106,0.08);
+    }
+
+    .metric-chip strong {
+      display: block;
+      color: var(--green);
+      font-family: 'Geist Mono', ui-monospace, monospace;
+      font-size: 19px;
+      line-height: 1;
+      margin-bottom: 10px;
+    }
+
+    .metric-chip span {
+      display: block;
+      color: var(--muted);
+      font-size: 12px;
+      line-height: 1.32;
+      font-weight: 700;
+    }
+
+    .light {
+      background: var(--paper);
+      color: #070708;
+    }
+
+    .dark {
+      background: var(--ink);
+      color: var(--text);
+    }
+
+    .section h2 {
+      margin: 0;
+      max-width: 900px;
+      font-size: clamp(50px, 6vw, 88px);
+      line-height: 0.96;
+      letter-spacing: -0.06em;
+      font-weight: 800;
+    }
+
+    .section-lead {
+      margin: 28px 0 0;
+      max-width: 820px;
+      font-size: clamp(22px, 2.4vw, 34px);
+      line-height: 1.18;
+      letter-spacing: -0.03em;
+      font-weight: 750;
+    }
+
+    .body-copy {
+      margin: 22px 0 0;
+      max-width: 760px;
+      color: var(--muted);
+      font-size: 19px;
+      line-height: 1.55;
+      font-weight: 600;
+    }
+
+    .kill-grid {
+      display: grid;
+      grid-template-columns: minmax(0, 0.9fr) minmax(460px, 1.1fr);
+      gap: 48px;
+      align-items: center;
+      margin-top: 42px;
+    }
+
+    .kill-section {
+      padding-top: 86px;
+      padding-bottom: 86px;
+    }
+
+    .kill-section h2 {
+      max-width: 1120px;
+      font-size: clamp(48px, 5.1vw, 76px);
+      line-height: 0.98;
+    }
+
+    .kill-section .section-lead {
+      margin-top: 0;
+      font-size: clamp(27px, 2.45vw, 39px);
+      line-height: 1.12;
+      max-width: 660px;
+    }
+
+    .kill-section .body-copy {
+      max-width: 680px;
+      font-size: 21px;
+      line-height: 1.48;
+    }
+
+    .comparison-card {
+      border: 1px solid var(--line);
+      border-radius: 26px;
+      background: #070708;
+      padding: 30px;
+      box-shadow: 0 20px 54px rgba(0,0,0,0.08);
+    }
+
+    .comparison-card.light-card {
+      background: #fff;
+      border-color: #ddd8cf;
+      box-shadow: 0 18px 44px rgba(0,0,0,0.08);
+    }
+
+    .kill-outro {
+      margin-top: 54px;
+      padding-top: 30px;
+      border-top: 1px solid #ddd8cf;
+      max-width: 1100px;
+    }
+
+    .kill-outro .label {
+      color: #070708;
+      font-family: 'Geist Mono', ui-monospace, monospace;
+      font-size: 13px;
+      font-weight: 850;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .kill-outro p {
+      margin: 16px 0 0;
+      max-width: 980px;
+      color: #070708;
+      font-size: clamp(28px, 3.2vw, 46px);
+      line-height: 1.04;
+      letter-spacing: -0.05em;
+      font-weight: 850;
+    }
+
+    .kill-proof-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 16px;
+      margin-top: 34px;
+    }
+
+    .kill-proof-card {
+      border: 1px solid #ddd8cf;
+      border-radius: 18px;
+      background: rgba(255,255,255,0.68);
+      padding: 22px;
+      min-height: 196px;
+    }
+
+    .kill-proof-card .metric {
+      color: var(--green);
+      font-family: 'Geist Mono', ui-monospace, monospace;
+      font-size: clamp(34px, 3.4vw, 54px);
+      line-height: 0.95;
+      letter-spacing: -0.06em;
+      font-weight: 850;
+      margin-bottom: 18px;
+    }
+
+    .kill-proof-card h3 {
+      margin: 0;
+      color: #070708;
+      font-size: 22px;
+      line-height: 1.08;
+      letter-spacing: -0.035em;
+      font-weight: 850;
+    }
+
+    .kill-proof-card p {
+      margin: 12px 0 0;
+      color: #403b34;
+      font-size: 15px;
+      line-height: 1.42;
+      font-weight: 700;
+    }
+
+    .findings-section {
+      background: var(--paper);
+      color: #11131a;
+      padding: 42px 32px 68px;
+    }
+
+    .findings-wrap {
+      position: relative;
+      width: min(1080px, calc(100vw - 64px));
+      margin: 0 auto;
+      padding-left: 58px;
+    }
+
+    .findings-wrap::before {
+      content: "";
+      position: absolute;
+      left: 12px;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      border-radius: 999px;
+      background: var(--green);
+      opacity: 0.95;
+    }
+
+    .finding {
+      position: relative;
+      padding: 0 0 54px;
+    }
+
+    .finding:last-child { padding-bottom: 0; }
+
+    .finding::before {
+      content: "";
+      position: absolute;
+      left: -51px;
+      top: 2px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 0 6px var(--paper);
+    }
+
+    .finding-label {
+      color: var(--green);
+      font-family: 'Geist Mono', ui-monospace, monospace;
+      font-size: 13px;
+      line-height: 1;
+      font-weight: 850;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .finding h2 {
+      margin: 0;
+      max-width: 920px;
+      color: #11131a;
+      font-size: clamp(28px, 2.35vw, 36px);
+      line-height: 1.08;
+      letter-spacing: -0.045em;
+      font-weight: 850;
+    }
+
+    .finding-intro {
+      margin: 12px 0 0;
+      max-width: 720px;
+      color: #303844;
+      font-size: clamp(18px, 1.45vw, 22px);
+      line-height: 1.22;
+      letter-spacing: -0.035em;
+      font-weight: 800;
+    }
+
+    .finding-stats {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 24px;
+    }
+
+    .finding-stat {
+      min-height: 112px;
+      border: 1px solid #d9dce2;
+      border-radius: 6px;
+      background: rgba(255,255,255,0.62);
+      padding: 18px 16px;
+      text-align: center;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+
+    .finding-stat.hot {
+      background: rgba(0,226,106,0.06);
+      border-color: rgba(0,226,106,0.9);
+    }
+
+    .finding-stat strong {
+      display: block;
+      color: #11131a;
+      font-family: 'Geist Mono', ui-monospace, monospace;
+      font-size: clamp(28px, 3.1vw, 44px);
+      line-height: 0.9;
+      letter-spacing: -0.075em;
+      font-weight: 850;
+      margin-bottom: 10px;
+    }
+
+    .finding-stat .stat-title {
+      color: #7e8490;
+      font-family: 'Geist Mono', ui-monospace, monospace;
+      font-size: 12px;
+      font-weight: 850;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+    }
+
+    .finding-stat span {
+      display: block;
+      margin-top: 7px;
+      color: #5f6875;
+      font-size: 13px;
+      line-height: 1.35;
+      font-weight: 700;
+    }
+
+    .milestone-grid {
+      margin-top: 28px;
+    }
+
+    .milestone-title {
+      color: #8b919d;
+      font-family: 'Geist Mono', ui-monospace, monospace;
+      font-size: 12px;
+      font-weight: 850;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 14px;
+    }
+
+    .milestone-row {
+      display: grid;
+      grid-template-columns: 72px minmax(200px, 0.88fr) minmax(320px, 1fr);
+      align-items: center;
+      gap: 14px;
+      margin: 13px 0;
+    }
+
+    .milestone-row b {
+      text-align: right;
+      color: #11131a;
+      font-size: 16px;
+      font-weight: 800;
+    }
+
+    .milestone-track {
+      height: 10px;
+      border-radius: 999px;
+      background: #e9ebee;
+      overflow: hidden;
+    }
+
+    .milestone-fill {
+      display: block;
+      height: 100%;
+      border-radius: inherit;
+      background: var(--green);
+    }
+
+    .milestone-fill.gray { background: #cbd0d7; }
+
+    .milestone-row p {
+      margin: 0;
+      color: #303844;
+      font-size: 15px;
+      line-height: 1.32;
+      font-weight: 800;
+    }
+
+    .sources {
+      margin-top: 16px;
+      color: #686f7b;
+      font-family: 'Geist Mono', ui-monospace, monospace;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+    }
+
+    .quote-block {
+      margin-top: 24px;
+      border-left: 3px solid var(--green);
+      padding: 3px 0 3px 18px;
+      color: #252d38;
+      font-size: clamp(17px, 1.25vw, 21px);
+      line-height: 1.42;
+      font-style: italic;
+      font-weight: 500;
+    }
+
+    .quote-block cite {
+      display: block;
+      margin-top: 12px;
+      color: #686f7b;
+      font-family: 'Geist Mono', ui-monospace, monospace;
+      font-size: 12px;
+      font-style: normal;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .reasoning-box {
+      margin-top: 22px;
+      border-radius: 6px;
+      background: #f0f2f5;
+      padding: 20px;
+      color: #28313d;
+      font-size: 15px;
+      line-height: 1.48;
+      font-weight: 650;
+    }
+
+    .reasoning-box .reasoning-label {
+      color: #8b919d;
+      font-family: 'Geist Mono', ui-monospace, monospace;
+      font-size: 12px;
+      font-weight: 850;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 12px;
+    }
+
+    .split-finding {
+      display: grid;
+      grid-template-columns: minmax(260px, 0.85fr) minmax(360px, 1.15fr);
+      gap: 34px;
+      margin-top: 28px;
+      align-items: start;
+    }
+
+    .big-proof {
+      margin-bottom: 28px;
+    }
+
+    .big-proof.secondary {
+      margin-top: 18px;
+      margin-bottom: 0;
+    }
+
+    .big-proof strong {
+      display: block;
+      color: var(--green);
+      font-family: 'Geist Mono', ui-monospace, monospace;
+      font-size: clamp(46px, 5vw, 70px);
+      line-height: 0.88;
+      letter-spacing: -0.1em;
+      font-weight: 850;
+      margin-bottom: 14px;
+    }
+
+    .big-proof.secondary strong {
+      font-size: clamp(30px, 3.2vw, 44px);
+      letter-spacing: -0.08em;
+    }
+
+    .big-proof h3 {
+      margin: 0;
+      color: #11131a;
+      font-size: 19px;
+      line-height: 1.12;
+      font-weight: 850;
+      letter-spacing: -0.035em;
+    }
+
+    .big-proof p {
+      margin: 10px 0 0;
+      color: #8b919d;
+      font-family: 'Geist Mono', ui-monospace, monospace;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+    }
+
+    .standard-stack {
+      display: grid;
+      gap: 16px;
+    }
+
+    .standard-item {
+      border-bottom: 1px dashed #cfd4dc;
+      padding-bottom: 16px;
+      display: grid;
+      grid-template-columns: 46px 1fr;
+      gap: 14px;
+      align-items: start;
+    }
+
+    .standard-icon {
+      width: 46px;
+      height: 46px;
+      border-radius: 6px;
+      border: 2px solid #e3e6eb;
+      background: #f6f7f9;
+    }
+
+    .standard-icon.hot {
+      border-color: var(--green);
+      background: rgba(0,226,106,0.14);
+    }
+
+    .standard-item .kicker {
+      color: #8b919d;
+      font-family: 'Geist Mono', ui-monospace, monospace;
+      font-size: 12px;
+      font-weight: 850;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .standard-item strong {
+      display: block;
+      color: #11131a;
+      font-size: 19px;
+      line-height: 1.1;
+      font-weight: 850;
+    }
+
+    .standard-item span {
+      display: block;
+      margin-top: 6px;
+      color: #394351;
+      font-size: 15px;
+      line-height: 1.38;
+      font-weight: 650;
+    }
+
+    .category-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 24px;
+      margin-top: 24px;
+    }
+
+    .category-card h3 {
+      margin: 0 0 16px;
+      color: #11131a;
+      font-size: 22px;
+      font-weight: 850;
+      letter-spacing: -0.03em;
+    }
+
+    .data-row {
+      margin: 16px 0;
+    }
+
+    .data-row .topline {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      color: #303844;
+      font-size: 15px;
+      font-weight: 700;
+      margin-bottom: 8px;
+    }
+
+    .data-row .topline strong {
+      color: #11131a;
+      font-weight: 850;
+    }
+
+    .data-track {
+      height: 8px;
+      border-radius: 999px;
+      background: #eceef2;
+      overflow: hidden;
+    }
+
+    .data-fill {
+      display: block;
+      height: 100%;
+      background: var(--green);
+    }
+
+    .data-fill.gray { background: #cbd0d7; }
+    .data-fill.neutral { background: #8f98a6; }
+    .data-fill.red { background: var(--red); }
+
+    .insight-box {
+      margin-top: 16px;
+      border-left: 3px solid var(--green);
+      background: rgba(0,226,106,0.07);
+      padding: 15px 16px;
+      color: #28313d;
+      font-size: 15px;
+      line-height: 1.48;
+      font-weight: 650;
+    }
+
+    .choice-grid {
+      display: grid;
+      grid-template-columns: minmax(280px, 0.78fr) minmax(360px, 1.22fr);
+      gap: 32px;
+      margin-top: 24px;
+      align-items: start;
+    }
+
+    .choice-copy {
+      display: grid;
+      gap: 18px;
+    }
+
+    .choice-copy strong {
+      display: block;
+      color: #11131a;
+      font-family: 'Geist Mono', ui-monospace, monospace;
+      font-size: clamp(34px, 3.7vw, 52px);
+      line-height: 0.9;
+      letter-spacing: -0.08em;
+      font-weight: 850;
+      margin-bottom: 10px;
+    }
+
+    .choice-copy h3 {
+      margin: 0;
+      color: #11131a;
+      font-size: 19px;
+      line-height: 1.25;
+      font-weight: 850;
+    }
+
+    .choice-copy p {
+      margin: 12px 0 0;
+      color: #394351;
+      font-size: 15px;
+      line-height: 1.5;
+      font-weight: 650;
+    }
+
+    .mode-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 14px;
+      margin-top: 18px;
+    }
+
+    .mode-card {
+      border: 1px solid #d9dce2;
+      border-radius: 6px;
+      background: rgba(255,255,255,0.7);
+      padding: 18px;
+      color: #303844;
+      font-size: 15px;
+      line-height: 1.52;
+      font-weight: 650;
+    }
+
+    .mode-card.hot {
+      background: rgba(0,226,106,0.06);
+      border-color: var(--green);
+    }
+
+    .mode-card h3 {
+      margin: 0 0 14px;
+      color: #11131a;
+      font-size: 18px;
+      font-weight: 850;
+    }
+
+    .bar-head {
+      display: flex;
+      justify-content: space-between;
+      gap: 16px;
+      padding-bottom: 22px;
+      margin-bottom: 26px;
+      border-bottom: 1px solid rgba(255,255,255,0.08);
+      color: var(--text);
+      font-family: 'Geist Mono', ui-monospace, monospace;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+    }
+
+    .bar-subhead {
+      color: var(--muted);
+      font-family: 'Geist Mono', ui-monospace, monospace;
+      font-size: 12px;
+      font-weight: 700;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      margin-bottom: 24px;
+    }
+
+    .bar-row {
+      display: grid;
+      grid-template-columns: 190px minmax(190px, 1fr) 150px;
+      align-items: center;
+      gap: 22px;
+      margin: 16px 0;
+      font-size: 16px;
+      font-weight: 800;
+    }
+
+    .track {
+      height: 14px;
+      border-radius: 999px;
+      background: #242428;
+      overflow: hidden;
+    }
+
+    .bar {
+      height: 100%;
+      border-radius: inherit;
+    }
+
+    .bar.bad {
+      width: 22%;
+      background: var(--red);
+    }
+
+    .bar.good {
+      width: 100%;
+      background: var(--green);
+      box-shadow: 0 0 22px rgba(0,226,106,0.45);
+    }
+
+    .bar-note {
+      margin-top: 26px;
+      padding-top: 24px;
+      border-top: 1px solid rgba(255,255,255,0.08);
+      color: var(--text);
+      font-size: 16px;
+      font-weight: 800;
+    }
+
+    .research-grid {
+      display: grid;
+      grid-template-columns: repeat(4, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 34px;
+    }
+
+    .research-card {
+      border: 1px solid var(--line);
+      border-radius: 22px;
+      background: var(--panel);
+      padding: 24px;
+      min-height: 232px;
+    }
+
+    .research-card .metric {
+      color: var(--green);
+      font-family: 'Geist Mono', ui-monospace, monospace;
+      font-size: clamp(34px, 3.1vw, 50px);
+      line-height: 0.95;
+      letter-spacing: -0.06em;
+      font-weight: 800;
+      margin-bottom: 18px;
+    }
+
+    .research-card h3 {
+      margin: 0;
+      color: var(--text);
+      font-size: 20px;
+      line-height: 1.12;
+      letter-spacing: -0.03em;
+      font-weight: 800;
+    }
+
+    .research-card p {
+      margin: 18px 0 0;
+      color: var(--muted);
+      font-size: 14px;
+      line-height: 1.42;
+      font-weight: 600;
+    }
+
+    .research-section {
+      min-height: calc(100vh - 64px);
+      display: flex;
+      align-items: center;
+      padding-top: 48px;
+      padding-bottom: 48px;
+    }
+
+    .research-section h2 {
+      max-width: 1180px;
+      font-size: clamp(42px, 4.35vw, 66px);
+      line-height: 0.98;
+    }
+
+    .research-section .section-lead {
+      margin-top: 18px;
+      max-width: 1040px;
+      font-size: clamp(22px, 2vw, 31px);
+      line-height: 1.16;
+    }
+
+    .closing {
+      margin-top: 34px;
+      padding-top: 26px;
+      border-top: 1px solid var(--line);
+      max-width: 1050px;
+    }
+
+    .closing .label {
+      color: var(--green);
+      font-size: 18px;
+      font-weight: 850;
+      margin-bottom: 18px;
+    }
+
+    .closing p {
+      margin: 0;
+      color: var(--text);
+      font-size: clamp(26px, 3vw, 42px);
+      line-height: 1.08;
+      letter-spacing: -0.045em;
+      font-weight: 850;
+    }
+
+    .source-link {
+      display: inline-flex;
+      margin-top: 22px;
+      color: var(--green);
+      font-size: 16px;
+      font-weight: 800;
+      text-decoration: none;
+    }
+
+    .source-link:hover {
+      text-decoration: underline;
+      text-underline-offset: 4px;
+    }
+
+    .steps {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 36px;
+    }
+
+    .step {
+      background: #fff;
+      border: 1px solid #ddd8cf;
+      border-radius: 20px;
+      padding: 28px;
+      min-height: 240px;
+    }
+
+    .step-num {
+      color: var(--green);
+      font-family: 'Geist Mono', ui-monospace, monospace;
+      font-size: 48px;
+      line-height: 1;
+      font-weight: 800;
+      letter-spacing: -0.08em;
+      margin-bottom: 38px;
+    }
+
+    .step h3 {
+      margin: 0;
+      font-size: 24px;
+      line-height: 1.12;
+      letter-spacing: -0.03em;
+      font-weight: 850;
+    }
+
+    .step p {
+      margin: 14px 0 0;
+      color: #605b52;
+      font-size: 16px;
+      line-height: 1.48;
+      font-weight: 600;
+    }
+
+    .how-section {
+      padding-top: 84px;
+      padding-bottom: 84px;
+    }
+
+    .how-section h2 {
+      max-width: 920px;
+      font-size: clamp(46px, 5.1vw, 76px);
+      line-height: 0.98;
+    }
+
+    .how-section .body-copy {
+      max-width: 880px;
+      color: #312d27;
+      font-size: 21px;
+    }
+
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(3, minmax(0, 1fr));
+      gap: 18px;
+      margin-top: 28px;
+    }
+
+    .pricing-section {
+      padding-top: 36px;
+      padding-bottom: 56px;
+    }
+
+    .pricing-section h2 {
+      max-width: 980px;
+      font-size: clamp(36px, 3.8vw, 60px);
+      line-height: 1;
+    }
+
+    .price-card {
+      background: #fff;
+      border: 1px solid #ddd8cf;
+      border-radius: 22px;
+      padding: 28px 34px;
+      display: flex;
+      flex-direction: column;
+      min-height: 390px;
+    }
+
+    .price-card.featured {
+      background: #080809;
+      color: var(--text);
+      border-color: rgba(0,226,106,0.34);
+      box-shadow: 0 0 54px rgba(0,226,106,0.10);
+    }
+
+    .price-card h3 {
+      margin: 0 0 18px;
+      font-size: 22px;
+      font-weight: 800;
+    }
+
+    .price {
+      font-family: 'Geist Mono', ui-monospace, monospace;
+      font-size: 58px;
+      line-height: 1;
+      letter-spacing: -0.05em;
+      font-weight: 850;
+    }
+
+    .price span {
+      font-family: 'Geist', system-ui, sans-serif;
+      font-size: 16px;
+      color: inherit;
+      opacity: 0.64;
+      letter-spacing: 0;
+      font-weight: 650;
+    }
+
+    .yearly {
+      margin: 10px 0 30px;
+      color: var(--green);
+      font-size: 15px;
+      font-weight: 750;
+    }
+
+    .price-card ul {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 32px;
+      display: grid;
+      gap: 12px;
+      color: inherit;
+    }
+
+    .price-card li {
+      display: flex;
+      gap: 10px;
+      color: inherit;
+      opacity: 0.78;
+      font-size: 15px;
+      line-height: 1.35;
+      font-weight: 650;
+    }
+
+    .price-card li::before {
+      content: "✓";
+      color: var(--green);
+      font-weight: 900;
+    }
+
+    .price-card .spacer { flex: 1; }
+
+    .footer-cta {
+      background: var(--ink);
+      color: var(--text);
+      text-align: center;
+    }
+
+    .footer-cta h2 {
+      margin-inline: auto;
+      max-width: 1000px;
+    }
+
+    @media (max-width: 980px) {
+      .wrap { width: min(100vw - 32px, 720px); }
+      .section { padding: 76px 16px; }
+      .hero { padding: 72px 16px 52px; }
+      .hero .wrap { width: min(100vw - 32px, 720px); }
+      .hero-grid,
+      .kill-grid {
+        grid-template-columns: 1fr;
+        gap: 42px;
+      }
+      .hero h1 {
+        font-size: clamp(42px, 11.5vw, 64px);
+        letter-spacing: -0.07em;
+      }
+      .cta-row {
+        align-items: stretch;
+      }
+      .cta-row .vt-btn {
+        justify-content: center;
+      }
+      .research-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+      }
+      .kill-proof-grid {
+        grid-template-columns: 1fr;
+      }
+      .findings-section { padding: 42px 16px 64px; }
+      .findings-wrap {
+        width: min(100vw - 32px, 720px);
+        padding-left: 34px;
+      }
+      .findings-wrap::before { left: 6px; }
+      .finding::before { left: -35px; }
+      .finding { padding-bottom: 46px; }
+      .finding h2 { font-size: clamp(28px, 7vw, 40px); }
+      .finding-intro { font-size: clamp(18px, 4.5vw, 23px); }
+      .finding-stats,
+      .split-finding,
+      .category-grid,
+      .choice-grid,
+      .mode-grid {
+        grid-template-columns: 1fr;
+      }
+      .finding-stat { min-height: 108px; }
+      .big-proof strong { font-size: clamp(46px, 14vw, 70px); }
+      .big-proof.secondary strong { font-size: clamp(32px, 10vw, 48px); }
+      .milestone-row {
+        grid-template-columns: 64px 1fr;
+        align-items: start;
+        margin: 16px 0;
+      }
+      .milestone-row p {
+        grid-column: 2;
+      }
+      .pricing-section h2 {
+        font-size: clamp(36px, 9vw, 54px);
+      }
+      .metric-row,
+      .steps,
+      .pricing-grid {
+        grid-template-columns: 1fr;
+      }
+      .bar-row {
+        grid-template-columns: 1fr;
+        gap: 8px;
+      }
+      .bar-row strong:last-child { margin-bottom: 10px; }
+    }
+
+    @media (max-width: 700px) {
+      body { overflow-x: hidden; }
+      header > div {
+        max-width: none !important;
+        width: 100% !important;
+        padding: 14px 16px !important;
+        gap: 16px !important;
+      }
+      header nav {
+        display: none !important;
+      }
+      header .vt-btn--ghost-on-dark {
+        display: none !important;
+      }
+      header .vt-btn {
+        display: none !important;
+      }
+      .hero {
+        overflow: hidden;
+      }
+      .hero h1 {
+        font-size: clamp(39px, 12.2vw, 47px);
+        letter-spacing: -0.065em;
+        max-width: 100%;
+      }
+      .mobile-break { display: inline; }
+      .hero .cta-row .vt-btn {
+        flex: 0 0 100%;
+        width: 100%;
+      }
+      .engine-frame {
+        border-radius: 18px;
+        padding: 10px;
+      }
+      .engine-media {
+        border-radius: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div id="root" data-screen-label="Homepage"></div>
+
+  <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" crossorigin="anonymous"></script>
+  <script src="https://unpkg.com/@babel/standalone@7.29.0/babel.min.js" crossorigin="anonymous"></script>
+  <script type="text/babel" src="shared.jsx"></script>
+
+  <script type="text/babel">
+    const Hero = () => (
+      <section className="hero">
+        <div className="wrap hero-grid">
+          <div>
+            <div className="pill"><span className="dot"></span>14-day free trial. No credit card.</div>
+            <h1>100 visitors.<span className="mobile-break"><br /></span> 2 buyers?<br />WTF happened<span className="mobile-break"><br /></span> to the other 98!</h1>
+            <div className="hero-sub">
+              They don't hate it.<br />
+              They just haven't seen enough.
+            </div>
+            <div className="hero-proof">
+              In the first 30 seconds, Vrrrt shows them <span className="green">90</span>.<br />
+              In 3 minutes, they can see <span className="green">540</span>.
+            </div>
+            <div className="cta-row">
+              <Button variant="primary" size="lg" href="https://apps.shopify.com/3dnavigate">Start 14-day free trial.</Button>
+              <Button variant="ghost-on-dark" size="lg" href="https://cube.vrrrt.app/">See for yourself.</Button>
+            </div>
+          </div>
+
+          <div>
+            <a className="engine-frame" href="https://cube.vrrrt.app/" aria-label="Test the live Vrrrt Rapid Discovery Cube demo">
+              <div className="engine-media">
+                <div className="live-badge">Live Cube</div>
+                <video autoPlay muted loop playsInline poster="assets/cube-hero.png" aria-label="Vrrrt Rapid Discovery Cube spinning">
+                  <source src="assets/vrrrt-engine-loop-960.mp4" type="video/mp4" />
+                  <img src="assets/cube-loop.gif" alt="Vrrrt Rapid Discovery Cube spinning" />
+                </video>
+              </div>
+              <div className="metric-row">
+                <div className="metric-chip speed-chip"><strong>&lt; 2.05s</strong><span>Click it. Time the live Cube yourself.</span></div>
+                <div className="metric-chip"><strong>90 products</strong><span>shown in the first 30 seconds.</span></div>
+                <div className="metric-chip"><strong>540 products</strong><span>possible in a 3-minute browse.</span></div>
+                <div className="metric-chip"><strong>Live</strong><span>uses your actual Shopify collections.</span></div>
+              </div>
+            </a>
+          </div>
+        </div>
+      </section>
+    );
+
+    const StructuralFindings = () => (
+      <section className="findings-section">
+        <div className="findings-wrap">
+          <article className="finding">
+            <div className="finding-label">Finding 01 · Highest Priority</div>
+            <h2>Half of mobile shoppers leave before anything catches their eye.</h2>
+            <p className="finding-intro">Not because your store is bad. Because they never saw enough to make them stop.</p>
+            <div className="finding-stats">
+              <div className="finding-stat">
+                <strong>45.68%</strong>
+                <div className="stat-title">Global avg. bounce rate</div>
+                <span>Contentsquare 2024</span>
+              </div>
+              <div className="finding-stat hot">
+                <strong>50-52%</strong>
+                <div className="stat-title">Mobile bounce rate</div>
+                <span>CXL Institute · Databox 2024</span>
+              </div>
+              <div className="finding-stat">
+                <strong>&lt;35%</strong>
+                <div className="stat-title">Top 20% of stores</div>
+                <span>Shopify top-performer threshold</span>
+              </div>
+            </div>
+            <div className="milestone-grid">
+              <div className="milestone-title">Session behavior by time milestone</div>
+              <div className="milestone-row"><b>3 sec</b><div className="milestone-track"><span className="milestone-fill" style={{ width: '53%' }}></span></div><p>53% of mobile shoppers leave the second a site feels slow.</p></div>
+              <div className="milestone-row"><b>10 sec</b><div className="milestone-track"><span className="milestone-fill gray" style={{ width: '30%' }}></span></div><p>Google doesn't even count you as engaged until you've held someone for 10 seconds.</p></div>
+              <div className="milestone-row"><b>30 sec</b><div className="milestone-track"><span className="milestone-fill" style={{ width: '72%' }}></span></div><p>By 30 seconds, the shoppers who weren't hooked are already gone.</p></div>
+              <div className="milestone-row"><b>3-5 min</b><div className="milestone-track"><span className="milestone-fill" style={{ width: '100%' }}></span></div><p>The more they see, the more they want. That's just how eyes shop.</p></div>
+            </div>
+            <div className="sources">Sources: Google, GA4 engaged session definition, Contentsquare 2024, Databox 2024</div>
+            <blockquote className="quote-block">
+              Keep them looking for 30 seconds and something shifts. Shoppers still there at that point are far more likely to hit Add to Cart.
+              <cite>Contentsquare 2024 Digital Experience Benchmark</cite>
+            </blockquote>
+            <div className="reasoning-box">
+              <div className="reasoning-label">Plain-English meaning</div>
+              Most store owners fix the wrong thing. They tweak the product page, adjust the price, obsess over checkout. But the shopper was already gone before any of that mattered. Vrrrt fixes what happens before — the part where people leave without ever really looking.
+            </div>
+          </article>
+
+          <article className="finding">
+            <div className="finding-label">Finding 02 · Behavioral Science</div>
+            <h2>The eye is faster than the store.</h2>
+            <div className="split-finding">
+              <div>
+                <div className="big-proof">
+                  <strong>13ms</strong>
+                  <h3>The brain can recognize a product image almost instantly.</h3>
+                  <p>MIT Research · Journal of Neuroscience</p>
+                </div>
+                <div className="big-proof secondary">
+                  <strong>30x faster</strong>
+                  <h3>Visuals beat words.</h3>
+                  <p>The eye reads an image before the brain reads a word.</p>
+                </div>
+              </div>
+              <div className="standard-stack">
+                <div className="standard-item">
+                  <div className="standard-icon"></div>
+                  <div>
+                    <div className="kicker">Current industry standard</div>
+                    <strong>8 to 20 images</strong>
+                    <span>That's all half your shoppers see before they're gone.</span>
+                  </div>
+                </div>
+                <div className="standard-item">
+                  <div className="standard-icon hot"></div>
+                  <div>
+                    <div className="kicker" style={{ color: 'var(--green)' }}>Rapid discovery</div>
+                    <strong>540 products</strong>
+                    <span>Real images. Real things to want. All inside 3 minutes.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <blockquote className="quote-block">
+              Make people work too hard to see too little and they leave. Simple as that.
+              <cite>Information Foraging Theory, adapted for ecommerce</cite>
+            </blockquote>
+            <div className="reasoning-box">
+              <div className="reasoning-label">Plain-English meaning</div>
+              The eye can process products way faster than a standard Shopify grid delivers them. The Cube doesn't guess what shoppers want. It just shows them enough, fast enough, for something to land.
+            </div>
+          </article>
+
+          <article className="finding">
+            <div className="finding-label">Finding 03 · Category Analysis</div>
+            <h2>Fashion shoppers already browse hard. The infrastructure is what fails them.</h2>
+            <div className="category-grid">
+              <div className="category-card">
+                <h3>Apparel & Fashion</h3>
+                <div className="data-row"><div className="topline"><span>Pages per session</span><strong>8.0-10.0</strong></div><div className="data-track"><span className="data-fill" style={{ width: '88%' }}></span></div></div>
+                <div className="data-row"><div className="topline"><span>Unique PDPs visited</span><strong>3-8 PDPs</strong></div><div className="data-track"><span className="data-fill" style={{ width: '72%' }}></span></div></div>
+                <div className="data-row"><div className="topline"><span>Conversion rate</span><strong>2.9-3.3%</strong></div><div className="data-track"><span className="data-fill" style={{ width: '76%' }}></span></div></div>
+                <div className="data-row"><div className="topline"><span>PDP purchase peak</span><strong>50 sec</strong></div><div className="data-track"><span className="data-fill" style={{ width: '45%' }}></span></div></div>
+                <div className="insight-box">When shoppers see 3 or more product pages, the chance they buy goes up 4 to 6 times. Fashion shoppers want to browse. Most stores are just too slow to show them enough.</div>
+              </div>
+              <div className="category-card">
+                <h3>Home, Garden & Furniture</h3>
+                <div className="data-row"><div className="topline"><span>Pages per session</span><strong>4.8-6.5</strong></div><div className="data-track"><span className="data-fill gray" style={{ width: '60%' }}></span></div></div>
+                <div className="data-row"><div className="topline"><span>Mobile traffic share</span><strong>73-82%</strong></div><div className="data-track"><span className="data-fill neutral" style={{ width: '82%' }}></span></div></div>
+                <div className="data-row"><div className="topline"><span>Mobile Web CVR</span><strong>1.8%</strong></div><div className="data-track"><span className="data-fill red" style={{ width: '30%' }}></span></div></div>
+                <div className="data-row"><div className="topline"><span>Desktop CVR</span><strong>3.9%</strong></div><div className="data-track"><span className="data-fill" style={{ width: '70%' }}></span></div></div>
+                <div className="insight-box">Most store traffic comes from mobile. But mobile converts worse than desktop. The reason is simple — mobile shoppers can't browse fast enough to find what they want. Faster visual discovery closes that gap.</div>
+              </div>
+            </div>
+            <blockquote className="quote-block">
+              Apparel shoppers already show high-discovery behavior. The constraint is not shopper willingness; it is delivery speed.
+              <cite>IRP Commerce · Adobe Digital Insights · Statista vertical data</cite>
+            </blockquote>
+          </article>
+
+          <article className="finding">
+            <div className="finding-label">Finding 04 · Choice Architecture</div>
+            <h2>More choice only works when shoppers don't have to stare at all of it at once.</h2>
+            <p className="finding-intro">Dump hundreds of products on a page and people freeze. Move them through products fast and the same choice starts working.</p>
+            <div className="choice-grid">
+              <div className="choice-copy">
+                <div>
+                  <strong>64%</strong>
+                  <h3>drop when choice turns into work</h3>
+                  <p>Too many options, shown badly, makes shoppers hesitate. Hesitation kills the session.</p>
+                </div>
+                <div>
+                  <strong>3-7</strong>
+                  <h3>products at a time is easier to scan</h3>
+                  <p>The Cube keeps the view small, fast, and moving. Shoppers don't have to solve the whole catalog at once.</p>
+                </div>
+              </div>
+              <div>
+                <div className="reasoning-box" style={{ marginTop: 0 }}>
+                  <div className="reasoning-label">Plain-English meaning</div>
+                  More products is not the problem. Bad delivery is the problem. The Cube does not throw the whole store at the shopper. It lets them scan quickly, pass fast, notice what hits, and click when something finally lands.
+                </div>
+                <div className="mode-grid">
+                  <div className="mode-card">
+                    <h3>Spearfishing mode</h3>
+                    Some shoppers arrive knowing exactly what they want. They search, they filter, they find it. In and out.
+                  </div>
+                  <div className="mode-card hot">
+                    <h3>Trawling mode</h3>
+                    Most shoppers don't. They're browsing. They'll know it when they see it. They need to see enough for something to catch their eye.
+                  </div>
+                </div>
+              </div>
+            </div>
+          </article>
+
+          <article className="finding">
+            <div className="finding-label">Finding 05 · Conversion Economics</div>
+            <h2>Better stores hold attention long enough for buying to happen.</h2>
+            <p className="finding-intro">The difference between average performing stores and top stores isn't checkout. It's what happens before that. Top stores hold shoppers long enough for something to catch. Average stores lose them before they even get close.</p>
+            <div className="finding-stats">
+              <div className="finding-stat">
+                <strong>1.4-1.8</strong>
+                <div className="stat-title">Buyers per 100 visitors</div>
+                <span>Median Shopify CVR</span>
+              </div>
+              <div className="finding-stat">
+                <strong>3.2-4.0</strong>
+                <div className="stat-title">Buyers per 100 visitors</div>
+                <span>Top 20% Shopify stores</span>
+              </div>
+              <div className="finding-stat hot">
+                <strong>4.7+</strong>
+                <div className="stat-title">Buyers per 100 visitors</div>
+                <span>Top 10% Shopify stores</span>
+              </div>
+            </div>
+            <div className="milestone-grid">
+              <div>
+                <div className="milestone-title">Session duration vs. buying probability</div>
+                <div className="milestone-row"><b>2:38</b><div className="milestone-track"><span className="milestone-fill gray" style={{ width: '48%' }}></span></div><p>Median stores get shorter sessions.</p></div>
+                <div className="milestone-row"><b>3:36</b><div className="milestone-track"><span className="milestone-fill" style={{ width: '68%' }}></span></div><p>Top stores keep shoppers looking longer.</p></div>
+                <div className="milestone-row"><b>3-5 min</b><div className="milestone-track"><span className="milestone-fill" style={{ width: '100%' }}></span></div><p>This is the window where buying has a real shot.</p></div>
+              </div>
+            </div>
+            <div className="reasoning-box">
+              <div className="reasoning-label">Plain-English meaning</div>
+              The Cube has one job. Get shoppers past the first 30 seconds. Then keep showing them enough that they stay — so the product page, price, cart, and checkout finally get a real chance.
+            </div>
+          </article>
+        </div>
+      </section>
+    );
+
+    const HowItWorks = () => (
+      <section className="section light how-section">
+        <div className="wrap">
+          <div className="eyebrow" style={{ color: '#070708' }}>HOW IT WORKS</div>
+          <h2>Add the Cube. Don't rebuild the F'N store!</h2>
+          <p className="body-copy">
+            Vrrrt works inside the Shopify theme you already have. No developer. No rebuild. Follow the step-by-step docs, add the Cube as a block, assign your collections, and go live in 5 minutes.
+          </p>
+          <div className="steps">
+            <div className="step">
+              <div className="step-num">01</div>
+              <h3>Install the app.</h3>
+              <p>Add Vrrrt from the Shopify App Store. If you can install an app, you can start this.</p>
+            </div>
+            <div className="step">
+              <div className="step-num">02</div>
+              <h3>Drop in the Cube block.</h3>
+              <p>Use the step-by-step docs and place the Cube inside your existing theme like any Shopify block.</p>
+            </div>
+            <div className="step">
+              <div className="step-num">03</div>
+              <h3>Assign collections. Go live.</h3>
+              <p>Pick the collections that power the Cube. Save it. Your shoppers start spinning. Products start moving.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+    );
+
+    const Pricing = () => (
+      <section id="pricing" className="section light pricing-section">
+        <div className="wrap">
+          <div className="eyebrow" style={{ color: '#070708' }}>PRICING</div>
+          <h2>Start with one Cube. Scale to as many as you need.</h2>
+          <div className="pricing-grid">
+            {[
+              { name: 'Starter', price: '$29', year: '$290/year and save 17%', features: ['1 cube, up to 540 products', 'Best for best sellers or one category', 'Email support', '14-day free trial'] },
+              { name: 'Grow', price: '$79', year: '$790/year and save 17%', featured: true, features: ['5 cubes, up to 540 products per cube', 'Best for whole-store discovery', 'Priority support', '14-day free trial'] },
+              { name: 'Pro', price: '$99', year: '$990/year and save 17%', features: ['12 cubes, up to 540 products per cube', 'Full-store cube analytics', 'Product & search insights', 'Priority support', '14-day free trial'] },
+            ].map((tier) => (
+              <div className={'price-card ' + (tier.featured ? 'featured' : '')} key={tier.name}>
+                <h3>{tier.name}</h3>
+                <div className="price">{tier.price} <span>/ month</span></div>
+                <div className="yearly">{tier.year}</div>
+                <ul>{tier.features.map((f) => <li key={f}>{f}</li>)}</ul>
+                <div className="spacer"></div>
+                <Button variant={tier.featured ? 'primary' : 'tertiary'} size="lg" href="https://apps.shopify.com/3dnavigate">Start 14-day free trial</Button>
+              </div>
+            ))}
+          </div>
+        </div>
+      </section>
+    );
+
+    const App = () => (
+      <>
+        <Header active="home" dark />
+        <Hero />
+        <StructuralFindings />
+        <HowItWorks />
+        <Pricing />
+        <section className="section footer-cta">
+          <div className="wrap">
+            <div className="eyebrow">GET STARTED</div>
+            <h2>You can stop the bleeding right now.</h2>
+            <p className="body-copy" style={{ margin: '28px auto 0', color: 'var(--muted)', textAlign: 'center' }}>
+              Every 30 seconds, you're paying for people to leave. Add the Cube. Show more products. Give more shoppers a reason to stay.
+            </p>
+            <div className="cta-row" style={{ justifyContent: 'center' }}>
+              <Button variant="primary" size="lg" href="https://apps.shopify.com/3dnavigate">Start 14-day free trial.</Button>
+              <Button variant="ghost-on-dark" size="lg" href="https://cube.vrrrt.app/">See for yourself.</Button>
+            </div>
+          </div>
+        </section>
+        <Footer />
+      </>
+    );
+
+    ReactDOM.createRoot(document.getElementById('root')).render(<App />);
+  </script>
+</body>
+</html>
