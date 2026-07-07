@@ -1,29 +1,589 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="en" data-theme="dark">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Partners — Vrrrt</title>
-  <meta name="description" content="Join the Vrrrt partner program for Shopify designers, agencies, freelancers, and theme developers." />
+  <title>Vrrrt for Shopify Developers — Sell the Store Drop-off Audit</title>
+  <meta name="description" content="Shoppers leave Shopify stores at measurable timestamps. Vrrrt shows which timestamp is killing each page. Turn it into a diagnostic service you can sell this week." />
   <link rel="icon" type="image/svg+xml" href="assets/favicon.svg" />
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Geist:wght@400;500;600;700&family=Geist+Mono:wght@400;500;600&display=swap">
   <link rel="stylesheet" href="styles.css" />
   <style>
-    html, body { margin: 0; padding: 0; background: #FAFAFA; }
-    body { font-family: 'Geist', system-ui, sans-serif; color: #0A0A0B; -webkit-font-smoothing: antialiased; }
+    :root {
+      --ink: #070708;
+      --text: #f6f4ef;
+      --muted: #c9c3b8;
+      --green: #00e26a;
+      --paper: #f6f4ef;
+    }
+
+    html, body {
+      margin: 0;
+      padding: 0;
+      background: var(--ink);
+      overflow-x: hidden;
+      -webkit-text-size-adjust: 100%;
+      text-size-adjust: 100%;
+    }
+    body { font-family: 'Geist', system-ui, sans-serif; color: var(--text); -webkit-font-smoothing: antialiased; }
     *, *::before, *::after { box-sizing: border-box; }
     button, a { font-family: inherit; }
-    .vt-btn { white-space: nowrap; }
+    .vt-btn { min-height: 44px; justify-content: center; text-align: center; white-space: nowrap; }
     .vt-btn--primary:hover { background: #3CFA8B !important; box-shadow: 0 0 0 4px rgba(0,226,106,0.18), 0 0 24px rgba(0,226,106,0.45); }
-    .vt-btn--ghost:hover { background: #F4F4F5 !important; }
+    .vt-btn--ghost:hover { background: rgba(250,250,250,0.08) !important; }
     .vt-btn--tertiary:hover { background: #FAFAFA !important; border-color: #D4D4D8 !important; }
     .vt-btn:active { transform: scale(0.97); }
+    .tracker-root .vt-eyebrow,
+    .tracker-root [style*="text-transform: uppercase"] {
+      font-size: 13px !important;
+      letter-spacing: 0.08em !important;
+      text-transform: uppercase;
+    }
+
+    .partners-page {
+      min-height: 100vh;
+      background: var(--ink);
+      color: var(--text);
+    }
+
+    .partners-section {
+      padding: 0 32px;
+      background: var(--paper);
+      color: #11131a;
+      border-top: 0;
+    }
+
+    .partners-wrap {
+      width: min(1080px, calc(100vw - 64px));
+      margin: 0 auto;
+      position: relative;
+    }
+
+    .partners-section:not(.partners-hero) .partners-wrap {
+      padding: 54px 0 54px 58px;
+    }
+
+    .partners-section:not(.partners-hero) .partners-wrap::before {
+      content: "";
+      position: absolute;
+      left: 12px;
+      top: 0;
+      bottom: 0;
+      width: 3px;
+      border-radius: 999px;
+      background: var(--green);
+      opacity: 0.95;
+    }
+
+    .partners-section:not(.partners-hero) .partners-h2::before {
+      content: "";
+      position: absolute;
+      left: -51px;
+      top: 2px;
+      width: 16px;
+      height: 16px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 0 6px var(--paper);
+    }
+
+    .partners-hero {
+      min-height: auto;
+      display: flex;
+      align-items: center;
+      padding: 62px 32px 58px;
+      background:
+        radial-gradient(circle at 74% 36%, rgba(0,226,106,0.13), transparent 26%),
+        linear-gradient(180deg, #080809 0%, #050506 100%);
+      color: var(--text);
+    }
+
+    .partners-hero .partners-wrap {
+      width: min(1180px, calc(100vw - 80px));
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      text-align: center;
+    }
+
+    .partners-kicker {
+      margin: 0 0 18px;
+      color: var(--green);
+      font-family: 'Geist Mono', monospace;
+      font-size: 13px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+      text-transform: none;
+    }
+
+    .partners-h1 {
+      margin: 0;
+      max-width: 1120px;
+      color: var(--text);
+      font-size: clamp(52px, 4.1vw, 76px);
+      line-height: 0.95;
+      letter-spacing: -0.065em;
+      font-weight: 800;
+    }
+
+    .partners-h2 {
+      position: relative;
+      margin: 0;
+      max-width: 1040px;
+      color: #11131a;
+      font-size: clamp(28px, 2.35vw, 36px);
+      line-height: 1.08;
+      letter-spacing: -0.045em;
+      font-weight: 850;
+    }
+
+    .partners-h4 {
+      margin: 0;
+      color: #11131a;
+      font-size: 18px;
+      line-height: 1.2;
+      letter-spacing: -0.025em;
+      font-weight: 850;
+    }
+
+    .partners-p {
+      margin: 0;
+      max-width: 1040px;
+      color: #303844;
+      font-size: clamp(18px, 1.45vw, 22px);
+      line-height: 1.36;
+      letter-spacing: -0.025em;
+      font-weight: 750;
+    }
+
+    .partners-copy {
+      display: grid;
+      gap: 24px;
+      margin-top: var(--vt-s-6);
+      max-width: 1040px;
+    }
+
+    .partners-hero .partners-p {
+      max-width: 1040px;
+      margin-top: var(--vt-s-6);
+      color: var(--text);
+      font-size: clamp(21px, 1.75vw, 27px);
+      line-height: 1.18;
+      font-weight: 700;
+      letter-spacing: -0.025em;
+    }
+
+    .partners-cta {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      margin-top: var(--vt-s-7);
+      min-height: 52px;
+      padding: 0 26px;
+      border-radius: 12px;
+      background: var(--green);
+      color: #000;
+      text-decoration: none;
+      font-size: 16px;
+      font-weight: 700;
+      line-height: 1;
+      transition: all 120ms cubic-bezier(.2,.9,.2,1);
+    }
+
+    .partners-cta:hover {
+      background: #3CFA8B;
+      box-shadow: 0 0 0 4px rgba(0,226,106,0.18), 0 0 24px rgba(0,226,106,0.45);
+    }
+
+    .partners-grid {
+      display: grid;
+      gap: 20px;
+      margin-top: var(--vt-s-7);
+    }
+
+    .partners-grid--two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    .partners-grid--three { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+    .partners-grid--four { grid-template-columns: repeat(4, minmax(0, 1fr)); }
+
+    .partners-grid--two {
+      align-items: stretch;
+    }
+
+    .partners-card {
+      padding: 20px;
+      border: 1px solid #d9dce2;
+      border-radius: 6px;
+      background: rgba(255,255,255,0.62);
+      box-shadow: none;
+    }
+
+    .partners-tools-card {
+      height: 100%;
+    }
+
+    .partners-cube-card {
+      display: flex;
+      flex-direction: column;
+    }
+
+    .partners-cube-visual {
+      min-height: 0;
+      height: 360px;
+      max-height: 360px;
+      overflow: hidden;
+      background: #050506;
+    }
+
+    .partners-cube-video {
+      display: block;
+      width: 100%;
+      height: 100%;
+      max-height: 360px;
+      object-fit: contain;
+      border-radius: 6px;
+      background: #050506;
+    }
+
+    .partners-pull {
+      margin: var(--vt-s-8) 0 0;
+      padding-left: var(--vt-s-5);
+      border-left: 3px solid var(--green);
+      max-width: 1040px;
+      color: #252d38;
+      font-size: clamp(20px, 2.5vw, 26px);
+      line-height: 1.25;
+      letter-spacing: 0;
+      font-weight: 850;
+    }
+
+    .partners-intro {
+      max-width: 1040px;
+      margin: var(--vt-s-6) 0 0;
+    }
+
+    .partners-window {
+      display: flex;
+      flex-direction: column;
+      min-height: 460px;
+    }
+
+    .partners-window--green {
+      border-color: rgba(0,226,106,0.46);
+      background: rgba(0,226,106,0.07);
+    }
+
+    .partners-window-label,
+    .partners-source,
+    .partners-caption,
+    .partners-step-number,
+    .partners-signoff {
+      font-family: 'Geist Mono', monospace;
+    }
+
+    .partners-window-label {
+      margin: 0 0 18px;
+      color: #11131a;
+      font-size: 12px;
+      font-weight: 700;
+      line-height: 1.35;
+      letter-spacing: 0.04em;
+    }
+
+    .partners-window-body {
+      margin: 14px 0 0;
+      color: #303844;
+      font-size: 15px;
+      line-height: 1.55;
+      font-weight: 650;
+    }
+
+    .partners-fix {
+      margin: auto 0 0;
+      padding-top: 22px;
+      color: #252d38;
+      font-size: 14px;
+      font-weight: 850;
+      line-height: 1.45;
+    }
+
+    .partners-source {
+      margin: 14px 0 0;
+      color: #303844;
+      font-size: 12px;
+      line-height: 1.45;
+    }
+
+    .partners-steps {
+      display: grid;
+      gap: 24px;
+      margin-top: var(--vt-s-7);
+      max-width: 1040px;
+    }
+
+    .partners-step {
+      display: grid;
+      grid-template-columns: 58px minmax(0, 1fr);
+      gap: 24px;
+    }
+
+    .partners-step-number {
+      display: grid;
+      place-items: center;
+      width: 46px;
+      height: 46px;
+      border: 1px solid rgba(0,226,106,0.25);
+      border-radius: 50%;
+      background: rgba(0,226,106,0.08);
+      color: #11131a;
+      font-size: 13px;
+      font-weight: 600;
+    }
+
+    .partners-shot {
+      margin: var(--vt-s-7) 0 0;
+      padding: 20px;
+      border: 1px solid #d9dce2;
+      border-radius: 6px;
+      background: rgba(255,255,255,0.62);
+    }
+
+    .partners-visual {
+      position: relative;
+      overflow: hidden;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      min-height: 400px;
+      color: var(--ink);
+      text-decoration: none;
+      border: 1px solid #d9dce2;
+      border-radius: 6px;
+      background: rgba(255,255,255,0.7);
+    }
+
+    .partners-shot img {
+      display: block;
+      width: 100%;
+      height: auto;
+      min-height: 0;
+      object-fit: contain;
+      object-position: top left;
+      background: #fff;
+    }
+
+    .partners-caption {
+      position: absolute;
+      top: 12px;
+      left: 12px;
+      z-index: 2;
+      max-width: calc(100% - 24px);
+      margin: 0;
+      padding: 6px 9px;
+      border: 1px solid rgba(255,255,255,0.14);
+      border-radius: 6px;
+      background: rgba(255,255,255,0.94);
+      color: #11131a;
+      font-size: 11px;
+      line-height: 1.2;
+    }
+
+    .partners-honesty {
+      margin-top: var(--vt-s-7);
+      padding: clamp(18px, 3vw, 26px);
+      border: 0;
+      border-left: 3px solid var(--green);
+      border-radius: 6px;
+      background: rgba(0,226,106,0.07);
+      color: #28313d;
+      font-size: 15px;
+      line-height: 1.48;
+      font-weight: 650;
+    }
+
+    .partners-honesty .partners-p + .partners-p,
+    .partners-close .partners-p {
+      margin-top: 24px;
+    }
+
+    .partners-term {
+      color: #252d38;
+      font-size: clamp(20px, 2.5vw, 26px);
+      line-height: 1.25;
+      letter-spacing: 0;
+      font-weight: 850;
+    }
+
+    .partners-text-link {
+      display: inline-flex;
+      margin-top: var(--vt-s-6);
+      color: #11131a;
+      border-bottom: 2px solid var(--green);
+      font-weight: 850;
+      text-decoration: none;
+    }
+
+    .partners-text-link:hover { text-decoration: none; }
+
+    .partners-faq {
+      display: grid;
+      gap: 22px;
+      margin-top: var(--vt-s-7);
+      max-width: 1040px;
+    }
+
+    .partners-faq-item {
+      padding-bottom: 22px;
+      border-bottom: 1px solid #d9dce2;
+    }
+
+    .partners-faq-item .partners-p { margin-top: 10px; }
+    .partners-close { padding-bottom: 80px; }
+
+    .partners-signoff {
+      margin: 28px 0 0;
+      color: #303844;
+      font-size: 14px;
+      line-height: 1.5;
+    }
+
+    .tracker-root footer,
+    .tracker-root footer p,
+    .tracker-root footer a,
+    .tracker-root footer span,
+    .tracker-root footer div {
+      color: #F4F4F5 !important;
+    }
+
+    @media (max-width: 1020px) {
+      .partners-grid--four { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+    }
+
+    @media (max-width: 760px) {
+      .partners-section { padding: 0 16px; }
+      .partners-section:not(.partners-hero) .partners-wrap {
+        width: min(100vw - 32px, 720px);
+        padding: 42px 0 46px 34px;
+      }
+      .partners-section:not(.partners-hero) .partners-wrap::before { left: 6px; }
+      .partners-section:not(.partners-hero) .partners-h2::before { left: -35px; }
+      .partners-hero {
+        min-height: auto;
+        padding: 72px 16px 52px;
+      }
+      .partners-hero .partners-wrap {
+        width: min(100vw - 32px, 720px);
+      }
+      .partners-h1 {
+        font-size: clamp(39px, 12.2vw, 47px);
+        letter-spacing: -0.065em;
+        max-width: 100%;
+      }
+      .partners-hero .partners-p {
+        font-size: clamp(18px, 4.5vw, 23px);
+      }
+      .partners-h2 {
+        font-size: clamp(28px, 7vw, 40px);
+      }
+      .partners-cta {
+        width: 100%;
+        max-width: 100%;
+        min-height: 54px;
+        padding-left: 18px;
+        padding-right: 18px;
+        line-height: 1.15;
+        white-space: normal;
+      }
+      .partners-grid,
+      .partners-grid--two,
+      .partners-grid--three,
+      .partners-grid--four {
+        grid-template-columns: 1fr;
+      }
+      .partners-step {
+        grid-template-columns: 1fr;
+      }
+      .partners-window {
+        min-height: auto;
+      }
+      .partners-visual {
+        min-height: 0;
+        align-items: flex-start;
+      }
+      .partners-cube-visual {
+        aspect-ratio: 16 / 9;
+        height: auto;
+        max-height: none;
+      }
+      .partners-cube-video {
+        height: 100%;
+        max-height: none;
+      }
+      .partners-cube-visual:has(.partners-caption) {
+        aspect-ratio: auto;
+        height: auto;
+        display: flex;
+        flex-direction: column;
+        padding: 12px;
+        overflow: visible;
+      }
+      .partners-cube-visual:has(.partners-caption) .partners-cube-video {
+        order: 1;
+        height: auto;
+        aspect-ratio: 16 / 9;
+      }
+      .partners-cube-visual:has(.partners-caption) .partners-caption {
+        order: 2;
+        position: static;
+        display: block;
+        max-width: 100%;
+        margin: 10px 0 0;
+        padding: 0;
+        border: 0;
+        background: transparent;
+        color: #303844;
+        line-height: 1.35;
+      }
+      .partners-shot img {
+        min-height: 0;
+        object-fit: contain;
+        background: #fff;
+      }
+      .partners-caption {
+        font-size: 10px;
+      }
+      .partners-shot {
+        margin-left: 0;
+        margin-right: 0;
+        padding: 14px;
+      }
+      .partners-shot .partners-visual {
+        display: flex;
+        flex-direction: column;
+        padding: 12px;
+        overflow: visible;
+      }
+      .partners-shot img {
+        order: 1;
+      }
+      .partners-shot .partners-caption {
+        order: 2;
+        position: static;
+        display: block;
+        max-width: 100%;
+        margin: 10px 0 0;
+        padding: 0;
+        border: 0;
+        background: transparent;
+        color: #303844;
+        line-height: 1.35;
+      }
+    }
   </style>
 </head>
 <body>
-  <div id="root" data-screen-label="Partners"></div>
+  <div id="root" class="vt-root tracker-root" data-theme="dark" data-screen-label="Partners"></div>
 
   <script src="https://unpkg.com/react@18.3.1/umd/react.development.js" integrity="sha384-hD6/rw4ppMLGNu3tX5cjIb+uRZ7UkRJ6BPkLpg4hAu/6onKUg4lLsHAs9EBPT82L" crossorigin="anonymous"></script>
   <script src="https://unpkg.com/react-dom@18.3.1/umd/react-dom.development.js" integrity="sha384-u6aeetuaXnQ38mYT8rp6sbXaQe3NL9t+IBXmnYxwkUI2Hw4bsp2Wvmx4yRQF1uAm" crossorigin="anonymous"></script>
@@ -31,79 +591,238 @@
   <script type="text/babel" src="shared.jsx"></script>
 
   <script type="text/babel">
-    const PartnerHero = () => (
-      <section style={{ background: '#0A0A0B', color: '#fff', padding: '96px 32px 88px' }}>
-        <div style={{ maxWidth: 1120, margin: '0 auto' }}>
-          <Eyebrow color="#00E26A">— Vrrrt partners</Eyebrow>
-          <h1 style={{ fontFamily: 'Geist, system-ui, sans-serif', fontWeight: 700, fontSize: 72, letterSpacing: '-0.05em', lineHeight: 0.98, margin: 0, maxWidth: '13ch' }}>
-            Sell the Cube. Keep the upside.
-          </h1>
-          <p style={{ fontSize: 18, color: '#A1A1AA', lineHeight: 1.55, maxWidth: '56ch', margin: '24px 0 34px' }}>
-            Vrrrt gives Shopify designers, agencies, and freelancers a premium discovery feature to add to client stores.
-          </p>
-          <div style={{ display: 'flex', gap: 12, flexWrap: 'wrap' }}>
-            <Button variant="primary" size="lg" href="https://3dnavigate.vrrrt.app/partners/register" target="_blank" rel="noopener noreferrer" trailingIcon={<Icon name="arrow-right" size={16} stroke={2}/>}>Create partner account</Button>
-            <Button variant="ghost-on-dark" size="lg" href="https://3dnavigate.vrrrt.app/partners/login" target="_blank" rel="noopener noreferrer">Partner login</Button>
-            <Button variant="ghost-on-dark" size="lg" href="/partners/pack">View partner pack</Button>
-          </div>
-        </div>
-      </section>
+    const PRIMARY_CTA = "https://apps.shopify.com/3dnavigate";
+    const PARTNER_REGISTER = "https://3dnavigate.vrrrt.app/partners/register";
+
+    const PrimaryCTA = () => (
+      <a className="partners-cta" href={PRIMARY_CTA}>
+        Run a store drop-off audit
+      </a>
     );
 
-    const PartnerDetails = () => (
-      <section style={{ background: '#FAFAFA', padding: '72px 32px' }}>
-        <div style={{ maxWidth: 1120, margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(3, 1fr)', gap: 16 }}>
-          {[
-            { h: '$29/mo', p: 'Simple merchant price that is easy to explain during a Shopify build.' },
-            { h: '$50', p: 'One-time commission option after a referred store reaches four paid months.' },
-            { h: '20%', p: 'Recurring commission option for 12 months on qualifying referred stores.' },
-          ].map((card) => (
-            <div key={card.h} style={{ background: '#fff', borderRadius: 14, padding: 28, boxShadow: '0 0 0 1px rgba(0,0,0,0.05)' }}>
-              <h2 style={{ fontSize: 34, letterSpacing: '-0.04em', margin: 0 }}>{card.h}</h2>
-              <p style={{ color: '#71717A', fontSize: 15, lineHeight: 1.55, margin: '12px 0 0' }}>{card.p}</p>
-            </div>
-          ))}
+    const Screenshot = ({ src, alt, caption }) => (
+      <figure className="partners-shot">
+        <div className="partners-visual">
+          <span className="partners-caption">{caption}</span>
+          <img className="partners-shot-img" src={src} alt={alt} />
         </div>
-      </section>
+      </figure>
     );
 
-    const HowItWorks = () => (
-      <section style={{ background: '#fff', padding: '88px 32px' }}>
-        <div style={{ maxWidth: 880, margin: '0 auto' }}>
-          <Eyebrow>— How it works</Eyebrow>
-          <div style={{ display: 'grid', gap: 18 }}>
-            {[
-              ['Create your partner account', 'Tell us who you are, where you sell, and which payout option you prefer.'],
-              ['Install Vrrrt for the client', 'Add the Cube block, connect collections, tune the look, and test mobile and desktop.'],
-              ['Use your referral code', 'Your dashboard tracks referred stores, paid months, commission earned, and payout requests.'],
-            ].map(([h, p], i) => (
-              <div key={h} style={{ display: 'grid', gridTemplateColumns: '56px 1fr', gap: 18, alignItems: 'start' }}>
-                <div style={{ width: 42, height: 42, borderRadius: 12, background: '#0A0A0B', color: '#00E26A', display: 'grid', placeItems: 'center', fontWeight: 700 }}>{i + 1}</div>
-                <div>
-                  <h3 style={{ margin: 0, fontSize: 22, letterSpacing: '-0.02em' }}>{h}</h3>
-                  <p style={{ margin: '6px 0 0', color: '#71717A', lineHeight: 1.55 }}>{p}</p>
-                </div>
-              </div>
-            ))}
-          </div>
+    const WindowBlock = ({ label, title, body, fix, source, green }) => (
+      <article className={`partners-card partners-window ${green ? "partners-window--green" : ""}`}>
+        <p className="partners-window-label">{label}</p>
+        <h3 className="partners-h4">{title}</h3>
+        <p className="partners-window-body">{body}</p>
+        <p className="partners-fix">{fix}</p>
+        {source && <p className="partners-source">{source}</p>}
+      </article>
+    );
+
+    const Step = ({ number, children, screenshot }) => (
+      <article className="partners-card partners-step">
+        <div className="partners-step-number">{number}</div>
+        <div>
+          <p className="partners-p">{children}</p>
+          {screenshot}
         </div>
-      </section>
+      </article>
     );
 
     const App = () => (
       <>
-        <Header active="partners" />
-        <PartnerHero />
-        <PartnerDetails />
-        <HowItWorks />
-        <FooterCTA
-          headline="Ready to add Vrrrt<br/>to your offer?"
-          sub="Create a partner account and start tracking referred Shopify stores."
-          primary="Create partner account"
-          primaryHref="https://3dnavigate.vrrrt.app/partners/register"
-          secondary="Partner pack"
-          secondaryHref="/partners/pack"
-        />
+        <Header active="partners" dark />
+        <main className="partners-page">
+          <section className="partners-section partners-hero">
+            <div className="partners-wrap">
+              <p className="partners-kicker">For Shopify developers and freelancers.</p>
+              <h1 className="partners-h1">Half your client's visitors are gone in 30 seconds. Their conversion rate is calculated on all of them.</h1>
+              <p className="partners-p">Shopify benchmarks the rate. GA4 counts the bounce. Nothing shows when shoppers give up, page by page, second by second — Vrrrt measures exactly that, and where the worst of it happens, Vrrrt is also the fix. This page shows you how to sell both as a service.</p>
+              <PrimaryCTA />
+            </div>
+          </section>
+
+          <section className="partners-section">
+            <div className="partners-wrap">
+              <h2 className="partners-h2">Two tools, one app.</h2>
+              <div className="partners-grid partners-grid--two">
+                <div className="partners-card partners-tools-card partners-cube-card">
+                  <div className="partners-visual partners-cube-visual">
+                    <span className="partners-caption">Example — modeled on Shopify benchmarks.</span>
+                    <img className="partners-cube-video" src="assets/PLACEHOLDER-tracker-dropoff-curve.png" alt="Drop-off curve with window markers" />
+                  </div>
+                  <p className="partners-p partners-intro">Vrrrt installs on any Shopify store and starts measuring shopper behavior immediately — how long visitors stay on each page, where they drop off, and how fast. No session replays to sit through, no digging in Google Analytics.</p>
+                </div>
+                <div className="partners-card partners-tools-card partners-cube-card">
+                  <div className="partners-visual partners-cube-visual">
+                    <video className="partners-cube-video" autoPlay muted loop playsInline poster="assets/cube-hero.png" aria-label="Vrrrt Cube spinning with product faces">
+                      <source src="assets/vrrrt-engine-loop-960.mp4" type="video/mp4" />
+                      <img src="assets/cube-loop.gif" alt="Vrrrt Cube spinning with product faces" />
+                    </video>
+                  </div>
+                  <p className="partners-p partners-intro">The cube — Vrrrt's fix for the discovery window. Up to 90 products in front of a shopper in the first half-minute, where a normal grid manages 8 to 20. Drops into any theme as an app block. No code, standard checkout untouched.</p>
+                </div>
+              </div>
+              <p className="partners-pull">Vrrrt highlights the drop-off points and timestamps them — dwell time measured in seconds, page by page — so you know exactly where a fix is needed. The rest of this page explains what that's worth to you.</p>
+            </div>
+          </section>
+
+          <section className="partners-section">
+            <div className="partners-wrap">
+              <h2 className="partners-h2">Research shows shoppers don't leave at random — they leave at specific moments, and when they leave tells you why.</h2>
+              <p className="partners-p partners-intro">Four windows, four causes, and a fix industry for each — except one.</p>
+              <div className="partners-grid partners-grid--four">
+                <WindowBlock
+                  label="0–10 SECONDS — LOAD"
+                  title="LOAD"
+                  body="Shopify's 2026 ecosystem analysis found a clear correlation between load performance (LCP, INP) and conversion across its platform. A store that's slow here loses the visit before products ever mattered."
+                  fix="Fix industry: speed apps, image optimizers — $9–29/mo."
+                  source="Source: Shopify, 'Store Speed and Conversion: What the Data Shows' (2026)."
+                />
+                <WindowBlock
+                  green
+                  label="10–30 SECONDS — DISCOVERY"
+                  title="DISCOVERY"
+                  body="The store loaded — nothing caught the eye. A standard Shopify grid puts maybe 8–20 products in front of a shopper in this window. Dwell-time research (Nielsen Norman Group) shows the leave-rate stays brutal until roughly second 30, then flattens. Shopify doesn't publish per-second drop-off data for this window. Nobody does. That's the point — and it's what Vrrrt measures on your client's actual store."
+                  fix="Fix industry: nobody. No Shopify app acts inside this window. This is what the cube was built for."
+                />
+                <WindowBlock
+                  label="30–60 SECONDS — CONSIDERATION"
+                  title="CONSIDERATION"
+                  body="Trust, price clarity, reviews. The average ecommerce page visit is over before the minute mark."
+                  fix="Fix industry: trust badges, reviews, personalization — $9–49/mo."
+                  source="Source: Nielsen Norman Group; Contentsquare time-on-page benchmarks."
+                />
+                <WindowBlock
+                  label="1–3 MINUTES — COMMITMENT"
+                  title="COMMITMENT"
+                  body="Shopify-platform data puts average checkout completion at 45% — more than half of shoppers who start checkout don't finish. Sessions that survive past 3 minutes convert at 2.5–4% against the 1.4% platform average."
+                  fix="Fix industry: cart recovery, exit-intent, checkout apps — $9–30/mo."
+                  source="Source: Littledata Shopify benchmarks; Shopify conversion data."
+                />
+              </div>
+              <p className="partners-pull">Open your client's Shopify Admin — the Benchmarks report will tell them they're at 1.4% while similar stores hit 3%. It won't tell them why. The timestamp tells them why.</p>
+            </div>
+          </section>
+
+          <section className="partners-section">
+            <div className="partners-wrap">
+              <h2 className="partners-h2">The Store Drop-off Audit — a service you can price and sell this week.</h2>
+              <p className="partners-p partners-intro">Here's the play. Everything below happens inside the free 14-day trial — measuring, adding the cube, proving the lift. How fast depends on traffic: a store doing a thousand visitors a day can show you where the bleed is on day one and have before/after numbers by day five. Your client pays nothing until they've seen it work, and you end up delivering something no other freelancer on the platform is offering.</p>
+              <div className="partners-steps">
+                <Step number="1">Install Vrrrt on your client's store. The full 14-day trial is free — tracking, the cube, the before/after comparison, all of it. It's an app block: no code, no theme surgery, standard checkout untouched. Measurement starts the moment a page is picked.</Step>
+                <Step
+                  number="2"
+                  screenshot={
+                    <Screenshot
+                      src="assets/PLACEHOLDER-tracker-leaderboard.png"
+                      alt="Drop-off leaderboard"
+                      caption="Example — modeled on Shopify benchmarks."
+                    />
+                  }
+                >Watch it live. From the first shopper who lands, the dashboard is filling — every visit shows up in the data the moment the page is tracked. Vrrrt builds a page-by-page drop-off leaderboard: which pages are bleeding shoppers, how fast, in which window. Not session replays you sit and watch. Not a GA4 rabbit hole. The picture is already waiting when you log in.</Step>
+                <Step
+                  number="3"
+                  screenshot={
+                    <Screenshot
+                      src="assets/PLACEHOLDER-tracker-dropoff-curve.png"
+                      alt="Drop-off curve with window markers"
+                      caption="Example — modeled on Shopify benchmarks."
+                    />
+                  }
+                >Share the results. The leaderboard watches the whole store at once — and when a page needs a proper look, you point Vrrrt straight at it. Pick the page or collection and you're watching that one on its own: its drop-off curve, plainly showing 'this page's bleed is in the 10–30 second window, here's the right fix category.' You've turned a vague 'my conversions are bad' complaint into a per-page diagnosis with a timestamp on it — and you're the one who found it.</Step>
+                <Step
+                  number="4"
+                  screenshot={
+                    <Screenshot
+                      src="assets/PLACEHOLDER-tracker-beforeafter.png"
+                      alt="Before and after comparison panel"
+                      caption="Before/after is measured on the store's own traffic once a cube is on."
+                    />
+                  }
+                >Now fix the bleed. Roughly half of shoppers are gone inside 30 seconds, and the 10–30 second stretch is the window no other app touches — the cube puts up to 90 products in front of a shopper there, where a flat grid manages 8–20. Research suggests a 2–3x conversion lift (atypica.AI Business Intelligence Report, May 2026) — and your client never has to take anyone's word for it, because the dashboard measures before vs. after on their own traffic.</Step>
+              </div>
+            </div>
+          </section>
+
+          <section className="partners-section">
+            <div className="partners-wrap">
+              <div className="partners-honesty">
+                <h2 className="partners-h2">Keep selling everything you already sell.</h2>
+                <p className="partners-p partners-intro">Vrrrt is an add-on to whatever you already offer — it competes with nothing in your stack. If the data points at speed, trust, or checkout, that's your existing tools' job, and now you can prove it. If it points at the 10–30 second window, you have the only fix.</p>
+              </div>
+            </div>
+          </section>
+
+          <section className="partners-section">
+            <div className="partners-wrap">
+              <h2 className="partners-h2">Proof assets for the client conversation.</h2>
+              <div className="partners-grid partners-grid--three">
+                <Screenshot
+                  src="assets/PLACEHOLDER-tracker-leaderboard.png"
+                  alt="Drop-off leaderboard"
+                  caption="Example — modeled on Shopify benchmarks"
+                />
+                <Screenshot
+                  src="assets/PLACEHOLDER-tracker-dropoff-curve.png"
+                  alt="Drop-off curve"
+                  caption="Example — modeled on Shopify benchmarks"
+                />
+                <Screenshot
+                  src="assets/PLACEHOLDER-tracker-beforeafter.png"
+                  alt="Before and after comparison"
+                  caption="Before/after is measured on the store's own traffic once a cube is on."
+                />
+              </div>
+              <p className="partners-pull">You don't pitch. You show. The leaderboard names the worst pages. The drop-off curve shows the window. The before/after panel sits empty until a cube goes on — and then it fills with the client's own numbers. No testimonial required, no leap of faith. Their store, their traffic, their dashboard.</p>
+            </div>
+          </section>
+
+          <section className="partners-section">
+            <div className="partners-wrap">
+              <h2 className="partners-h2">The commission.</h2>
+              <div className="partners-grid partners-grid--two">
+                <div className="partners-card partners-term">$50 one-time when a store you referred completes four paid months.</div>
+                <div className="partners-card partners-term">20% recurring on their subscription for as long as they stay subscribed.</div>
+              </div>
+              <p className="partners-p partners-intro">That's on top of whatever you charge for the audit itself — the audit fee is yours, we never see it. Plans run $29–99/month, so the recurring piece is real money on a Grow or Pro store, and a developer running audits as a standard offering stacks these.</p>
+              <Button variant="primary" size="lg" href={PARTNER_REGISTER} style={{ marginTop: 'var(--vt-s-6)' }}>Register as a partner</Button>
+            </div>
+          </section>
+
+          <section className="partners-section">
+            <div className="partners-wrap">
+              <h2 className="partners-h2">Questions worth asking.</h2>
+              <div className="partners-faq">
+                <div className="partners-faq-item">
+                  <h3 className="partners-h4">Will it slow my client's store?</h3>
+                  <p className="partners-p">The cube is on screen in about 2 seconds and it's built to stay light. It can't fix a slow store — that's a load problem, and the speed app owns it — but it won't make a fast store slow. The measuring script itself is a lightweight pixel.</p>
+                </div>
+                <div className="partners-faq-item">
+                  <h3 className="partners-h4">Will it break the theme?</h3>
+                  <p className="partners-p">It's a standard app block. No code, no theme edits, works on any theme, and the buying flow — product page, cart, native checkout — stays exactly as Shopify shipped it. Uninstall is clean.</p>
+                </div>
+                <div className="partners-faq-item">
+                  <h3 className="partners-h4">What if the client's bleed isn't in the 10–30 second window?</h3>
+                  <p className="partners-p">Then the audit worked. You found the real problem, pointed them at the right fix category, and got paid for the diagnosis. Vrrrt still earns its keep as the instrument — and the leaderboard usually surfaces some page bleeding in that window anyway.</p>
+                </div>
+                <div className="partners-faq-item">
+                  <h3 className="partners-h4">Where do these numbers come from?</h3>
+                  <p className="partners-p">Shopify's own 2026 ecosystem analysis, Shopify Admin's built-in Benchmarks report, Littledata's Shopify-platform dataset, Nielsen Norman Group's dwell-time research, and an atypica.AI report from May 2026. The per-page drop-off data on your client's store comes from nowhere — Vrrrt measures it live. That's the product.</p>
+                </div>
+              </div>
+            </div>
+          </section>
+
+          <section className="partners-section partners-close">
+            <div className="partners-wrap">
+              <h2 className="partners-h2">Four windows. Three are crowded with apps. One is empty — and you're holding the only instrument that finds it.</h2>
+              <p className="partners-p partners-intro">The whole loop — measure, add the cube, prove the lift — fits inside the free trial. All it needs is one install.</p>
+              <PrimaryCTA />
+              <p className="partners-signoff">— Jakes, founder. Six businesses, three exits, and I built this one because I couldn't find a tote bag.</p>
+            </div>
+          </section>
+        </main>
         <Footer />
       </>
     );
