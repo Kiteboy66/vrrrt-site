@@ -66,7 +66,6 @@
         platform: '',
         profileUrl: '',
         paypalEmail: '',
-        commissionType: '$50 after 4 paid months',
         message: '',
       });
       const [status, setStatus] = useState('idle');
@@ -103,7 +102,6 @@
           `Platform: ${form.platform.trim()}`,
           `Profile URL: ${form.profileUrl.trim()}`,
           `PayPal email: ${form.paypalEmail.trim()}`,
-          `Commission option: ${form.commissionType}`,
           '',
           'Notes:',
           form.message.trim() || '-',
@@ -174,20 +172,6 @@
           ))}
 
           <div style={{ display: 'grid', gap: 7 }}>
-            <Label htmlFor="commissionType">Commission option *</Label>
-            <select
-              id="commissionType"
-              value={form.commissionType}
-              disabled={sent || sending}
-              onChange={e => updateField('commissionType', e.target.value)}
-              style={fieldStyle}
-            >
-              <option>$50 after 4 paid months</option>
-              <option>20% monthly, ongoing</option>
-            </select>
-          </div>
-
-          <div style={{ display: 'grid', gap: 7 }}>
             <Label htmlFor="message">Notes</Label>
             <textarea
               id="message"
@@ -236,7 +220,7 @@
                 </p>
                 <div style={{ display: 'grid', gap: 12, marginTop: 34, maxWidth: 520 }}>
                   {[
-                    'Choose $50 after 4 paid months or 20% monthly, ongoing.',
+                    'Commission: 20% monthly, ongoing.',
                     'Use your referral code when you install Vrrrt for a client.',
                     'Track referred stores, paid months, commission, and payouts in the partner dashboard.',
                   ].map(item => (
