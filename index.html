@@ -490,7 +490,7 @@
   <script type="text/babel">
     const CTA_HREF = 'https://apps.shopify.com/3dnavigate';
     const CTA_TEXT = "Show me what's happening on my store";
-    const CTA_MICROCOPY = 'Free for 14 days · installs in minutes on any modern Shopify theme · no code';
+    const CTA_MICROCOPY = 'Free for 14 days, then from $29/mo · cancel anytime';
 
     const CTA = ({ microcopy = CTA_MICROCOPY }) => (
       <div className="tracker-cta">
@@ -504,6 +504,7 @@
           {CTA_TEXT}
         </Button>
         <p className="tracker-microcopy">{microcopy}</p>
+        <p className="tracker-microcopy">Loads in under two seconds. Installs in minutes, removes just as fast.</p>
       </div>
     );
 
@@ -743,6 +744,7 @@
         <Copy>
           <p>Even on a page where the line barely moves, you walk away knowing which products do the work and which are dead weight. And it shows you what shoppers typed into search and didn't find — if two hundred people searched "red shorts" and you don't carry them, that's not a missed bug, that's a product you should be selling, handed to you by the people who wanted to buy it.</p>
         </Copy>
+        <p className="tracker-pull vt-h3">The built-in tracker proves what changed — before versus after, on your own traffic.</p>
         <p className="tracker-honesty vt-small">The lift, honestly: Research suggests shoppers who get past that first 30 seconds — who actually start browsing instead of bouncing — buy at meaningfully higher rates, somewhere around two to three times. We're not promising you'll hit that. It's the prize for keeping more of your early-leavers on the page long enough to look — and the after-cube view is how you find out whether you're getting it, on your own traffic, not ours.</p>
         <p className="tracker-pull vt-h3">Track your store and you see where shoppers leave. Switch the cube on and you see what they actually do — what they reach for, what stops them, what they buy. For the first time, the whole thing's lit up. So stop reading about it and go find out. Install it, switch it on, watch what happens on your own store. You've got nothing to lose.</p>
       </Section>
@@ -799,7 +801,7 @@
         <Copy>
           <p>So go see them.</p>
         </Copy>
-        <CTA microcopy="Free for 14 days · any modern Shopify theme · minutes to install · nothing about your store changes" />
+        <CTA microcopy="Free for 14 days, then from $29/mo · cancel anytime · nothing about your store changes" />
       </Section>
     );
 
