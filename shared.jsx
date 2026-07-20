@@ -354,21 +354,6 @@ const Footer = () => (
           }}>
             Shopify-first, built for speed. One Rapid Discovery Cube. Product discovery at the speed shoppers actually scroll.
           </p>
-          <a
-            href="https://submitforbacklinks.com/badge/0Ec7ws40CIWReQKLFIDBJJ_o?ref=badge"
-            target="_blank"
-            rel="noopener"
-            data-s4b-token="0Ec7ws40CIWReQKLFIDBJJ_o"
-            data-s4b-theme="dark"
-            style={{ display: 'inline-flex', marginTop: 18 }}
-          >
-            <img
-              src="https://submitforbacklinks.com/api/badge/0Ec7ws40CIWReQKLFIDBJJ_o.svg?variant=verified&theme=dark"
-              alt="Vrrrt Cube - Verified on SubmitForBacklinks"
-              width="220"
-              height="48"
-            />
-          </a>
         </div>
         {[
           { h: 'Products', items: PRODUCTS.map(p => ({ label: p.name.replace('Vrrrt for ', ''), href: p.href, status: p.status })) },
